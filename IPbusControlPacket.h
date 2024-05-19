@@ -44,13 +44,13 @@ public:
         currentTransaction.address = request + requestSize++;
         currentTransaction.responseHeader = (TransactionHeader *)(response + responseSize++);
         switch (type) {
-            case                read:
+            case                ipread:
             case nonIncrementingRead:
             case   configurationRead:
                 currentTransaction.data = data;
                 responseSize += nWords;
                 break;
-            case                write:
+            case                ipwrite:
             case nonIncrementingWrite:
             case   configurationWrite:
                 currentTransaction.data = request + requestSize;
@@ -74,10 +74,10 @@ public:
         } else transactionsList.append(currentTransaction);
     }
 
-    void addWordToWrite(quint32 address, quint32 value) { addTransaction(write, address, &value, 1); }
+    void addWordToWrite(quint32 address, quint32 value) { addTransaction(ipwrite, address, &value, 1); }
 
     void addNBitsToChange(quint32 address, quint32 data, quint8 nbits, quint8 shift = 0) {
-        if (nbits == 32) { addTransaction(write, address, &data, 1); return; }
+        if (nbits == 32) { addTransaction(ipwrite, address, &data, 1); return; }
         quint32 mask = (1 << nbits) - 1; //e.g. 0x00000FFF for nbits==12
         addTransaction(RMWbits, address, masks( ~quint32(mask << shift), quint32((data & mask) << shift) ));
     }
@@ -90,7 +90,7 @@ public:
                 return false;
             }
             if (th->Words > 0) switch (th->TypeID) {
-                case                read:
+                case                ipread:
                 case nonIncrementingRead:
                 case   configurationRead: {
                     quint32 wordsAhead = response + responseSize - (quint32 *)th - 1;
@@ -113,7 +113,7 @@ public:
                     }
                     emit successfulRead(1);
                     /* fall through */ //[[fallthrough]];
-                case                write:
+                case                ipwrite:
                 case nonIncrementingWrite:
                 case   configurationWrite:
                     emit successfulWrite(th->Words);

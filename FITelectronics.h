@@ -93,7 +93,7 @@ public:
         countersTimer->setTimerType(Qt::PreciseTimer);
         connect(countersTimer, &QTimer::timeout, this, [=](){
             IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-            p.addTransaction(read, 0x0F, &TCM.act.registers[0x0F]); //status register
+            p.addTransaction(ipread, 0x0F, &TCM.act.registers[0x0F]); //status register
             if (!transceive(p)) return;
             if (TCM.act.resetSystem) {
                 PMsReady = false;
@@ -358,7 +358,7 @@ public:
                 for(quint8 iPM=0; iPM<20; ++iPM) for (quint8 iCh=0; iCh<12; ++iCh) { allPMs[iPM].set.ADC_RANGE[iCh][0] = V[20*iCh + iPM]; allPMs[iPM].set.ADC_RANGE[iCh][1] = V[240 + 20*iCh + iPM]; }
                 IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
                 foreach(auto side, QList({PMsA, PMsC})) {
-                    foreach(TypePM *pm, side) p.addTransaction(write, pm->baseAddress + PMparameters["ADC0_RANGE"].address, pm->set.ADC_RANGE[0], 24);
+                    foreach(TypePM *pm, side) p.addTransaction(ipwrite, pm->baseAddress + PMparameters["ADC0_RANGE"].address, pm->set.ADC_RANGE[0], 24);
                     if (!p.transactionsList.isEmpty()) transceive(p);
                 }
                 sync();
@@ -394,7 +394,7 @@ public:
                     allPMs[iPM].act.timeAlignment[iCh].blockTriggers = !enableTrigger;
                 }
                 IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-                foreach(TypePM *pm, PM) p.addTransaction(write, pm->baseAddress + PMparameters["noTriggerMode"].address, (quint32 *)&pm->act.timeAlignment, 12);
+                foreach(TypePM *pm, PM) p.addTransaction(ipwrite, pm->baseAddress + PMparameters["noTriggerMode"].address, (quint32 *)&pm->act.timeAlignment, 12);
                 if (!p.transactionsList.isEmpty() && transceive(p)) sync();
             } else if (id < 240) {
                 quint8 iPM = id % 20, iCh = id / 20;
@@ -545,7 +545,7 @@ public slots:
         while (load) {
             IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
             p.addTransaction(nonIncrementingRead, TypeTCM::Counters::addressFIFO, nullptr, load > 255 ? 255 : load);
-            p.addTransaction(read, TypeTCM::Counters::addressFIFOload, &load);
+            p.addTransaction(ipread, TypeTCM::Counters::addressFIFOload, &load);
             if (!transceive(p)) return;
         }
         foreach (TypePM *pm, PM) {
@@ -554,7 +554,7 @@ public slots:
             while (load) {
                 IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
                 p.addTransaction(nonIncrementingRead, pm->baseAddress + TypePM::Counters::addressFIFO, nullptr, load > 255 ? 255 : load);
-                p.addTransaction(read, pm->baseAddress + TypePM::Counters::addressFIFOload, &load);
+                p.addTransaction(ipread, pm->baseAddress + TypePM::Counters::addressFIFOload, &load);
                 if (!transceive(p)) return;
             }
         }
@@ -582,22 +582,22 @@ public slots:
             for (quint8 j=0; j<GBTunit::controlSize; ++j) if (j != GBTparameters["BCID_DELAY"].address - GBTunit::controlAddress) TCM.set.GBT.registers[j] = GBTunit::defaults[j];
             TCM.set.GBT.RDH_FEE_ID = TCMid;
             TCM.set.GBT.RDH_SYS_ID = FIT[subdetector].systemID;
-            p.addTransaction(write, GBTunit::controlAddress, TCM.set.GBT.registers, GBTunit::controlSize);
+            p.addTransaction(ipwrite, GBTunit::controlAddress, TCM.set.GBT.registers, GBTunit::controlSize);
         }
         foreach (TypePM *pm, PM) if (quint16(readRegister(pm->baseAddress + GBTparameters["RDH_FEE_ID"].address)) != pm->FEEid) {
             for (quint8 j=0; j<GBTunit::controlSize; ++j) if (j != GBTparameters["BCID_DELAY"].address - GBTunit::controlAddress) pm->set.GBT.registers[j] = GBTunit::defaults[j];
             pm->set.GBT.RDH_FEE_ID = pm->FEEid;
             pm->set.GBT.RDH_SYS_ID = FIT[subdetector].systemID;
-            p.addTransaction(write, pm->baseAddress + GBTunit::controlAddress, pm->set.GBT.registers, GBTunit::controlSize);
+            p.addTransaction(ipwrite, pm->baseAddress + GBTunit::controlAddress, pm->set.GBT.registers, GBTunit::controlSize);
         }
         if (!p.transactionsList.isEmpty()) transceive(p);
     }
 
     void checkPMlinks() {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(read, TCMparameters["PM_MASK_SPI"].address, &TCM.act.PM_MASK_SPI);
-        p.addTransaction(read, TCMparameters["CH_MASK_A"].address, p.dt);
-        p.addTransaction(read, TCMparameters["CH_MASK_C"].address, p.dt + 1);
+        p.addTransaction(ipread, TCMparameters["PM_MASK_SPI"].address, &TCM.act.PM_MASK_SPI);
+        p.addTransaction(ipread, TCMparameters["CH_MASK_A"].address, p.dt);
+        p.addTransaction(ipread, TCMparameters["CH_MASK_C"].address, p.dt + 1);
         if (transceive(p)) {
             TCM.act.CH_MASK_A = p.dt[0];
             TCM.act.CH_MASK_C = p.dt[1];
@@ -639,7 +639,7 @@ public slots:
         else if (p.bitwidth == 64) {
             quint32 w[2] = {quint32(val), quint32(val >> 32)};
             IPbusControlPacket packet; connect(&packet, &IPbusControlPacket::error, this, &IPbusTarget::error);
-            packet.addTransaction(write, address, w, 2);
+            packet.addTransaction(ipwrite, address, w, 2);
             if (transceive(packet)) sync();
         } else
             writeNbits(address, val, p.bitwidth, p.bitshift);
@@ -648,8 +648,8 @@ public slots:
     void readCountersFIFO() {
         quint16 time_ms = countersUpdatePeriod_ms[TCM.act.COUNTERS_UPD_RATE];
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(read, TypeTCM::Counters::addressFIFOload, &TCM.counters.FIFOload);
-        foreach (TypePM *pm, PM) p.addTransaction(read, pm->baseAddress + TypePM::Counters::addressFIFOload, &pm->counters.FIFOload);
+        p.addTransaction(ipread, TypeTCM::Counters::addressFIFOload, &TCM.counters.FIFOload);
+        foreach (TypePM *pm, PM) p.addTransaction(ipread, pm->baseAddress + TypePM::Counters::addressFIFOload, &pm->counters.FIFOload);
         if (!transceive(p)) return;
         if (TCM.counters.FIFOload) p.addTransaction(nonIncrementingRead, TypeTCM::Counters::addressFIFO, TCM.counters.New, TypeTCM::Counters::number);
         foreach (TypePM *pm, PM) if (pm->counters.FIFOload) {
@@ -686,7 +686,7 @@ public slots:
 
     void readCountersDirectly(bool calculateRate = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(read, TypeTCM::Counters::addressDirect, TCM.counters.New, TypeTCM::Counters::number);
+        p.addTransaction(ipread, TypeTCM::Counters::addressDirect, TCM.counters.New, TypeTCM::Counters::number);
         if (transceive(p)) {
             TCM.counters.newTime = QDateTime::currentDateTime();
             quint32 time_ms = TCM.counters.oldTime.msecsTo(TCM.counters.newTime);
@@ -700,7 +700,7 @@ public slots:
             emit countersReady(TCMid);
         } else return;
         foreach (TypePM *pm, PM) {
-            p.addTransaction(read, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
+            p.addTransaction(ipread, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
             if (!transceive(p) || !PM.contains(pm->FEEid)) continue;
             pm->counters.newTime = QDateTime::currentDateTime();
             quint32 time_ms = pm->counters.oldTime.msecsTo(pm->counters.newTime);
@@ -724,23 +724,23 @@ public slots:
         if (TCM.act.COUNTERS_UPD_RATE) { //HW timer
             readCountersFIFO();
             if (FEEid == -1 || FEEid == TCMid) {
-                p.addTransaction(read, TypeTCM::Counters::addressDirect, TCM.counters.New, TypeTCM::Counters::number);
+                p.addTransaction(ipread, TypeTCM::Counters::addressDirect, TCM.counters.New, TypeTCM::Counters::number);
                 p.addTransaction(RMWbits, 0xF, p.masks(0xFFFFFFFF, 1 << 9)); //set counters reset bit
                 if (transceive(p)) for (quint8 i=0; i<TypeTCM::Counters::number; ++i) TCM.counters.Old[i] -= TCM.counters.New[i]; else return;
             }
             if (FEEid == -1 || FEEid == -2) {
                 foreach(TypePM *pm, PMsA) {
-                    p.addTransaction(read, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
+                    p.addTransaction(ipread, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
                     p.addTransaction(RMWbits, 0x7F + pm->baseAddress, p.masks(0xFFFFFFFF, 1 << 9));
                 }
                 if (!p.transactionsList.isEmpty() && transceive(p)) { foreach(TypePM *pm, PMsA) for (quint8 i=0; i<TypePM::Counters::number; ++i) pm->counters.Old[i] -= pm->counters.New[i]; }
                 foreach(TypePM *pm, PMsC) {
-                    p.addTransaction(read, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
+                    p.addTransaction(ipread, pm->baseAddress + TypePM::Counters::addressDirect, pm->counters.New, TypePM::Counters::number);
                     p.addTransaction(RMWbits, 0x7F + pm->baseAddress, p.masks(0xFFFFFFFF, 1 << 9));
                 }
                 if (!p.transactionsList.isEmpty() && transceive(p)) { foreach(TypePM *pm, PMsC) for (quint8 i=0; i<TypePM::Counters::number; ++i) pm->counters.Old[i] -= pm->counters.New[i]; }
             } else if (PM.contains(FEEid)) {
-                p.addTransaction(read, PM[FEEid]->baseAddress + TypePM::Counters::addressDirect, PM[FEEid]->counters.New, TypePM::Counters::number);
+                p.addTransaction(ipread, PM[FEEid]->baseAddress + TypePM::Counters::addressDirect, PM[FEEid]->counters.New, TypePM::Counters::number);
                 p.addTransaction(RMWbits, 0x7F + PM[FEEid]->baseAddress, p.masks(0xFFFFFFFF, 1 << 9));
                 if (transceive(p)) for (quint8 i=0; i<TypePM::Counters::number; ++i) PM[FEEid]->counters.Old[i] -= PM[FEEid]->counters.New[i];
             }
@@ -781,7 +781,7 @@ public slots:
             emit linksStatusReady();
         } else {
             IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-            foreach(regblock b, pm->act.regblocks) p.addTransaction(read, pm->baseAddress + b.addr, pm->act.registers + b.addr, b.size()); // reading PM registers with actual values
+            foreach(regblock b, pm->act.regblocks) p.addTransaction(ipread, pm->baseAddress + b.addr, pm->act.registers + b.addr, b.size()); // reading PM registers with actual values
             if (!transceive(p)) return false;
             pm->act.calculateValues();
             pm->counters.GBT.calculateRate(pm->act.GBT.Status.wordsCount, pm->act.GBT.Status.eventsCount);
@@ -799,7 +799,7 @@ public slots:
     void sync() { //read actual values
         if (!isOnline) return;
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        foreach(regblock b, TCM.act.regblocks) p.addTransaction(read, b.addr, TCM.act.registers + b.addr, b.size()); //reading TCM registers with actual values
+        foreach(regblock b, TCM.act.regblocks) p.addTransaction(ipread, b.addr, TCM.act.registers + b.addr, b.size()); //reading TCM registers with actual values
         if (!transceive(p)) return;
         TCM.act.calculateValues();
         TCM.counters.GBT.calculateRate(TCM.act.GBT.Status.wordsCount, TCM.act.GBT.Status.eventsCount);
@@ -995,7 +995,7 @@ public slots:
     void apply_LASER_SOURCE(bool isGenerator) { TCM.set.LASER_SOURCE = isGenerator; writeParameter("LASER_SOURCE", isGenerator, TCMid); }
     void apply_LASER_PATTERN() {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(write, TCMparameters["LASER_PATTERN"].address, (quint32 *)&TCM.set.LASER_PATTERN, 2);
+        p.addTransaction(ipwrite, TCMparameters["LASER_PATTERN"].address, (quint32 *)&TCM.set.LASER_PATTERN, 2);
         if (transceive(p)) sync();
     }
     void apply_SwLaserPatternBit(quint8 bit, bool on) {
@@ -1089,7 +1089,7 @@ public slots:
 
     void applySettingsPM(TypePM *pm) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        foreach(regblock b, pm->set.regblocks) p.addTransaction(write, pm->baseAddress + b.addr, pm->set.registers + b.addr, b.size());
+        foreach(regblock b, pm->set.regblocks) p.addTransaction(ipwrite, pm->baseAddress + b.addr, pm->set.registers + b.addr, b.size());
         transceive(p);
     }
 
@@ -1097,7 +1097,7 @@ public slots:
 
     void applySettingsTCM() {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        foreach(regblock b, TCM.set.regblocksToApply) p.addTransaction(write, b.addr, TCM.set.registers + b.addr, b.size());
+        foreach(regblock b, TCM.set.regblocksToApply) p.addTransaction(ipwrite, b.addr, TCM.set.registers + b.addr, b.size());
         qint32 delay_ms = qMax(qAbs(TCM.set.DELAY_A - TCM.act.DELAY_A), qAbs(TCM.set.DELAY_C - TCM.act.DELAY_C)) + 10; //phase needs time to move
         if (!transceive(p)) return;
         if (delay_ms > 1) QThread::msleep(delay_ms); //waiting for phases shift to complete
@@ -1122,7 +1122,7 @@ public slots:
 
     void apply_ORBIT_FILL_MASK() {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(write, 0x2A00, TCM.ORBIT_FILL_MASK, 223);
+        p.addTransaction(ipwrite, 0x2A00, TCM.ORBIT_FILL_MASK, 223);
         transceive(p);
     }
 

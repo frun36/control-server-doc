@@ -25,8 +25,8 @@ struct PacketHeader {
 };
 
 enum TransactionType {
-    read                  = 0,
-    write                 = 1,
+    ipread                  = 0,
+    ipwrite                 = 1,
     nonIncrementingRead   = 2,
     nonIncrementingWrite  = 3,
     RMWbits               = 4,

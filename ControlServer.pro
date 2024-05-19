@@ -44,12 +44,13 @@ FORMS += \
         mainwindow.ui
 
 INCLUDEPATH += $$PWD/DIM
-LIBS += -L"$$PWD/DIM" -ldim
+INCLUDEPATH += $$PWD/Headers
+LIBS += -L"/home/wiktor/DIM/linux" -ldim
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-        ../!images/img.qrc
+#RESOURCES += \
+#        ../!images/img.qrc

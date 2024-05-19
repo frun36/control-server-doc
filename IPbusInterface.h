@@ -33,7 +33,7 @@ public:
 
     quint32 readRegister(quint32 address) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(read, address, nullptr, 1);
+        p.addTransaction(ipread, address, nullptr, 1);
         TransactionHeader *th = p.transactionsList.last().responseHeader;
         return transceive(p, false) && th->InfoCode == 0 ? quint32(*++th) : 0xFFFFFFFF;
     }
@@ -122,7 +122,7 @@ public slots:
 
     void writeRegister(quint32 address, quint32 data, bool syncOnSuccess = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
-        p.addTransaction(write, address, &data, 1);
+        p.addTransaction(ipwrite, address, &data, 1);
         if (transceive(p) && syncOnSuccess) sync();
     }
 

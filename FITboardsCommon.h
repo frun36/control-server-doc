@@ -243,27 +243,30 @@ struct GBTerrorReport {
                          errCodeFIFOoverload    = 0xEEEE0008;
     static const quint8 reportSize = 36, address = 0xF2;
     quint32  errCode;                   //]IPbus word 0
+    struct TypeBCsyncLostInRun {
+        struct {
+            GBTword data;
+            quint16 counter : 12,
+                    isData  :  4;
+        } w[10];                    //]IPbus word 1-30
+        quint16 BC_CRU, BC_Board;   //]IPbus word 31
+        quint32 orbitBoard,         //]IPbus word 32
+                orbitCRU,           //]IPbus word 33
+                _reservedSpace[2];  //]IPbus word 34-35
+    };
+    struct TypePMearlyHeader {
+        GBTword w[14];
+    };
+    struct TypeFIFOoverload {
+        GBTword w[13];              //┐
+        quint16 _reservedSpace0,    //┘IPbus word 1-33
+                rdRate, wrRate;     //]IPbus word 34
+        quint32 _reservedSpace1;    //]IPbus word 35
+    };
     union {
-        struct TypeBCsyncLostInRun {
-            struct {
-                GBTword data;
-                quint16 counter : 12,
-                        isData  :  4;
-            } w[10];                    //]IPbus word 1-30
-            quint16 BC_CRU, BC_Board;   //]IPbus word 31
-            quint32 orbitBoard,         //]IPbus word 32
-                    orbitCRU,           //]IPbus word 33
-                    _reservedSpace[2];  //]IPbus word 34-35
-        } SL;
-        struct TypePMearlyHeader {
-            GBTword w[14];
-        } EH;
-        struct TypeFIFOoverload {
-            GBTword w[13];              //┐
-            quint16 _reservedSpace0,    //┘IPbus word 1-33
-                    rdRate, wrRate;     //]IPbus word 34
-            quint32 _reservedSpace1;    //]IPbus word 35
-        } FO;
+         TypeBCsyncLostInRun SL;
+         TypePMearlyHeader EH;
+         TypeFIFOoverload FO;
     };
     quint32 *data = (quint32 *)this;
     static const inline QString LF = QString::asprintf("\n%*s", 24, ""); //a new line with indentation equal to timestamp length in logfile
