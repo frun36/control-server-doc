@@ -33,7 +33,7 @@ HEADERS += \
         FITelectronics.h \
         IPbusControlPacket.h \
         IPbusHeaders.h \
-        actualLabel.h \
+        actuallabel.h \
         IPbusInterface.h \
         PM.h \
         TCM.h \
@@ -45,7 +45,8 @@ FORMS += \
 
 INCLUDEPATH += $$PWD/DIM
 INCLUDEPATH += $$PWD/Headers
-LIBS += -L"/home/wiktor/DIM/linux" -ldim
+# LIBS += -L"/home/wiktor/DIM/linux" -ldim
+LIBS += -L"/home/frun/CERN/dim_v20r37/linux" -ldim
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

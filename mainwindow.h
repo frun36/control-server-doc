@@ -3,7 +3,7 @@
 
 #include "ui_mainwindow.h"
 #include "FITelectronics.h"
-#include <actualLabel.h>
+#include <actuallabel.h>
 #include "switch.h"
 #include <QMainWindow>
 #include <QtWidgets>
