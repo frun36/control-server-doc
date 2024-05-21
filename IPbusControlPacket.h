@@ -48,8 +48,13 @@ public:
 
 /** 
  *  @brief Adds transaction to the packet
- *  @details addTransaction creates and saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication
- * 
+ *  @details addTransaction creates and saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication.
+ *  Transacitons within a packet are stored in a following manner (values in [] represents bits numbers):
+ *  - [0-31] - packet header
+ *  - [32-63] - transaction header
+ *  - [64-95] - destination address
+ *  - [96-...] - data
+ *  Number of transactions within one packet is limited by the maximum packet size.
  *  @param type Type of transaction
  *  @param address Address of a memory location at the remote site on which operation will be performed
  *  @param data Address of a memory block of data passsed to the transaction
