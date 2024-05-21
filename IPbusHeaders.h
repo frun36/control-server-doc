@@ -4,9 +4,16 @@
 #include <QtGlobal>
 #include <QtEndian>
 
+/** 
+ * @brief Size of one word in bytes
+*/
 const quint8 wordSize = sizeof(quint32); //4 bytes
 
 enum PacketType {control = 0, status = 1, resend = 2};
+
+/** 
+ * @brief Representation of the packet header
+*/
 struct PacketHeader {
     quint32 PacketType      :  4,
             ByteOrder       :  4,
@@ -34,6 +41,10 @@ enum TransactionType {
     configurationRead     = 6,
     configurationWrite    = 7
 };
+
+/** @brief Representation of the transaction header
+ * 
+*/
 struct TransactionHeader {
     quint32 InfoCode        :  4,
             TypeID          :  4,
@@ -63,11 +74,27 @@ struct TransactionHeader {
     }
 };
 
+/** @brief A struct containing full information about a single transaction
+ *  @details  is represented within the IPbus packet by three components: transaction header (1 word), Address of the memory location on which the operation will be performed (1 word)
+ * and a block of data (if any data is required). Data layout is speficic for each kind of transaction. Transaction stores information about request, also after
+ * the response is received pointer to the response header will be stored in field responseHeader.
+*/
 struct Transaction {
-    TransactionHeader *requestHeader, *responseHeader;
-    quint32 *address, *data;
+    TransactionHeader 
+    /** Request transaction header describes  */
+                    *requestHeader, 
+    /** Address to the response header will be saved here */
+                    *responseHeader; 
+    
+    quint32 
+    /** Address of the memory location on which the operation will be performed */
+            *address, 
+    /** Address of the block of data used in the transaction*/
+            *data;
 };
 
+/** @brief A struct containing definition of the packet used to check the connection
+*/
 struct StatusPacket {
     PacketHeader header = qToBigEndian(quint32(PacketHeader(status))); //0x200000F1: {0xF1, 0, 0, 0x20} -> {0x20, 0, 0, 0xF1}
     quint32 MTU = 0,
@@ -76,5 +103,6 @@ struct StatusPacket {
     quint8  trafficHistory[16] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0};
     quint32 controlHistory[8] = {0,0,0,0, 0,0,0,0};
 };
+
 
 #endif // IPBUSHEADERS_H

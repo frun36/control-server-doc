@@ -4,17 +4,27 @@
 #include <QObject>
 #include <QDateTime>
 
+/** 
+ *  @brief Maximum size of a single packet specified in words
+ *  @details Packet size is limited by the maximum transmission unit (1500 bytes) of the ethernet used in the communication with PMs.
+*/
 const quint16 maxPacket = 368; //368 words, limit from ethernet MTU of 1500 bytes
 enum errorType {networkError = 0, IPbusError = 1, logicError = 2};
 static const char *errorTypeName[3] = {"Network error" , "IPbus error", "Logic error"};
 
+/** 
+ *  @brief A class responsible for creating a single IPbus packet and checking the corectness of the response
+ *  @details IPbusControlPacket stacks multiple transactions into a single packet.
+*/
 class IPbusControlPacket : public QObject {
     Q_OBJECT
 public:
-    QList<Transaction> transactionsList;
-    quint16 requestSize = 1, responseSize = 1; //values are measured in words
-    quint32 request[maxPacket], response[maxPacket];
-    quint32 dt[2]; //temporary data
+    QList<Transaction> transactionsList;            /** \brief List of transactions that will be sent  */
+    quint16 requestSize = 1,        /** \brief Size of the request specified in words */
+            responseSize = 1;       /** \brief Size of the response specified in words */
+    quint32 request[maxPacket],     /** \brief Buffer where the request is stored */ 
+            response[maxPacket];    /** \brief Buffer where the response will be saved */
+    quint32 dt[2];                  /** \brief Temporary data */
 
     IPbusControlPacket() {
         request[0] = PacketHeader(control, 0);
@@ -36,6 +46,20 @@ public:
         return dt;
     }
 
+/** 
+ *  @brief Adds transaction to the packet
+ *  @details addTransaction creates and saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication.
+ *  Transacitons within a packet are stored in a following manner (values in [] represents bits numbers):
+ *  - [0-31] - packet header
+ *  - [32-63] - transaction header
+ *  - [64-95] - destination address
+ *  - [96-...] - data
+ *  Number of transactions within one packet is limited by the maximum packet size.
+ *  @param type Type of transaction
+ *  @param address Address of a memory location at the remote site on which operation will be performed
+ *  @param data Address of a memory block of data passsed to the transaction
+ *  @param nWords Size of a data block specified in words
+*/
     void addTransaction(TransactionType type, quint32 address, quint32 *data, quint8 nWords = 1) {
         Transaction currentTransaction;
         request[requestSize] = TransactionHeader(type, nWords, transactionsList.size());
@@ -74,6 +98,12 @@ public:
         } else transactionsList.append(currentTransaction);
     }
 
+/**
+ * @brief Adds a writing transaction to the packet
+ * 
+ * @param address Address on the remote site where a word should be written to
+ * @param value The word to be written
+*/
     void addWordToWrite(quint32 address, quint32 value) { addTransaction(ipwrite, address, &value, 1); }
 
     void addNBitsToChange(quint32 address, quint32 data, quint8 nbits, quint8 shift = 0) {
@@ -82,7 +112,12 @@ public:
         addTransaction(RMWbits, address, masks( ~quint32(mask << shift), quint32((data & mask) << shift) ));
     }
 
-    bool processResponse() { //check transactions successfulness and copy read data to destination
+/**
+ * @brief Check transactions successfulness and copy read data to destination
+ * 
+ * @return ***True*** is returned if all transactions was successfull, otherwise ***False** is returned
+*/
+    bool processResponse() { 
         for (quint16 i=0; i<transactionsList.size(); ++i) {
             TransactionHeader *th = transactionsList.at(i).responseHeader;
             if (th->ProtocolVersion != 2 || th->TransactionID != i || th->TypeID != transactionsList.at(i).requestHeader->TypeID) {
