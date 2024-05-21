@@ -43,10 +43,9 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += $$PWD/DIM
+INCLUDEPATH += /usr/local/include/dim
 INCLUDEPATH += $$PWD/Headers
-# LIBS += -L"/home/wiktor/DIM/linux" -ldim
-LIBS += -L"/home/frun/CERN/dim_v20r37/linux" -ldim
+LIBS += -L"/usr/local/lib/dim" -ldim
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

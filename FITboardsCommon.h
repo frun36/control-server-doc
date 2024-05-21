@@ -5,7 +5,7 @@
 #include <QHash>
 #include <QDateTime>
 #include <QVector>
-#include "DIM/dis.hxx"
+#include "dis.hxx"
 #include <functional>
 
 enum TypeFITsubdetector {_0_=0, FT0=1, FV0=2, FDD=3};
