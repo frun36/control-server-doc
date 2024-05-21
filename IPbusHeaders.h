@@ -4,14 +4,15 @@
 #include <QtGlobal>
 #include <QtEndian>
 
-/** \brief Size of one word in bytes
+/** 
+ * @brief Size of one word in bytes
 */
 const quint8 wordSize = sizeof(quint32); //4 bytes
 
 enum PacketType {control = 0, status = 1, resend = 2};
 
-/** \brief Representation of the packet header
- * 
+/** 
+ * @brief Representation of the packet header
 */
 struct PacketHeader {
     quint32 PacketType      :  4,
@@ -41,7 +42,7 @@ enum TransactionType {
     configurationWrite    = 7
 };
 
-/** \brief Representation of the transaction header
+/** @brief Representation of the transaction header
  * 
 */
 struct TransactionHeader {
@@ -73,8 +74,8 @@ struct TransactionHeader {
     }
 };
 
-/** \brief A struct containing full information about a single transaction
- *  \details  is represented within the IPbus packet by three components: transaction header (1 word), Address of the memory location on which the operation will be performed (1 word)
+/** @brief A struct containing full information about a single transaction
+ *  @details  is represented within the IPbus packet by three components: transaction header (1 word), Address of the memory location on which the operation will be performed (1 word)
  * and a block of data (if any data is required). Data layout is speficic for each kind of transaction. Transaction stores information about request, also after
  * the response is received pointer to the response header will be stored in field responseHeader.
 */
@@ -92,7 +93,7 @@ struct Transaction {
             *data;
 };
 
-/** \brief A struct containing definition of the packet used to check the connection
+/** @brief A struct containing definition of the packet used to check the connection
 */
 struct StatusPacket {
     PacketHeader header = qToBigEndian(quint32(PacketHeader(status))); //0x200000F1: {0xF1, 0, 0, 0x20} -> {0x20, 0, 0, 0xF1}
