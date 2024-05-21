@@ -69,22 +69,88 @@ $(function() {
 <div class="title">Transaction Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A struct containing full information about a single transaction.  
+ <a href="structTransaction.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IPbusHeaders_8h_source.html">IPbusHeaders.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a91852e2255e8d7f9417d835d10a472db"><td class="memItemLeft" align="right" valign="top"><a id="a91852e2255e8d7f9417d835d10a472db"></a>
-<a class="el" href="structTransactionHeader.html">TransactionHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>requestHeader</b></td></tr>
+<tr class="memitem:a91852e2255e8d7f9417d835d10a472db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTransactionHeader.html">TransactionHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTransaction.html#a91852e2255e8d7f9417d835d10a472db">requestHeader</a></td></tr>
 <tr class="separator:a91852e2255e8d7f9417d835d10a472db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91ae88566835fb44765ad5da8696fa47"><td class="memItemLeft" align="right" valign="top"><a id="a91ae88566835fb44765ad5da8696fa47"></a>
-<a class="el" href="structTransactionHeader.html">TransactionHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>responseHeader</b></td></tr>
+<tr class="memitem:a91ae88566835fb44765ad5da8696fa47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTransactionHeader.html">TransactionHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTransaction.html#a91ae88566835fb44765ad5da8696fa47">responseHeader</a></td></tr>
 <tr class="separator:a91ae88566835fb44765ad5da8696fa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e099dfe27be8c873a33c02cb7fc50a"><td class="memItemLeft" align="right" valign="top"><a id="ad3e099dfe27be8c873a33c02cb7fc50a"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>address</b></td></tr>
+<tr class="memitem:ad3e099dfe27be8c873a33c02cb7fc50a"><td class="memItemLeft" align="right" valign="top">quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTransaction.html#ad3e099dfe27be8c873a33c02cb7fc50a">address</a></td></tr>
 <tr class="separator:ad3e099dfe27be8c873a33c02cb7fc50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59b021c493ec874af49b22491c97def2"><td class="memItemLeft" align="right" valign="top"><a id="a59b021c493ec874af49b22491c97def2"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="memitem:a59b021c493ec874af49b22491c97def2"><td class="memItemLeft" align="right" valign="top">quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTransaction.html#a59b021c493ec874af49b22491c97def2">data</a></td></tr>
 <tr class="separator:a59b021c493ec874af49b22491c97def2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A struct containing full information about a single transaction. </p>
+<p>is represented within the IPbus packet by three components: transaction header (1 word), Address of the memory location on which the operation will be performed (1 word) and a block of data (if any data is required). Data layout is speficic for each kind of transaction. <a class="el" href="structTransaction.html" title="A struct containing full information about a single transaction.">Transaction</a> stores information about request, also after the response is received pointer to the response header will be stored in field responseHeader. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad3e099dfe27be8c873a33c02cb7fc50a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e099dfe27be8c873a33c02cb7fc50a">&#9670;&nbsp;</a></span>address</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32* Transaction::address</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Address of the memory location on which the operation will be performed </p>
+
+</div>
+</div>
+<a id="a59b021c493ec874af49b22491c97def2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b021c493ec874af49b22491c97def2">&#9670;&nbsp;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32 * Transaction::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Address of the block of data used in the transaction </p>
+
+</div>
+</div>
+<a id="a91852e2255e8d7f9417d835d10a472db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91852e2255e8d7f9417d835d10a472db">&#9670;&nbsp;</a></span>requestHeader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTransactionHeader.html">TransactionHeader</a>* Transaction::requestHeader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Request transaction header describes <br  />
+ </p>
+
+</div>
+</div>
+<a id="a91ae88566835fb44765ad5da8696fa47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ae88566835fb44765ad5da8696fa47">&#9670;&nbsp;</a></span>responseHeader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structTransactionHeader.html">TransactionHeader</a> * Transaction::responseHeader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Address to the response header will be saved here </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="IPbusHeaders_8h_source.html">IPbusHeaders.h</a></li>
 </ul>
