@@ -197,6 +197,29 @@ public:
         });
     }
 
+    /// @brief Creates all DIM services for given PM board
+    ///
+    /// Appends the services to `pm->services`
+    ///
+    /// ## Services (all of them are regular DIM services)
+    /// All service names prefixed with `pfx`, where
+    /// 
+    /// `pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm->name);`
+    /// #### `status`
+    /// - `status/TEMP_BOARD` - `float`, `size = 4`
+    /// - `status/TEMP_FPGA` - `float`, `size = 4`
+    /// - `status/VOLTAGE_1V` - `float`, `size = 4`
+    /// - `status/VOLTAGE_1_8V` - `float`, `size = 4`
+    /// - `status/BOARD_TYPE` - 4 `char`s, `size = 4`
+    /// - `status/FW_TIME_MCU` - `int`, `size = 4`
+    /// - `status/FW_TIME_FPGA` - `int`, `size = 4`
+    /// - `status/CH_BASELINES_NOK` - `int`, `size = 4`
+    /// - `status/SERIAL_NUM` - `short`, `size = 2`
+    /// #### `control`
+    /// - `control/CH_MASK_DATA` - `int`, `size = 4`
+    /// - `control/CH_MASK_TRG` - `int`, `size = 4`
+    ///
+    /// @param pm given PM board
     void createPMservices(TypePM *pm) {
         QString pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm->name);
         pm->services.append(new DimService(qP(pfx+"status/TEMP_BOARD"      ), "F", &pm->act.TEMP_BOARD      , 4));
@@ -212,6 +235,12 @@ public:
         pm->services.append(new DimService(qP(pfx+"control/CH_MASK_TRG" "/actual"), "I", &pm->act.CH_MASK_TRG , 4));
     }
 
+    /// @brief Creates all DIM services for the TCM board, along with all system services
+    /// ## Services
+    /// ### TCM
+    /// - ?
+    /// ### System
+    /// - ?
     void createDIMservices() { //+ system services
         QString pfx = QString::asprintf("%s/TCM/", FIT[subdetector].name);
         TCM.services.append(new DimService(qP(pfx+"status/TEMP_BOARD"  ), "F", &TCM.act.TEMP_BOARD                   , 4));
