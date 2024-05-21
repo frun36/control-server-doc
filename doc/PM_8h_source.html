@@ -69,7 +69,7 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PM_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PM_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;FITboardsCommon.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FITboardsCommon_8h.html">FITboardsCommon.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">const</span> QHash&lt;QString, Parameter&gt; PMparameters = {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="comment">//name                  address width shift interval</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {<span class="stringliteral">&quot;OR_GATE&quot;</span>              , {0x00,  8,  0}      },</div>
@@ -191,7 +191,7 @@ $(function() {
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                CH_MASK_TRG |= !timeAlignment[iCh].blockTriggers &lt;&lt; iCh;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                TRG_CNT_MODE = TRGcountMode;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            memcpy(BOARD_TYPE, FIT[boardType].name, 4);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            memcpy(BOARD_TYPE, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[boardType].name, 4);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } act;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
@@ -304,11 +304,13 @@ $(function() {
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;};</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PM_H</span></div>
-<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:221</div></div>
-<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:74</div></div>
-<div class="ttc" id="astructParameter_html"><div class="ttname"><a href="structParameter.html">Parameter</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:301</div></div>
-<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:358</div></div>
-<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:334</div></div>
+<div class="ttc" id="aFITboardsCommon_8h_html"><div class="ttname"><a href="FITboardsCommon_8h.html">FITboardsCommon.h</a></div><div class="ttdoc">Functionalities common to all PM and TCM boards.</div></div>
+<div class="ttc" id="aFITboardsCommon_8h_html_a3d30f85e483d5cfb230f94918b1b0bf1"><div class="ttname"><a href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a></div><div class="ttdeci">const struct @0 FIT[4]</div><div class="ttdoc">Represents certain subdetector parameters.</div></div>
+<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:233</div></div>
+<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdoc">Where is GBT used currently?</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:86</div></div>
+<div class="ttc" id="astructParameter_html"><div class="ttname"><a href="structParameter.html">Parameter</a></div><div class="ttdoc">Board parameter, at a certain address with certain bitwidth, bitshift</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:314</div></div>
+<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:374</div></div>
+<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdoc">Represents a timestamp in a certain required format.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:350</div></div>
 <div class="ttc" id="astructTypePM_1_1ActualValues_1_1ChannelSettings_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">TypePM::ActualValues::ChannelSettings</a></div><div class="ttdef"><b>Definition:</b> PM.h:67</div></div>
 <div class="ttc" id="astructTypePM_1_1ActualValues_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">TypePM::ActualValues::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:29</div></div>
 <div class="ttc" id="astructTypePM_1_1ActualValues_html"><div class="ttname"><a href="structTypePM_1_1ActualValues.html">TypePM::ActualValues</a></div><div class="ttdef"><b>Definition:</b> PM.h:25</div></div>
@@ -317,7 +319,7 @@ $(function() {
 <div class="ttc" id="astructTypePM_1_1Settings_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1Settings_1_1TimeAlignment.html">TypePM::Settings::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:134</div></div>
 <div class="ttc" id="astructTypePM_1_1Settings_html"><div class="ttname"><a href="structTypePM_1_1Settings.html">TypePM::Settings</a></div><div class="ttdef"><b>Definition:</b> PM.h:130</div></div>
 <div class="ttc" id="astructTypePM_html"><div class="ttname"><a href="structTypePM.html">TypePM</a></div><div class="ttdef"><b>Definition:</b> PM.h:24</div></div>
-<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:75</div></div>
+<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:87</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

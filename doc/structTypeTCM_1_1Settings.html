@@ -75,14 +75,21 @@ $(function() {
 <div class="title">TypeTCM::Settings Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents the settings of the TCM.  
+ <a href="structTypeTCM_1_1Settings.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TCM_8h_source.html">TCM.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"><td class="memItemLeft" align="right" valign="top"><a id="ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_LASER_DIVIDER</b> (float frequency_Hz)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">calculate_LASER_DIVIDER</a> (float frequency_Hz)</td></tr>
+<tr class="memdesc:ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate calculable from raw value. <br /></td></tr>
 <tr class="separator:ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb6c418bad9796edd426c37d0471e371"><td class="memItemLeft" align="right" valign="top"><a id="abb6c418bad9796edd426c37d0471e371"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_LASER_DELAY</b> (float delay_ns)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">calculate_LASER_DELAY</a> (float delay_ns)</td></tr>
+<tr class="memdesc:abb6c418bad9796edd426c37d0471e371"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate calculable from raw value. <br /></td></tr>
 <tr class="separator:abb6c418bad9796edd426c37d0471e371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -250,10 +257,12 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><b>_reservedSpace5</b
 <a class="el" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GBT</b></td></tr>
 <tr class="separator:a168e118b980c343ecb8c7b095569d3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad8b158172d899b3111dbec833e3979f"><td class="memItemLeft" align="right" valign="top"><a id="aad8b158172d899b3111dbec833e3979f"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>registers</b> = (quint32 *)this</td></tr>
+quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">registers</a> = (quint32 *)this</td></tr>
+<tr class="memdesc:aad8b158172d899b3111dbec833e3979f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw access to the settings registers. <br /></td></tr>
 <tr class="separator:aad8b158172d899b3111dbec833e3979f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaa3be1c636a258aa16009102a027eb9"><td class="memItemLeft" align="right" valign="top"><a id="aaaa3be1c636a258aa16009102a027eb9"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>delayLaser_ns</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">delayLaser_ns</a></td></tr>
+<tr class="memdesc:aaaa3be1c636a258aa16009102a027eb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculable values. <br /></td></tr>
 <tr class="separator:aaaa3be1c636a258aa16009102a027eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6142ead82c566900392e5107975caf8"><td class="memItemLeft" align="right" valign="top"><a id="ae6142ead82c566900392e5107975caf8"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>laserFrequency_Hz</b></td></tr>
@@ -269,7 +278,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab0298941cfb99f0cece9c113da3555d5"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regblocksToApply</b></td></tr>
 <tr class="separator:ab0298941cfb99f0cece9c113da3555d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents the settings of the TCM. </p>
+<p>At the start of the struct there are bit fields similar to those in <code><a class="el" href="structTypeTCM_1_1ActualValues.html" title="Actual =?= current values of TCM parameters.">ActualValues</a></code>, with some missing, probably corresponding to the registers of the TCM which can be set.</p>
+<p>Usage: ? </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab0298941cfb99f0cece9c113da3555d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0298941cfb99f0cece9c113da3555d5">&#9670;&nbsp;</a></span>regblocksToApply</h2>
 

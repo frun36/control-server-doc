@@ -1,7 +1,11 @@
+/// @file actuallabel.h
+/// @brief Definition of a custom GUI label component
+
 #ifndef ACTUALLABEL_H
 #define ACTUALLABEL_H
 #include <QtWidgets>
 
+/// @brief Custom GUI label component
 class ActualLabel: public QLabel {
     Q_OBJECT
 using QLabel::QLabel;
