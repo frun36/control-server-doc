@@ -69,16 +69,134 @@ $(function() {
 <div class="title">AdvancedDIMservice Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class representing a DIM service with additional features.  
+ <a href="classAdvancedDIMservice.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FITboardsCommon_8h_source.html">FITboardsCommon.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a926b8d756fb48b2935311fe587bb2807"><td class="memItemLeft" align="right" valign="top"><a id="a926b8d756fb48b2935311fe587bb2807"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AdvancedDIMservice</b> (const char *name, const char *format, size_t size, std::function&lt; void(void *)&gt; dataCollectingFunction, void *data=nullptr)</td></tr>
+<tr class="memitem:a926b8d756fb48b2935311fe587bb2807"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAdvancedDIMservice.html#a926b8d756fb48b2935311fe587bb2807">AdvancedDIMservice</a> (const char *name, const char *format, size_t size, std::function&lt; void(void *)&gt; dataCollectingFunction, void *data=nullptr)</td></tr>
+<tr class="memdesc:a926b8d756fb48b2935311fe587bb2807"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor - initializes the service.  <a href="classAdvancedDIMservice.html#a926b8d756fb48b2935311fe587bb2807">More...</a><br /></td></tr>
 <tr class="separator:a926b8d756fb48b2935311fe587bb2807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8ff66d9324a967341fad89f6ca4be18"><td class="memItemLeft" align="right" valign="top"><a id="af8ff66d9324a967341fad89f6ca4be18"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateService</b> (bool onlyIfChanged=true)</td></tr>
+<tr class="memitem:a1e8bc20246ad21bf351b74577d183afa"><td class="memItemLeft" align="right" valign="top"><a id="a1e8bc20246ad21bf351b74577d183afa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAdvancedDIMservice.html#a1e8bc20246ad21bf351b74577d183afa">~AdvancedDIMservice</a> ()</td></tr>
+<tr class="memdesc:a1e8bc20246ad21bf351b74577d183afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - deletes <code>service</code> and frees managed data. <br /></td></tr>
+<tr class="separator:a1e8bc20246ad21bf351b74577d183afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ff66d9324a967341fad89f6ca4be18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAdvancedDIMservice.html#af8ff66d9324a967341fad89f6ca4be18">updateService</a> (bool onlyIfChanged=true)</td></tr>
+<tr class="memdesc:af8ff66d9324a967341fad89f6ca4be18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update service (send contents to the client)  <a href="classAdvancedDIMservice.html#af8ff66d9324a967341fad89f6ca4be18">More...</a><br /></td></tr>
 <tr class="separator:af8ff66d9324a967341fad89f6ca4be18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class representing a DIM service with additional features. </p>
+<p>It is a wrapper for the original <a href="https://dim.web.cern.ch/cpp_doc/DimService.html"><code>DimService</code></a>, providing additional features:</p><ul>
+<li>managing the <code>service</code> related data memory</li>
+<li>executing a function to fetch new data </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a926b8d756fb48b2935311fe587bb2807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926b8d756fb48b2935311fe587bb2807">&#9670;&nbsp;</a></span>AdvancedDIMservice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AdvancedDIMservice::AdvancedDIMservice </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(void *)&gt;&#160;</td>
+          <td class="paramname"><em>dataCollectingFunction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor - initializes the service. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td><code>service</code> name </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td><code>service</code> data format (see <a href="https://dim.web.cern.ch/dimCformat.html">DIM service format description</a>) </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>size of the data related to the service </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">dataCollectingFunction</td><td>function to fetch the data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">data</td><td>if data memory is to be managed externally, provide a pointer to it </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af8ff66d9324a967341fad89f6ca4be18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8ff66d9324a967341fad89f6ca4be18">&#9670;&nbsp;</a></span>updateService()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AdvancedDIMservice::updateService </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>onlyIfChanged</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update service (send contents to the client) </p>
+<p>It calls the <code>dataCollect</code> function (if provided), and then (if data changed) stores a copy of new data in <code>oldData</code>. Afterwards it updates <code>service</code></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onlyIfChanged</td><td>update only if service data has been changed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="FITboardsCommon_8h_source.html">FITboardsCommon.h</a></li>
 </ul>

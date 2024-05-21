@@ -380,13 +380,38 @@ struct regblock {
     inline quint8 size() { return endAddr - addr + 1; }
 };
 
+/// @brief Class representing a DIM service with additional features
+///
+/// It is a wrapper for the original [`DimService`](https://dim.web.cern.ch/cpp_doc/DimService.html), 
+/// providing additional features:
+/// - managing the `service` related data memory
+/// - executing a function to fetch new data
 class AdvancedDIMservice {
+    /// @brief contained DIM service
     DimService *service;
+
+    /// @brief Controls whether memory for data related to the service
+    /// is managed externally or within the service itself
     const bool dataIsExternal;
+
+    /// @brief size of the service's data
     const size_t dataSize;
-    void *dataNew, *dataOld;
+
+    /// @brief the data related to the service
+    void *dataNew;
+
+    /// @brief copy of `dataNew` as of last `updateService` call
+    void *dataOld;
+
+    /// @brief function for retrieving new service data
     std::function<void(void *)> dataCollect;
 public:
+    /// @brief Constructor - initializes the service
+    /// @param[in] name `service` name
+    /// @param[in] format `service` data format (see [DIM service format description](https://dim.web.cern.ch/dimCformat.html)) 
+    /// @param size size of the data related to the service
+    /// @param dataCollectingFunction function to fetch the data
+    /// @param data if data memory is to be managed externally, provide a pointer to it
     AdvancedDIMservice(const char *name, const char *format, size_t size, std::function<void(void *)> dataCollectingFunction, void *data = nullptr):
         dataIsExternal(data != nullptr),
         dataSize(size),
@@ -396,11 +421,20 @@ public:
     {
         service = new DimService(name, format, dataNew, int(dataSize));
     }
+
+    /// @brief Destructor - deletes `service` and frees managed data
     ~AdvancedDIMservice() {
         delete service;
         if (!dataIsExternal) free(dataNew);
         free(dataOld);
     }
+
+    /// @brief Update service (send contents to the client)
+    /// 
+    /// It calls the `dataCollect` function (if provided), and then (if data changed) stores 
+    /// a copy of new data in `oldData`. Afterwards it updates `service`
+    ///
+    /// @param onlyIfChanged update only if service data has been changed
     void updateService(bool onlyIfChanged = true) {
         if (dataCollect != 0) dataCollect(dataNew);
         if (onlyIfChanged == false) {
