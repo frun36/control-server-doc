@@ -14,6 +14,7 @@ extern double TDCunit_ps; // 13
 extern double halfBC_ns; // 12.5
 extern double phaseStepLaser_ns, phaseStep_ns;
 
+/// @brief Important class, manages (among others) DIM service creation
 class FITelectronics: public IPbusTarget, public DimCommandHandler {
     Q_OBJECT
 public:
@@ -205,6 +206,11 @@ public:
     /// All service names prefixed with `pfx`, where
     /// 
     /// `pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm->name);`
+    ///
+    /// All services are connected with `pm` data stored in `pm->act.[service name]`, 
+    /// apart from `status/SERIAL_NUM`, which is mapped to `(char *)&pm->act.registers[0xBD]+ 1`
+    /// 
+    ///
     /// #### `status`
     /// - `status/TEMP_BOARD` - `float`, `size = 4`
     /// - `status/TEMP_FPGA` - `float`, `size = 4`
@@ -216,8 +222,8 @@ public:
     /// - `status/CH_BASELINES_NOK` - `int`, `size = 4`
     /// - `status/SERIAL_NUM` - `short`, `size = 2`
     /// #### `control`
-    /// - `control/CH_MASK_DATA` - `int`, `size = 4`
-    /// - `control/CH_MASK_TRG` - `int`, `size = 4`
+    /// - `control/CH_MASK_DATA/actual` - `int`, `size = 4`
+    /// - `control/CH_MASK_TRG/actual` - `int`, `size = 4`
     ///
     /// @param pm given PM board
     void createPMservices(TypePM *pm) {

@@ -73,6 +73,11 @@ $(function() {
 <div class="title">FITelectronics Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Important class, manages (among others) DIM service creation.  
+ <a href="classFITelectronics.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FITelectronics_8h_source.html">FITelectronics.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FITelectronics:</div>
 <div class="dyncontent">
@@ -632,7 +637,9 @@ Additional Inherited Members</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>transceive</b> (<a class="el" href="classIPbusControlPacket.html">IPbusControlPacket</a> &amp;p, bool shouldResponseBeProcessed=true)</td></tr>
 <tr class="separator:aa6b06ea1c4ac466c1037b94294c046f7 inherit pro_methods_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Important class, manages (among others) DIM service creation. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afdddafaa7aed4651a748c01da13d9691"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdddafaa7aed4651a748c01da13d9691">&#9670;&nbsp;</a></span>createDIMservices()</h2>
 
@@ -701,7 +708,8 @@ System</h3>
 <h2><a class="anchor" id="autotoc_md0"></a>
 Services (all of them are regular DIM services)</h2>
 <p>All service names prefixed with <code>pfx</code>, where</p>
-<p><code>pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm-&gt;name);</code> </p>
+<p><code>pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm-&gt;name);</code></p>
+<p>All services are connected with <code>pm</code> data stored in <code>pm-&gt;act.[service name]</code>, apart from <code>status/SERIAL_NUM</code>, which is mapped to <code>(char *)&amp;pm-&gt;act.registers[0xBD]+ 1</code></p>
 <h4><a class="anchor" id="autotoc_md1"></a>
 &lt;tt&gt;status&lt;/tt&gt;</h4>
 <ul>
@@ -718,8 +726,8 @@ Services (all of them are regular DIM services)</h2>
 <h4><a class="anchor" id="autotoc_md2"></a>
 &lt;tt&gt;control&lt;/tt&gt;</h4>
 <ul>
-<li><code>control/CH_MASK_DATA</code> - <code>int</code>, <code>size = 4</code></li>
-<li><code>control/CH_MASK_TRG</code> - <code>int</code>, <code>size = 4</code></li>
+<li><code>control/CH_MASK_DATA/actual</code> - <code>int</code>, <code>size = 4</code></li>
+<li><code>control/CH_MASK_TRG/actual</code> - <code>int</code>, <code>size = 4</code></li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
