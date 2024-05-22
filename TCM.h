@@ -1,3 +1,6 @@
+/// @file TCM.h
+/// Contains TCM board abstraction
+
 #ifndef TCM_H
 #define TCM_H
 
@@ -10,7 +13,12 @@ extern double TDCunit_ps; // 13
 extern double halfBC_ns; // 25
 extern double phaseStepLaser_ns, phaseStep_ns;
 
+/// @brief TCM board abstraction
 struct TypeTCM {
+    /// @brief Actual =?= current values of TCM parameters
+    /// 
+    /// At the start of the struct there are many bit field declarations, 
+    /// most probably corresponding to the registers of the TCM
     struct ActualValues {
         qint32  DELAY_A         :16,  //┐
                                 :16,  //┘00
@@ -142,7 +150,10 @@ struct TypeTCM {
                 voltage1_8;           //]FE
         Timestamp FW_TIME_FPGA;       //]FF
 
+        /// @brief Raw access to the TCM registers
         quint32 *registers = (quint32 *)this;
+
+        /// @brief Defines useful blocks of registers
         static const inline QVector<regblock> regblocks {{0x00, 0x20}, //block0     , 33 registers
                                                          {0x30, 0x3A}, //block1     , 11 registers
                                                          {0x50, 0x50}, //COUNTERS_UPD_RATE
@@ -151,6 +162,7 @@ struct TypeTCM {
                                                          {0xE8, 0xF1}, //GBTstatus  , 10 registers
                                                          {0xF7, 0xF7}, //FW_TIME_MCU
                                                          {0xFC, 0xFF}};//block3     ,  4 registers
+        /// @brief calculable values
         float //calculable values
             TEMP_BOARD = 20.0F,
             TEMP_FPGA  = 20.0F,
@@ -163,7 +175,11 @@ struct TypeTCM {
             averageTimeC_ns,
             laserFrequency_Hz,
             attenuation_dB;
+        
+
         char BOARD_TYPE[4] = {0};
+        
+        /// @brief Calculate and store human readable values from the stored raw values
         void calculateValues() {
             TEMP_BOARD   = boardTemperature / 10.;
             TEMP_FPGA    = FPGAtemperature  * 503.975 / 65536 - 273.15;
@@ -189,6 +205,13 @@ struct TypeTCM {
         quint32 PM_MASK_TRG() { return CH_MASK_C << 10 | CH_MASK_A; }
     } act;
 
+    /// @brief Represents the settings of the TCM
+    /// 
+    /// At the start of the struct there are bit fields similar to those in
+    /// `ActualValues`, with some missing, probably corresponding to the 
+    /// registers of the TCM which can be set.
+    ///
+    /// Usage: ?
     struct Settings {
         qint32  DELAY_A         :16,  //┐
                                 :16,  //┘00
@@ -277,6 +300,7 @@ struct TypeTCM {
                 _reservedSpace5[0xD8 - 0x6A - 1];
         GBTunit::ControlData GBT;     //]D8-E7
 
+        /// @brief Raw access to the settings registers
         quint32 *registers = (quint32 *)this;
         static const inline QVector<regblock> regblocksToRead {{0x00, 0x04}, //block0     ,  5 registers
                                                                {0x08, 0x0E}, //block1     ,  7 registers
@@ -293,11 +317,16 @@ struct TypeTCM {
                                                                {0x1F, 0x1F}, //trigger suppression
                                                                {0x60, 0x6A}, //block3     , 11 registers
                                                                {0xD8, 0xE4}};//GBT control, 13 registers
+        /// @brief Calculable values
         float //calculable values
             delayLaser_ns,
             laserFrequency_Hz,
             attenuation_dB;
+
+        /// @brief Calculate calculable from raw value
         void calculate_LASER_DIVIDER(float frequency_Hz) { quint32 div = lround(systemClock_MHz * 1e6 / frequency_Hz); LASER_DIVIDER = div ? (div >= 1<<24 ? 0 : div) : 1; }
+        
+        /// @brief Calculate calculable from raw value
         void calculate_LASER_DELAY(float delay_ns) { LASER_DELAY = lround(delay_ns / phaseStepLaser_ns); }
     } set;
 

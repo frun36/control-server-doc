@@ -1,9 +1,14 @@
+/// @file switch.h
+/// @brief Contains the definition of a custom GUI switch component
+
 #ifndef SWITCH_H
 #define SWITCH_H
 
 #include <QtWidgets>
 const QColor OKcolor(0xb0d959), notOKcolor(0xff2c26), unappliedColor(255, 165, 0);
 
+
+/// @brief Custom GUI switch component
 class Switch : public QAbstractButton {
     Q_OBJECT
     Q_PROPERTY(int offset READ offset WRITE setOffset)

@@ -9,9 +9,22 @@
 #include <QtWidgets>
 #include <cmath> //lround
 
+/// @brief Formats a double to a certain number of significant digits
+///
+/// e.g. 1.234, 12.345, 123.456, 1234.567, 12345.67, 123456.7, 1234567, 40078970
+/// @param f value to format
+/// @return formatted string
 static QString frequencyFormat(const double f) { return QString::asprintf("%.*f", f < 1e5 ? (f < 1e4 ? 3 : 2) : (f < 1e6 ? 1 : 0), f); } //e.g. 1.234, 12.345, 123.456, 1234.567, 12345.67, 123456.7, 1234567, 40078970
+
+/// @brief Formats a double to a certain number of significant digits, adding `M` if the value exceeds 1e6
+///
+/// e.g. 1.0, 1000.0, 999999.9, 1.000 M, 40.079 M
+/// @param f value to format
+/// @return formatted string
 static QString rateFormat(const double f) { return f < 999999.95 ? QString::asprintf("%.1f", f) : QString::asprintf("%.3f M", f/1e6); } //e.g. 1.0, 1000.0, 999999.9, 1.000 M, 40.079 M
+
 //static QString styleSheetFromColor(QColor c) { return}
+
 extern double systemClock_MHz; //40
 extern double TDCunit_ps; // 13
 extern double halfBC_ns; // 12.5

@@ -1,3 +1,5 @@
+/// @file FITboardsCommon.h
+/// @brief Functionalities common to all PM and TCM boards
 #ifndef GBT_H
 #define GBT_H
 
@@ -8,13 +10,19 @@
 #include "dis.hxx"
 #include <functional>
 
+/// @brief Enum representing all FIT subdetectors
 enum TypeFITsubdetector {_0_=0, FT0=1, FV0=2, FDD=3};
+
+/// @brief Function converting a `QString` into `TypeFITsubdetector` enum
+/// @param s input 
+/// @return the correct subdetector or `TypeFITsubdetector::_0_` if the conversion was invalid
 inline TypeFITsubdetector getSubdetectorTypeByName(QString s) {
     if (s == "FT0") return FT0;
     if (s == "FV0") return FV0;
     if (s == "FDD") return FDD;
     else return _0_;
 }
+/// @brief Represents certain subdetector parameters
 const struct {char name[4]; quint16 TCMid, PMA0id, PMC0id; quint8 systemID; struct {const char *name; qint16 signature;} triggers[5];} FIT[4] = { //global static constants
              {       "???",        0xFFFF, 0x0000, 0x000A,               0,        { {    "Trigger1",              75},
                                                                                      {    "Trigger2",              76},
@@ -37,6 +45,8 @@ const struct {char name[4]; quint16 TCMid, PMA0id, PMC0id; quint8 systemID; stru
                                                                                      {         "OrC",             113},
                                                                                      {         "OrA",             114} }             }
 };
+
+/// @relates FITelectronics
 const struct {const char *name,                                        *description;} COUNTERS[2][15] = {
 {//FT0, FDD
              {           "OrA",                               "TRG-events on A-side"},//5
@@ -71,6 +81,8 @@ const struct {const char *name,                                        *descript
              {              "",                                                   ""},
              {   "BackgroundC",                                    "beam2-BC AND Or"}
 }};
+
+/// @brief Where is GBT used currently?
 struct GBTunit { // (13 + 3 + 10) registers * 4 bytes = 104 bytes
     union ControlData {
         quint32 registers[16] = {0};
@@ -298,6 +310,7 @@ struct GBTerrorReport {
     }
 };
 
+/// @brief Board parameter, at a certain `address` with certain `bitwidth`, `bitshift`
 struct Parameter {
     quint8 address,
            bitwidth,
@@ -331,6 +344,9 @@ const QHash<QString, Parameter> GBTparameters = {
     {"DATA_SEL_TRG_MASK"    ,  0xE4         }
 };
 
+/// @brief Represents a timestamp in a certain required format
+///
+/// Seconds precision, supports multiple formatting options 
 struct Timestamp {
     quint32 second : 6, //0..59
             minute : 6, //0..59
@@ -375,8 +391,11 @@ struct TRGsyncStatus {
         linkOK              : 1;
 };
 
+/// @brief Represents a block of registers, starting at `addr` and ending at `endAddr` (inclusively)
 struct regblock {
     const quint8 addr, endAddr;
+
+    /// @brief Returns the amount of registers in the block
     inline quint8 size() { return endAddr - addr + 1; }
 };
 

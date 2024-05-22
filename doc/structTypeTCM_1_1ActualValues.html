@@ -75,11 +75,17 @@ $(function() {
 <div class="title">TypeTCM::ActualValues Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Actual =?= current values of TCM parameters.  
+ <a href="structTypeTCM_1_1ActualValues.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TCM_8h_source.html">TCM.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8badece9af7c5b334048e6b01f8f56e"><td class="memItemLeft" align="right" valign="top"><a id="ac8badece9af7c5b334048e6b01f8f56e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateValues</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1ActualValues.html#ac8badece9af7c5b334048e6b01f8f56e">calculateValues</a> ()</td></tr>
+<tr class="memdesc:ac8badece9af7c5b334048e6b01f8f56e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate and store human readable values from the stored raw values. <br /></td></tr>
 <tr class="separator:ac8badece9af7c5b334048e6b01f8f56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76d954de11a96b66674ae80cd081c170"><td class="memItemLeft" align="right" valign="top"><a id="a76d954de11a96b66674ae80cd081c170"></a>
 quint32&#160;</td><td class="memItemRight" valign="bottom"><b>PM_MASK_TRG</b> ()</td></tr>
@@ -367,10 +373,12 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><b>voltage1_8</b></td
 <a class="el" href="structTimestamp.html">Timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FW_TIME_FPGA</b></td></tr>
 <tr class="separator:a9a2bd88096548c0f734c81ba1ae96f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fa41c0d0f977dba5aaea44aa96fca06"><td class="memItemLeft" align="right" valign="top"><a id="a9fa41c0d0f977dba5aaea44aa96fca06"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>registers</b> = (quint32 *)this</td></tr>
+quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1ActualValues.html#a9fa41c0d0f977dba5aaea44aa96fca06">registers</a> = (quint32 *)this</td></tr>
+<tr class="memdesc:a9fa41c0d0f977dba5aaea44aa96fca06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw access to the TCM registers. <br /></td></tr>
 <tr class="separator:a9fa41c0d0f977dba5aaea44aa96fca06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8b6bc669925721c343174a9553740c7"><td class="memItemLeft" align="right" valign="top"><a id="af8b6bc669925721c343174a9553740c7"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>TEMP_BOARD</b> = 20.0F</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1ActualValues.html#af8b6bc669925721c343174a9553740c7">TEMP_BOARD</a> = 20.0F</td></tr>
+<tr class="memdesc:af8b6bc669925721c343174a9553740c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculable values <br /></td></tr>
 <tr class="separator:af8b6bc669925721c343174a9553740c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1b8693c27974050f9b2077890083fd1"><td class="memItemLeft" align="right" valign="top"><a id="aa1b8693c27974050f9b2077890083fd1"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>TEMP_FPGA</b> = 20.0F</td></tr>
@@ -408,10 +416,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>BOARD_TYPE</b> [4] = 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a5855799fc784f710ff05fa2363aecffe"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regblocks</b></td></tr>
+<tr class="memitem:a5855799fc784f710ff05fa2363aecffe"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1ActualValues.html#a5855799fc784f710ff05fa2363aecffe">regblocks</a></td></tr>
+<tr class="memdesc:a5855799fc784f710ff05fa2363aecffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines useful blocks of registers.  <a href="structTypeTCM_1_1ActualValues.html#a5855799fc784f710ff05fa2363aecffe">More...</a><br /></td></tr>
 <tr class="separator:a5855799fc784f710ff05fa2363aecffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Actual =?= current values of TCM parameters. </p>
+<p>At the start of the struct there are many bit field declarations, most probably corresponding to the registers of the TCM </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a5855799fc784f710ff05fa2363aecffe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5855799fc784f710ff05fa2363aecffe">&#9670;&nbsp;</a></span>regblocks</h2>
 
@@ -440,6 +452,8 @@ Static Public Attributes</h2></td></tr>
 <div class="line">                                                         {0xF7, 0xF7}, </div>
 <div class="line">                                                         {0xFC, 0xFF}}</div>
 </div><!-- fragment -->
+<p>Defines useful blocks of registers. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
