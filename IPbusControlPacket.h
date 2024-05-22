@@ -26,12 +26,30 @@ public:
             response[maxPacket];    /** \brief Buffer where the response will be saved */
     quint32 dt[2];                  /** \brief Temporary data */
 
+/**
+ *  @brief Default constructor
+ *  @details Default constructor. Initialization of an IPbusControlPacker object involves two routines:
+ *  - Creation of the packet header and placement of header at the beginnig of the packer buffer
+ *  - Creation of the pair of signal and slot (Qt) - function error is set as singal emitter and debugPrint is set as a slot (handler)
+*/
     IPbusControlPacket() {
         request[0] = PacketHeader(control, 0);
         connect(this, &IPbusControlPacket::error, this, &IPbusControlPacket::debugPrint);
     }
     ~IPbusControlPacket() { this->disconnect(); }
 
+/**
+ *  @brief A method used in debuging. It prints text containg request and response messages
+ * 
+ *  @details debugPrint prints debug information in the following manner: @n
+ *  yyyy-MM-dd hh:mm:ss.zzz + st @n
+ *  request: @n
+ *  <request printed in the hexadecimal format> @n
+ *  response: @n
+ *  <response printed in the hexadecimal format> @n
+ *  
+ *  @param st - Message to be printed along with response and request messages
+*/
     void debugPrint(QString st) {
         qDebug(qPrintable(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ") + st));
         qDebug("request:");
@@ -40,6 +58,17 @@ public:
         for (quint16 i=0; i<responseSize; ++i) qDebug("        %08X", response[i]);
     }
 
+/**
+ * @brief A method that creates a mask used in the RMWbit transaction
+ * 
+ * @details RMWbit operation is performed according to the equation: X = (X & A)\B, where X is a word (register) on which operation is 
+ * performed. Mask is saved in the dt field, AND term is saved as the first element, OR term is saved as the second.
+ * 
+ * @param mask0 - AND term of a RMWbit transaction
+ * @param mask1 - OR term of a RMWbit transaction
+ * 
+ * @return Pointer to the mask (dt field)
+*/
     quint32 *masks(quint32 mask0, quint32 mask1) { //for convinient adding RMWbit transaction
         dt[0] = mask0; //for writing 0's: AND term
         dt[1] = mask1; //for writing 1's: OR term
@@ -48,13 +77,15 @@ public:
 
 /** 
  *  @brief Adds transaction to the packet
- *  @details addTransaction creates and saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication.
+ * 
+ *  @details addTransaction saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication.
  *  Transacitons within a packet are stored in a following manner (values in [] represents bits numbers):
  *  - [0-31] - packet header
  *  - [32-63] - transaction header
  *  - [64-95] - destination address
  *  - [96-...] - data
  *  Number of transactions within one packet is limited by the maximum packet size.
+ * 
  *  @param type Type of transaction
  *  @param address Address of a memory location at the remote site on which operation will be performed
  *  @param data Address of a memory block of data passsed to the transaction
@@ -164,6 +195,11 @@ public:
         }
         return true;
     }
+/**
+ * @brief resets packet data
+ * 
+ * @details reset method clears transactionList and resets request and response sizes to 1.
+*/
     void reset() {
         transactionsList.clear();
         requestSize = 1;

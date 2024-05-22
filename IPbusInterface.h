@@ -5,17 +5,21 @@
 #include <QMutex>
 #include "IPbusControlPacket.h"
 
+/**
+ *  @brief An abstract class that provides communication mechanisms through the IPbus protocol
+ * 
+*/
 class IPbusTarget: public QObject {
     Q_OBJECT
-    const quint16 localport;
-    QUdpSocket *qsocket = new QUdpSocket(this);
-    const StatusPacket statusRequest;
-    StatusPacket statusResponse;
-    QMutex mutex;
+    const quint16 localport;                    
+    QUdpSocket *qsocket = new QUdpSocket(this);     /** @brief Handles communication via UDP*/
+    const StatusPacket statusRequest;               /** @brief Packet used in the connection diagnostic*/
+    StatusPacket statusResponse;                    /** @brief Response from the remote site involved in the connection diagnostic*/
+    QMutex mutex;                                   
     const int timeout_ms = 99;
 
 public:
-    QString IPaddress = "172.20.75.180";
+    QString IPaddress = "172.20.75.180";            /** @brief IP address of the remote site */
     bool isOnline = false;
     QTimer *updateTimer = new QTimer(this);
     quint16 updatePeriod_ms = 1000;
@@ -31,6 +35,10 @@ public:
         updateTimer->start(updatePeriod_ms);
     }
 
+    /** 
+     * @brief Initializes read transaction
+     * @details Intializes read transaction from 
+    */
     quint32 readRegister(quint32 address) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
         p.addTransaction(ipread, address, nullptr, 1);
