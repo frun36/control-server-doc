@@ -11,15 +11,19 @@
 */
 class IPbusTarget: public QObject {
     Q_OBJECT
-    const quint16 localport;                    
-    QUdpSocket *qsocket = new QUdpSocket(this);     /** @brief Handles communication via UDP*/
-    const StatusPacket statusRequest;               /** @brief Packet used in the connection diagnostic*/
-    StatusPacket statusResponse;                    /** @brief Response from the remote site involved in the connection diagnostic*/
+    const quint16 localport;
+    /** @brief Handles communication via UDP*/          
+    QUdpSocket *qsocket = new QUdpSocket(this);     
+    /** @brief Packet used in the connection diagnostic*/
+    const StatusPacket statusRequest;
+    /** @brief Response from the remote site involved in the connection diagnostic*/
+    StatusPacket statusResponse;
     QMutex mutex;                                   
     const int timeout_ms = 99;
 
 public:
-    QString IPaddress = "172.20.75.180";            /** @brief IP address of the remote site */
+    /** @brief IP address of the remote site */
+    QString IPaddress = "172.20.75.180";
     bool isOnline = false;
     QTimer *updateTimer = new QTimer(this);
     quint16 updatePeriod_ms = 1000;
@@ -52,6 +56,19 @@ signals:
     void IPbusStatusOK();
 
 protected:
+    /**
+     * @brief Sends IPbusControlPacket `p` and waits for a response
+     * 
+     * - Checks if IPbusTarget is online - `false` if not
+     * - Checks if request is empty - `true` if yes, does nothing
+     * - Writes to `qsocket` - `false` if error
+     * - Reads from `qsocket` - `false` if error or response incorrect
+     * 
+     * @param[in,out] p The control packet being sent. After response is received it is also stored within `p`
+     * @param shouldResponseBeProcessed indicates whether `processResponse` should be called to verify the response
+     * 
+     * @return `true` if the operation was successful, `false` otherwise
+    */
     bool transceive(IPbusControlPacket &p, bool shouldResponseBeProcessed = true) { //send request, wait for response, receive it and check correctness
         if (!isOnline) return false;
         if (p.requestSize <= 1) {

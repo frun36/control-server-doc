@@ -483,11 +483,11 @@ $(function() {
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        });</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        connect(&amp;FEE, &amp;IPbusTarget::noResponse, <span class="keyword">this</span>, [=](QString message) {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            ui-&gt;centralWidget-&gt;setDisabled(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            QString msg = FEE.IPaddress + <span class="stringliteral">&quot;: &quot;</span> + message;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            QString msg = FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> + <span class="stringliteral">&quot;: &quot;</span> + message;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (FEE.updateTimer-&gt;isActive()) statusBar()-&gt;showMessage(statusBar()-&gt;currentMessage() == msg ? <span class="stringliteral">&quot;&quot;</span> : msg);</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        });</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        connect(&amp;FEE, &amp;FITelectronics::valuesReady, <span class="keyword">this</span>, [=]() {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            QString msg = FEE.IPaddress + <span class="stringliteral">&quot;: online&quot;</span>;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            QString msg = FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> + <span class="stringliteral">&quot;: online&quot;</span>;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keywordflow">if</span> (FEE.updateTimer-&gt;isActive()) statusBar()-&gt;showMessage(statusBar()-&gt;currentMessage() == msg ? <span class="stringliteral">&quot;&quot;</span> : msg);</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            updateActualValues();</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">if</span> (!enableControls-&gt;isChecked()) updateEdits();</div>
@@ -602,8 +602,8 @@ $(function() {
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        <span class="keywordflow">foreach</span> (QLineEdit *e, editsADC0rangeCh + editsADC1rangeCh) e-&gt;setValidator(<span class="keyword">new</span> <a class="code" href="classStrictIntValidator.html">StrictIntValidator</a>(    0,  4095, <span class="keyword">this</span>));</div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="comment">//read settings</span></div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        QString IPaddress = settings.value(<span class="stringliteral">&quot;IPaddress&quot;</span>, FEE.IPaddress).toString();</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="keywordflow">if</span> (validIPaddressRE.exactMatch(IPaddress)) FEE.IPaddress = IPaddress;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        QString IPaddress = settings.value(<span class="stringliteral">&quot;IPaddress&quot;</span>, FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a>).toString();</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="keywordflow">if</span> (validIPaddressRE.exactMatch(IPaddress)) FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> = IPaddress;</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        FEE.fileRead(QCoreApplication::applicationName() + <span class="stringliteral">&quot;.ini&quot;</span>);</div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        updateEdits();</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        FEE.reconnect();</div>
@@ -617,7 +617,7 @@ $(function() {
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    ~<a class="code" href="classMainWindow.html">MainWindow</a>() {</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        settings.clear();</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        settings.setValue(<span class="stringliteral">&quot;IPaddress&quot;</span>, FEE.IPaddress);</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        settings.setValue(<span class="stringliteral">&quot;IPaddress&quot;</span>, FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a>);</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        settings.setValue(<span class="stringliteral">&quot;subdetector&quot;</span>, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[FEE.subdetector].name);</div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        settings.setValue(<span class="stringliteral">&quot;highlightUnappliedSettings&quot;</span>, highlightUnapplied-&gt;isChecked() ? 1 : 0);</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        FEE.fileWrite(QCoreApplication::applicationName() + <span class="stringliteral">&quot;.ini&quot;</span>);</div>
@@ -651,16 +651,16 @@ $(function() {
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    }</div>
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160; </div>
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordtype">void</span> recheckTarget() {</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        statusBar()-&gt;showMessage(FEE.IPaddress + <span class="stringliteral">&quot;: status requested...&quot;</span>);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        statusBar()-&gt;showMessage(FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> + <span class="stringliteral">&quot;: status requested...&quot;</span>);</div>
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="keywordflow">if</span> (FEE.countersTimer-&gt;isActive()) FEE.countersTimer-&gt;stop();</div>
 <div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        FEE.reconnect();</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    }</div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <span class="keywordtype">void</span> changeIP() {</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        QString text = QInputDialog::getText(<span class="keyword">this</span>, <span class="stringliteral">&quot;Changing target&quot;</span>, <span class="stringliteral">&quot;Enter new target&#39;s IP address&quot;</span>, QLineEdit::Normal, FEE.IPaddress, &amp;ok);</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        QString text = QInputDialog::getText(<span class="keyword">this</span>, <span class="stringliteral">&quot;Changing target&quot;</span>, <span class="stringliteral">&quot;Enter new target&#39;s IP address&quot;</span>, QLineEdit::Normal, FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a>, &amp;ok);</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <span class="keywordflow">if</span> (ok &amp;&amp; !text.isEmpty()) {</div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            <span class="keywordflow">if</span> (validIPaddressRE.exactMatch(text)) {</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                FEE.IPaddress = text;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> = text;</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                FEE.reconnect();</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            } <span class="keywordflow">else</span> QMessageBox::warning(<span class="keyword">this</span>, <span class="stringliteral">&quot;Warning&quot;</span>, text + <span class="stringliteral">&quot;: invalid IP address. Continue with previous target&quot;</span>);</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        }</div>
@@ -1071,8 +1071,8 @@ $(function() {
 <div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;    }</div>
 <div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160; </div>
 <div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;    <span class="keywordtype">void</span> on_buttonResetCounters_clicked() {</div>
-<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;        curGBTact-&gt;Status. wordsCount = FEE.readRegister((isTCM() ? 0 : curPM-&gt;baseAddress) + 0xED);</div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;        curGBTact-&gt;Status.eventsCount = FEE.readRegister((isTCM() ? 0 : curPM-&gt;baseAddress) + 0xF1);</div>
+<div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;        curGBTact-&gt;Status. wordsCount = FEE.<a class="code" href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">readRegister</a>((isTCM() ? 0 : curPM-&gt;baseAddress) + 0xED);</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;        curGBTact-&gt;Status.eventsCount = FEE.<a class="code" href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">readRegister</a>((isTCM() ? 0 : curPM-&gt;baseAddress) + 0xF1);</div>
 <div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160;        curGBTcnt-&gt;calculateRate(curGBTact-&gt;Status.wordsCount, curGBTact-&gt;Status.eventsCount);</div>
 <div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;        curGBTcnt-&gt; wordsOld = 0;</div>
 <div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;        curGBTcnt-&gt;eventsOld = 0;</div>
@@ -1314,6 +1314,8 @@ $(function() {
 <div class="ttc" id="aactuallabel_8h_html"><div class="ttname"><a href="actuallabel_8h.html">actuallabel.h</a></div><div class="ttdoc">Definition of a custom GUI label component.</div></div>
 <div class="ttc" id="aclassActualLabel_html"><div class="ttname"><a href="classActualLabel.html">ActualLabel</a></div><div class="ttdoc">Custom GUI label component.</div><div class="ttdef"><b>Definition:</b> actuallabel.h:9</div></div>
 <div class="ttc" id="aclassFITelectronics_html"><div class="ttname"><a href="classFITelectronics.html">FITelectronics</a></div><div class="ttdoc">Important class, manages (among others) DIM service creation.</div><div class="ttdef"><b>Definition:</b> FITelectronics.h:18</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_aab67dea3f37571d40629ef8a6ec36c56"><div class="ttname"><a href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">IPbusTarget::readRegister</a></div><div class="ttdeci">quint32 readRegister(quint32 address)</div><div class="ttdoc">Initializes read transaction.</div><div class="ttdef"><b>Definition:</b> IPbusInterface.h:46</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_af546368eae5a01e53a33c9c14bfffbf5"><div class="ttname"><a href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPbusTarget::IPaddress</a></div><div class="ttdeci">QString IPaddress</div><div class="ttdoc">IP address of the remote site.</div><div class="ttdef"><b>Definition:</b> IPbusInterface.h:26</div></div>
 <div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:54</div></div>
 <div class="ttc" id="aclassStrictIntValidator_html"><div class="ttname"><a href="classStrictIntValidator.html">StrictIntValidator</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:33</div></div>
 <div class="ttc" id="aclassSwitch_html"><div class="ttname"><a href="classSwitch.html">Switch</a></div><div class="ttdoc">Custom GUI switch component.</div><div class="ttdef"><b>Definition:</b> switch.h:12</div></div>

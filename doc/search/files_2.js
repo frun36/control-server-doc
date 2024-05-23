@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['switch_2eh_100',['switch.h',['../switch_8h.html',1,'']]]
+  ['ipbuscontrolpacket_2eh_115',['IPbusControlPacket.h',['../IPbusControlPacket_8h.html',1,'']]],
+  ['ipbusheaders_2eh_116',['IPbusHeaders.h',['../IPbusHeaders_8h.html',1,'']]]
 ];

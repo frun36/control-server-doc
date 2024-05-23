@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ipbuscontrolpacket_76',['IPbusControlPacket',['../classIPbusControlPacket.html',1,'']]],
-  ['ipbustarget_77',['IPbusTarget',['../classIPbusTarget.html',1,'']]]
+  ['ipbuscontrolpacket_91',['IPbusControlPacket',['../classIPbusControlPacket.html',1,'']]],
+  ['ipbustarget_92',['IPbusTarget',['../classIPbusTarget.html',1,'']]]
 ];

@@ -1,3 +1,9 @@
+/**
+ * @file IPbusControlPacket.h
+ * 
+ * @brief Contains the definition of an IPbus control packet (see the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf) section 3)
+*/
+
 #ifndef IPBUSCONTROLPACKET_H
 #define IPBUSCONTROLPACKET_H
 #include "IPbusHeaders.h"
@@ -14,17 +20,23 @@ static const char *errorTypeName[3] = {"Network error" , "IPbus error", "Logic e
 
 /** 
  *  @brief A class responsible for creating a single IPbus packet and checking the corectness of the response
- *  @details IPbusControlPacket stacks multiple transactions into a single packet.
+ *  @details IPbusControlPacket stacks one or more IPbus transactions into a single packet. See the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf) section 3
 */
 class IPbusControlPacket : public QObject {
     Q_OBJECT
 public:
-    QList<Transaction> transactionsList;            /** \brief List of transactions that will be sent  */
-    quint16 requestSize = 1,        /** \brief Size of the request specified in words */
-            responseSize = 1;       /** \brief Size of the response specified in words */
-    quint32 request[maxPacket],     /** \brief Buffer where the request is stored */ 
-            response[maxPacket];    /** \brief Buffer where the response will be saved */
-    quint32 dt[2];                  /** \brief Temporary data */
+    /** \brief List of transactions that will be sent  */
+    QList<Transaction> transactionsList;
+    /** \brief Size of the request specified in words */            
+    quint16 requestSize = 1,
+    /** \brief Size of the response specified in words */ 
+            responseSize = 1;
+    /** \brief Buffer where the request is stored */    
+    quint32 request[maxPacket], 
+    /** \brief Buffer where the response will be saved */    
+            response[maxPacket];
+    /** \brief Temporary data */
+    quint32 dt[2];
 
 /**
  *  @brief Default constructor
@@ -39,9 +51,9 @@ public:
     ~IPbusControlPacket() { this->disconnect(); }
 
 /**
- *  @brief A method used in debuging. It prints text containg request and response messages
+ *  @brief A method used in debugging. It prints text containg request and response messages
  * 
- *  @details debugPrint prints debug information in the following manner: @n
+ *  @details `debugPrint` prints debug information in the following manner: @n
  *  yyyy-MM-dd hh:mm:ss.zzz + st @n
  *  request: @n
  *  <request printed in the hexadecimal format> @n
@@ -79,11 +91,13 @@ public:
  *  @brief Adds transaction to the packet
  * 
  *  @details addTransaction saves transaction in two formats: within transactionsList as Transaction object and within the request buffer in a format appropriate for IPbus communication.
- *  Transacitons within a packet are stored in a following manner (values in [] represents bits numbers):
+ *  Transactions within a packet are stored in the following manner (values in [] represent bit numbers):
  *  - [0-31] - packet header
  *  - [32-63] - transaction header
  *  - [64-95] - destination address
  *  - [96-...] - data
+ *  - [x-x+32] - next transaction header
+ *  - ...
  *  Number of transactions within one packet is limited by the maximum packet size.
  * 
  *  @param type Type of transaction

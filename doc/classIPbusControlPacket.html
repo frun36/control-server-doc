@@ -97,17 +97,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>successfulWrite</b> (
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3a2cb745e5a97c3b5fc9f856d862b77c"><td class="memItemLeft" align="right" valign="top"><a id="a3a2cb745e5a97c3b5fc9f856d862b77c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a3a2cb745e5a97c3b5fc9f856d862b77c">IPbusControlPacket</a> ()</td></tr>
-<tr class="memdesc:a3a2cb745e5a97c3b5fc9f856d862b77c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temporary data. <br /></td></tr>
+<tr class="memitem:a3a2cb745e5a97c3b5fc9f856d862b77c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a3a2cb745e5a97c3b5fc9f856d862b77c">IPbusControlPacket</a> ()</td></tr>
+<tr class="memdesc:a3a2cb745e5a97c3b5fc9f856d862b77c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classIPbusControlPacket.html#a3a2cb745e5a97c3b5fc9f856d862b77c">More...</a><br /></td></tr>
 <tr class="separator:a3a2cb745e5a97c3b5fc9f856d862b77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9f105ea805d1ae103801397d06a11c7"><td class="memItemLeft" align="right" valign="top"><a id="af9f105ea805d1ae103801397d06a11c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>debugPrint</b> (QString st)</td></tr>
+<tr class="memitem:af9f105ea805d1ae103801397d06a11c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#af9f105ea805d1ae103801397d06a11c7">debugPrint</a> (QString st)</td></tr>
+<tr class="memdesc:af9f105ea805d1ae103801397d06a11c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method used in debugging. It prints text containg request and response messages.  <a href="classIPbusControlPacket.html#af9f105ea805d1ae103801397d06a11c7">More...</a><br /></td></tr>
 <tr class="separator:af9f105ea805d1ae103801397d06a11c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1035557b97fee4c849cf0388b2342dfd"><td class="memItemLeft" align="right" valign="top"><a id="a1035557b97fee4c849cf0388b2342dfd"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>masks</b> (quint32 mask0, quint32 mask1)</td></tr>
+<tr class="memitem:a1035557b97fee4c849cf0388b2342dfd"><td class="memItemLeft" align="right" valign="top">quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a1035557b97fee4c849cf0388b2342dfd">masks</a> (quint32 mask0, quint32 mask1)</td></tr>
+<tr class="memdesc:a1035557b97fee4c849cf0388b2342dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method that creates a mask used in the RMWbit transaction.  <a href="classIPbusControlPacket.html#a1035557b97fee4c849cf0388b2342dfd">More...</a><br /></td></tr>
 <tr class="separator:a1035557b97fee4c849cf0388b2342dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa5e28072b8ae72224253d4f15188bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#afa5e28072b8ae72224253d4f15188bac">addTransaction</a> (TransactionType type, quint32 address, quint32 *data, quint8 nWords=1)</td></tr>
+<tr class="memitem:afa5e28072b8ae72224253d4f15188bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#afa5e28072b8ae72224253d4f15188bac">addTransaction</a> (<a class="el" href="IPbusHeaders_8h.html#aa7a2e64697569804f14626bbb2649a58">TransactionType</a> type, quint32 address, quint32 *data, quint8 nWords=1)</td></tr>
 <tr class="memdesc:afa5e28072b8ae72224253d4f15188bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds transaction to the packet.  <a href="classIPbusControlPacket.html#afa5e28072b8ae72224253d4f15188bac">More...</a><br /></td></tr>
 <tr class="separator:afa5e28072b8ae72224253d4f15188bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d230feac8b4d1d1e2ac967ec79fd903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a6d230feac8b4d1d1e2ac967ec79fd903">addWordToWrite</a> (quint32 address, quint32 value)</td></tr>
@@ -119,41 +118,74 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addNBitsToChange</b> 
 <tr class="memitem:a2f8df412631fa9272f7ac8bf06416fc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a2f8df412631fa9272f7ac8bf06416fc2">processResponse</a> ()</td></tr>
 <tr class="memdesc:a2f8df412631fa9272f7ac8bf06416fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check transactions successfulness and copy read data to destination.  <a href="classIPbusControlPacket.html#a2f8df412631fa9272f7ac8bf06416fc2">More...</a><br /></td></tr>
 <tr class="separator:a2f8df412631fa9272f7ac8bf06416fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f9fca63c86a38045fba0939a68ab6eb"><td class="memItemLeft" align="right" valign="top"><a id="a9f9fca63c86a38045fba0939a68ab6eb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memitem:a9f9fca63c86a38045fba0939a68ab6eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a9f9fca63c86a38045fba0939a68ab6eb">reset</a> ()</td></tr>
+<tr class="memdesc:a9f9fca63c86a38045fba0939a68ab6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets packet data  <a href="classIPbusControlPacket.html#a9f9fca63c86a38045fba0939a68ab6eb">More...</a><br /></td></tr>
 <tr class="separator:a9f9fca63c86a38045fba0939a68ab6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a4ab6ab87eb4e0a644d59cc55a205c964"><td class="memItemLeft" align="right" valign="top"><a id="a4ab6ab87eb4e0a644d59cc55a205c964"></a>
-QList&lt; <a class="el" href="structTransaction.html">Transaction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>transactionsList</b></td></tr>
+QList&lt; <a class="el" href="structTransaction.html">Transaction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a4ab6ab87eb4e0a644d59cc55a205c964">transactionsList</a></td></tr>
+<tr class="memdesc:a4ab6ab87eb4e0a644d59cc55a205c964"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of transactions that will be sent <br  />
+ <br /></td></tr>
 <tr class="separator:a4ab6ab87eb4e0a644d59cc55a205c964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05dc2d4766f99ebfc081e28a639f9de3"><td class="memItemLeft" align="right" valign="top"><a id="a05dc2d4766f99ebfc081e28a639f9de3"></a>
 quint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a05dc2d4766f99ebfc081e28a639f9de3">requestSize</a> = 1</td></tr>
-<tr class="memdesc:a05dc2d4766f99ebfc081e28a639f9de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of transactions that will be sent <br  />
- <br /></td></tr>
+<tr class="memdesc:a05dc2d4766f99ebfc081e28a639f9de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the request specified in words. <br /></td></tr>
 <tr class="separator:a05dc2d4766f99ebfc081e28a639f9de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36cb355cee425bf5a057f6cf324c6697"><td class="memItemLeft" align="right" valign="top"><a id="a36cb355cee425bf5a057f6cf324c6697"></a>
 quint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a36cb355cee425bf5a057f6cf324c6697">responseSize</a> = 1</td></tr>
-<tr class="memdesc:a36cb355cee425bf5a057f6cf324c6697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the request specified in words. <br /></td></tr>
+<tr class="memdesc:a36cb355cee425bf5a057f6cf324c6697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the response specified in words. <br /></td></tr>
 <tr class="separator:a36cb355cee425bf5a057f6cf324c6697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a014ac80e58b0ca2e86111522310721b7"><td class="memItemLeft" align="right" valign="top"><a id="a014ac80e58b0ca2e86111522310721b7"></a>
-quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a014ac80e58b0ca2e86111522310721b7">request</a> [maxPacket]</td></tr>
-<tr class="memdesc:a014ac80e58b0ca2e86111522310721b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the response specified in words. <br /></td></tr>
+quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a014ac80e58b0ca2e86111522310721b7">request</a> [<a class="el" href="IPbusControlPacket_8h.html#a3a01f5d74f4eaf88239f6f77280a61a3">maxPacket</a>]</td></tr>
+<tr class="memdesc:a014ac80e58b0ca2e86111522310721b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer where the request is stored. <br /></td></tr>
 <tr class="separator:a014ac80e58b0ca2e86111522310721b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cc7561a0815aff9f38b678c0456b289"><td class="memItemLeft" align="right" valign="top"><a id="a2cc7561a0815aff9f38b678c0456b289"></a>
-quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a2cc7561a0815aff9f38b678c0456b289">response</a> [maxPacket]</td></tr>
-<tr class="memdesc:a2cc7561a0815aff9f38b678c0456b289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer where the request is stored. <br /></td></tr>
+quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a2cc7561a0815aff9f38b678c0456b289">response</a> [<a class="el" href="IPbusControlPacket_8h.html#a3a01f5d74f4eaf88239f6f77280a61a3">maxPacket</a>]</td></tr>
+<tr class="memdesc:a2cc7561a0815aff9f38b678c0456b289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer where the response will be saved. <br /></td></tr>
 <tr class="separator:a2cc7561a0815aff9f38b678c0456b289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa88408ca8411336ae5e55ca9cab9ad2"><td class="memItemLeft" align="right" valign="top"><a id="aaa88408ca8411336ae5e55ca9cab9ad2"></a>
 quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#aaa88408ca8411336ae5e55ca9cab9ad2">dt</a> [2]</td></tr>
-<tr class="memdesc:aaa88408ca8411336ae5e55ca9cab9ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer where the response will be saved. <br /></td></tr>
+<tr class="memdesc:aaa88408ca8411336ae5e55ca9cab9ad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temporary data. <br /></td></tr>
 <tr class="separator:aaa88408ca8411336ae5e55ca9cab9ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class responsible for creating a single IPbus packet and checking the corectness of the response. </p>
-<p><a class="el" href="classIPbusControlPacket.html" title="A class responsible for creating a single IPbus packet and checking the corectness of the response.">IPbusControlPacket</a> stacks multiple transactions into a single packet. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p><a class="el" href="classIPbusControlPacket.html" title="A class responsible for creating a single IPbus packet and checking the corectness of the response.">IPbusControlPacket</a> stacks one or more IPbus transactions into a single packet. See the <a href="https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf">IPbus specification</a> section 3 </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3a2cb745e5a97c3b5fc9f856d862b77c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2cb745e5a97c3b5fc9f856d862b77c">&#9670;&nbsp;</a></span>IPbusControlPacket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IPbusControlPacket::IPbusControlPacket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Default constructor. Initialization of an IPbusControlPacker object involves two routines:</p><ul>
+<li>Creation of the packet header and placement of header at the beginnig of the packer buffer</li>
+<li>Creation of the pair of signal and slot (Qt) - function error is set as singal emitter and debugPrint is set as a slot (handler) </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="afa5e28072b8ae72224253d4f15188bac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa5e28072b8ae72224253d4f15188bac">&#9670;&nbsp;</a></span>addTransaction()</h2>
 
@@ -166,7 +198,7 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">void IPbusControlPacket::addTransaction </td>
           <td>(</td>
-          <td class="paramtype">TransactionType&#160;</td>
+          <td class="paramtype"><a class="el" href="IPbusHeaders_8h.html#aa7a2e64697569804f14626bbb2649a58">TransactionType</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
@@ -201,11 +233,15 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><div class="memdoc">
 
 <p>Adds transaction to the packet. </p>
-<p>addTransaction creates and saves transaction in two formats: within transactionsList as <a class="el" href="structTransaction.html" title="A struct containing full information about a single transaction.">Transaction</a> object and within the request buffer in a format appropriate for IPbus communication. Transacitons within a packet are stored in a following manner (values in [] represents bits numbers):</p><ul>
+<p>addTransaction saves transaction in two formats: within transactionsList as <a class="el" href="structTransaction.html" title="A struct containing full information about a single transaction.">Transaction</a> object and within the request buffer in a format appropriate for IPbus communication. Transactions within a packet are stored in the following manner (values in [] represent bit numbers):</p><ul>
 <li>[0-31] - packet header</li>
 <li>[32-63] - transaction header</li>
 <li>[64-95] - destination address</li>
-<li>[96-...] - data Number of transactions within one packet is limited by the maximum packet size. <dl class="params"><dt>Parameters</dt><dd>
+<li>[96-...] - data</li>
+<li>[x-x+32] - next transaction header</li>
+<li>... Number of transactions within one packet is limited by the maximum packet size.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>Type of transaction </td></tr>
     <tr><td class="paramname">address</td><td>Address of a memory location at the remote site on which operation will be performed </td></tr>
@@ -214,8 +250,6 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </table>
   </dd>
 </dl>
-</li>
-</ul>
 
 </div>
 </div>
@@ -264,6 +298,93 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
+<a id="af9f105ea805d1ae103801397d06a11c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9f105ea805d1ae103801397d06a11c7">&#9670;&nbsp;</a></span>debugPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusControlPacket::debugPrint </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>st</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A method used in debugging. It prints text containg request and response messages. </p>
+<p><code>debugPrint</code> prints debug information in the following manner: <br  />
+yyyy-MM-dd hh:mm:ss.zzz + st <br  />
+request: <br  />
+&lt;request printed in the hexadecimal format&gt; <br  />
+response: <br  />
+&lt;response printed in the hexadecimal format&gt; <br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">st</td><td>- Message to be printed along with response and request messages </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1035557b97fee4c849cf0388b2342dfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1035557b97fee4c849cf0388b2342dfd">&#9670;&nbsp;</a></span>masks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32* IPbusControlPacket::masks </td>
+          <td>(</td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>mask0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>mask1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A method that creates a mask used in the RMWbit transaction. </p>
+<p>RMWbit operation is performed according to the equation: X = (X &amp; A)\B, where X is a word (register) on which operation is performed. Mask is saved in the dt field, AND term is saved as the first element, OR term is saved as the second.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mask0</td><td>- AND term of a RMWbit transaction </td></tr>
+    <tr><td class="paramname">mask1</td><td>- OR term of a RMWbit transaction</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the mask (dt field) </dd></dl>
+
+</div>
+</div>
 <a id="a2f8df412631fa9272f7ac8bf06416fc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f8df412631fa9272f7ac8bf06416fc2">&#9670;&nbsp;</a></span>processResponse()</h2>
 
@@ -289,6 +410,34 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Check transactions successfulness and copy read data to destination. </p>
 <dl class="section return"><dt>Returns</dt><dd><em><b>True</b></em> is returned if all transactions was successfull, otherwise ***False** is returned </dd></dl>
+
+</div>
+</div>
+<a id="a9f9fca63c86a38045fba0939a68ab6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f9fca63c86a38045fba0939a68ab6eb">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusControlPacket::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>resets packet data </p>
+<p>reset method clears transactionList and resets request and response sizes to 1. </p>
 
 </div>
 </div>

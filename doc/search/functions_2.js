@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getsubdetectortypebyname_110',['getSubdetectorTypeByName',['../FITboardsCommon_8h.html#a8f727871cd98b5d553087e6a7d90a62f',1,'FITboardsCommon.h']]]
+  ['debugprint_127',['debugPrint',['../classIPbusControlPacket.html#af9f105ea805d1ae103801397d06a11c7',1,'IPbusControlPacket']]]
 ];

@@ -79,13 +79,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afa9e98ef573d31dec6411d171d93001e"><td class="memItemLeft" align="right" valign="top"><a id="afa9e98ef573d31dec6411d171d93001e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PacketHeader</b> (enum PacketType t=status, quint16 id=0)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPacketHeader.html#afa9e98ef573d31dec6411d171d93001e">PacketHeader</a> (enum <a class="el" href="IPbusHeaders_8h.html#a0a80a7bc045affcf10846075b88cbca0">PacketType</a> t=status, quint16 id=0)</td></tr>
+<tr class="memdesc:afa9e98ef573d31dec6411d171d93001e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <code><a class="el" href="structPacketHeader.html" title="Representation of the packet header.">PacketHeader</a></code> for a packet of type <code>t</code> and ID = <code>id</code>, with byte order <code>0xf</code> and protocol version 2. <br /></td></tr>
 <tr class="separator:afa9e98ef573d31dec6411d171d93001e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7542731cdffbc42993c049462c566226"><td class="memItemLeft" align="right" valign="top"><a id="a7542731cdffbc42993c049462c566226"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PacketHeader</b> (const quint32 &amp;word)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPacketHeader.html#a7542731cdffbc42993c049462c566226">PacketHeader</a> (const quint32 &amp;word)</td></tr>
+<tr class="memdesc:a7542731cdffbc42993c049462c566226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the packet header from a raw <code>quint32</code> value. <br /></td></tr>
 <tr class="separator:a7542731cdffbc42993c049462c566226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56ead33aafca78bb00e2d0af880a0dfa"><td class="memItemLeft" align="right" valign="top"><a id="a56ead33aafca78bb00e2d0af880a0dfa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator quint32</b> () const</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPacketHeader.html#a56ead33aafca78bb00e2d0af880a0dfa">operator quint32</a> () const</td></tr>
+<tr class="memdesc:a56ead33aafca78bb00e2d0af880a0dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the header to a raw <code>quint32</code> value. <br /></td></tr>
 <tr class="separator:a56ead33aafca78bb00e2d0af880a0dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -108,6 +111,8 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><b>ProtocolVersion</b
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Representation of the packet header. </p>
+<p>See the <a href="https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf">IPbus specification</a> section 2 for detailed descriptions and <code><a class="el" href="IPbusHeaders_8h.html">IPbusHeaders.h</a></code> for terminology</p>
+<p>Contains bit fields representing the respective fields of an IPbus packet header - note the little endianness </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="IPbusHeaders_8h_source.html">IPbusHeaders.h</a></li>
 </ul>

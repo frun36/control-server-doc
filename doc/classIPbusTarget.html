@@ -73,6 +73,11 @@ $(function() {
 <div class="title">IPbusTarget Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>An abstract class that provides communication mechanisms through the IPbus protocol.  
+ <a href="classIPbusTarget.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IPbusInterface_8h_source.html">IPbusInterface.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IPbusTarget:</div>
 <div class="dyncontent">
@@ -124,14 +129,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a198b2f80abdb61e894e3149841fb2257"><td class="memItemLeft" align="right" valign="top"><a id="a198b2f80abdb61e894e3149841fb2257"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>IPbusTarget</b> (quint16 lport=0)</td></tr>
 <tr class="separator:a198b2f80abdb61e894e3149841fb2257"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab67dea3f37571d40629ef8a6ec36c56"><td class="memItemLeft" align="right" valign="top"><a id="aab67dea3f37571d40629ef8a6ec36c56"></a>
-quint32&#160;</td><td class="memItemRight" valign="bottom"><b>readRegister</b> (quint32 address)</td></tr>
+<tr class="memitem:aab67dea3f37571d40629ef8a6ec36c56"><td class="memItemLeft" align="right" valign="top">quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">readRegister</a> (quint32 address)</td></tr>
+<tr class="memdesc:aab67dea3f37571d40629ef8a6ec36c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes read transaction.  <a href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">More...</a><br /></td></tr>
 <tr class="separator:aab67dea3f37571d40629ef8a6ec36c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:af546368eae5a01e53a33c9c14bfffbf5"><td class="memItemLeft" align="right" valign="top"><a id="af546368eae5a01e53a33c9c14bfffbf5"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>IPaddress</b> = &quot;172.20.75.180&quot;</td></tr>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> = &quot;172.20.75.180&quot;</td></tr>
+<tr class="memdesc:af546368eae5a01e53a33c9c14bfffbf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">IP address of the remote site. <br /></td></tr>
 <tr class="separator:af546368eae5a01e53a33c9c14bfffbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4be2783854d66e879f32bb93b4e295ea"><td class="memItemLeft" align="right" valign="top"><a id="a4be2783854d66e879f32bb93b4e295ea"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isOnline</b> = false</td></tr>
@@ -145,10 +151,94 @@ quint16&#160;</td><td class="memItemRight" valign="bottom"><b>updatePeriod_ms</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa6b06ea1c4ac466c1037b94294c046f7"><td class="memItemLeft" align="right" valign="top"><a id="aa6b06ea1c4ac466c1037b94294c046f7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>transceive</b> (<a class="el" href="classIPbusControlPacket.html">IPbusControlPacket</a> &amp;p, bool shouldResponseBeProcessed=true)</td></tr>
+<tr class="memitem:aa6b06ea1c4ac466c1037b94294c046f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#aa6b06ea1c4ac466c1037b94294c046f7">transceive</a> (<a class="el" href="classIPbusControlPacket.html">IPbusControlPacket</a> &amp;p, bool shouldResponseBeProcessed=true)</td></tr>
+<tr class="memdesc:aa6b06ea1c4ac466c1037b94294c046f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends <a class="el" href="classIPbusControlPacket.html" title="A class responsible for creating a single IPbus packet and checking the corectness of the response.">IPbusControlPacket</a> <code>p</code> and waits for a response.  <a href="classIPbusTarget.html#aa6b06ea1c4ac466c1037b94294c046f7">More...</a><br /></td></tr>
 <tr class="separator:aa6b06ea1c4ac466c1037b94294c046f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An abstract class that provides communication mechanisms through the IPbus protocol. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aab67dea3f37571d40629ef8a6ec36c56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab67dea3f37571d40629ef8a6ec36c56">&#9670;&nbsp;</a></span>readRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32 IPbusTarget::readRegister </td>
+          <td>(</td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes read transaction. </p>
+<p>Intializes read transaction from </p>
+
+</div>
+</div>
+<a id="aa6b06ea1c4ac466c1037b94294c046f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6b06ea1c4ac466c1037b94294c046f7">&#9670;&nbsp;</a></span>transceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IPbusTarget::transceive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classIPbusControlPacket.html">IPbusControlPacket</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>shouldResponseBeProcessed</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends <a class="el" href="classIPbusControlPacket.html" title="A class responsible for creating a single IPbus packet and checking the corectness of the response.">IPbusControlPacket</a> <code>p</code> and waits for a response. </p>
+<ul>
+<li>Checks if <a class="el" href="classIPbusTarget.html" title="An abstract class that provides communication mechanisms through the IPbus protocol.">IPbusTarget</a> is online - <code>false</code> if not</li>
+<li>Checks if request is empty - <code>true</code> if yes, does nothing</li>
+<li>Writes to <code>qsocket</code> - <code>false</code> if error</li>
+<li>Reads from <code>qsocket</code> - <code>false</code> if error or response incorrect</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">p</td><td>The control packet being sent. After response is received it is also stored within <code>p</code> </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">shouldResponseBeProcessed</td><td>indicates whether <code>processResponse</code> should be called to verify the response</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the operation was successful, <code>false</code> otherwise </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="IPbusInterface_8h_source.html">IPbusInterface.h</a></li>
 </ul>

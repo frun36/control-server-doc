@@ -1,3 +1,18 @@
+/**
+ * @file IPbusHeaders.h
+ * 
+ * Representation of the packet and transaction headers. Compare with the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf).
+ * 
+ * # Terminology
+ * ## IPbus transaction
+ * In the IPbus specification - An individual IPbus request or response
+ * 
+ * Here - stores an individual IPbus request and its response (after it comes)
+ * 
+ * ## IPbus packet
+ * An IPbus packet header (32b) + one or more individual IPbus transactions, which together form the payload of the transport protocol
+*/
+
 #ifndef IPBUSHEADERS_H
 #define IPBUSHEADERS_H
 
@@ -9,10 +24,24 @@
 */
 const quint8 wordSize = sizeof(quint32); //4 bytes
 
+/**
+ * @brief Packet Type values of an IPbus header
+ * 
+ * Supported values:
+ * - 0x0; Direction: Both; Control packet (i.e. contains IPbus transactions)
+ * - 0x1; Direction: Both; Status packet
+ * - 0x2; Direction: Request; Resend request packet
+ * - 0x3-0xf - reserved
+*/
 enum PacketType {control = 0, status = 1, resend = 2};
 
 /** 
  * @brief Representation of the packet header
+ * 
+ * See the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf) section 2 for detailed descriptions 
+ * and `IPbusHeaders.h` for terminology
+ * 
+ * Contains bit fields representing the respective fields of an IPbus packet header - note the little endianness
 */
 struct PacketHeader {
     quint32 PacketType      :  4,
@@ -20,6 +49,8 @@ struct PacketHeader {
             PacketID        : 16,
             Rsvd            :  4,
             ProtocolVersion :  4;
+    
+    /// @brief Creates a `PacketHeader` for a packet of type `t` and ID = `id`, with byte order `0xf` and protocol version 2
     PacketHeader(enum PacketType t = status, quint16 id = 0) {
         PacketType = t;
         ByteOrder = 0xf;
@@ -27,10 +58,19 @@ struct PacketHeader {
         Rsvd = 0;
         ProtocolVersion = 2;
     }
+
+    /// @brief Constructs the packet header from a raw `quint32` value 
     PacketHeader(const quint32 &word) {memcpy(this, &word, wordSize);}
+
+    /// @brief Converts the header to a raw `quint32` value
     operator quint32() const {return *reinterpret_cast<const quint32 *>(this);}
 };
 
+/**
+ * @brief Representation of the IPbus transaction type
+ * 
+ * See the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf) sections 3.2-3.9
+*/
 enum TransactionType {
     ipread                  = 0,
     ipwrite                 = 1,
@@ -44,6 +84,9 @@ enum TransactionType {
 
 /** @brief Representation of the transaction header
  * 
+ * See the [IPbus specification](https://ipbus.web.cern.ch/doc/user/html/_downloads/d251e03ea4badd71f62cffb24f110cfa/ipbus_protocol_v2_0.pdf) section 3.1.
+ * 
+ * Contains bit fields representing the respective fields of an IPbus transaction header - note the little endianness
 */
 struct TransactionHeader {
     quint32 InfoCode        :  4,
