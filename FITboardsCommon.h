@@ -476,6 +476,13 @@ public:
 //    }
 };
 
+/** 
+ * @brief Modify a section of bits in a 32-bit unsigned integer
+ * @param base Original 32 bit unsigned integer
+ * @param length Number of bits to modify
+ * @param shift The starting bit position for the modification.
+ * @param value New value to be inserted
+*/
 inline quint32 changeNbits(quint32 base, quint8 length, quint8 shift, quint32 value) {
     if (length == 0) return base;
     if (length >= 32) return value;
