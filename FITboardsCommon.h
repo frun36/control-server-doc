@@ -22,8 +22,22 @@ inline TypeFITsubdetector getSubdetectorTypeByName(QString s) {
     if (s == "FDD") return FDD;
     else return _0_;
 }
-/// @brief Represents certain subdetector parameters
-const struct {char name[4]; quint16 TCMid, PMA0id, PMC0id; quint8 systemID; struct {const char *name; qint16 signature;} triggers[5];} FIT[4] = { //global static constants
+/** @brief Represents certain subdetector parameters
+ * 
+*/
+const struct {
+    /** @brief Name */
+    char name[4]; 
+    /** @brief ID of TCM assigned to the subdetector*/
+    quint16 TCMid,
+    /** @brief ID of the first A-side PM assigned to the subdetector*/ 
+    PMA0id,
+    /** @brief ID of the first C-side PM assigned to the subdetector*/
+    PMC0id; 
+    /** @brief System ID */
+    quint8 systemID; 
+    /** @brief Subdetector triggers */
+    struct {const char *name; qint16 signature;} triggers[5];} FIT[4] = { //global static constants
              {       "???",        0xFFFF, 0x0000, 0x000A,               0,        { {    "Trigger1",              75},
                                                                                      {    "Trigger2",              76},
                                                                                      {    "Trigger3",              77},
