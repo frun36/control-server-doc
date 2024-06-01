@@ -96,7 +96,12 @@ const struct {const char *name,                                        *descript
              {   "BackgroundC",                                    "beam2-BC AND Or"}
 }};
 
-/// @brief Where is GBT used currently?
+/** @brief Stores data from TCM GBT registers
+ * @details All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki.
+ * @see MainWindow
+ * @see TypeTCM
+ * 
+*/ 
 struct GBTunit { // (13 + 3 + 10) registers * 4 bytes = 104 bytes
     union ControlData {
         quint32 registers[16] = {0};
@@ -188,10 +193,14 @@ struct GBTunit { // (13 + 3 + 10) registers * 4 bytes = 104 bytes
                 eventsCount                      ; //]F1
         };
     } Status;
+    /** @brief Size of the control block in bytes */
 static const quint8
     controlSize   =   13,
+    /** @brief Size of the status block in bytes */
     statusSize    =   10,
+    /** @brief Base address of the control block */
     controlAddress= 0xD8,
+    /** @brief Base address of the status block*/
     statusAddress = 0xE8,
 //data generator states
     DG_noData     = 0,
@@ -203,7 +212,9 @@ static const quint8
     TG_Tx         = 2,
 //readout modes
     RO_idle       = 0,
+    /** @brief Continuous readout mode */
     RO_continuous = 1,
+    /** @brief Triggered readout mode */
     RO_triggered  = 2,
 //BCID sync modes
     BS_start = 0,
@@ -244,6 +255,11 @@ static const quint8
     }
 };
 
+/**
+ * @brief Provides throughput measurment
+ * @see FITelectronics::read1PM
+ * @see FITelectronic::sync
+*/
 struct GBTcounters {
     QDateTime oldTime = QDateTime::currentDateTime(), newTime;
     quint32 wordsOld  = 0 , eventsOld  = 0;
@@ -263,6 +279,7 @@ struct GBTword {
     quint16 p[5];
     QString printHex() const { return QString::asprintf("%04X%04X %04X %04X%04X", p[4], p[3], p[2], p[1], p[0]); }
 };
+
 struct GBTerrorReport {
     static const quint32 errCodeBCsyncLostInRun = 0xEEEE000A,
                          errCodePMearlyheader   = 0xEEEE0009,
