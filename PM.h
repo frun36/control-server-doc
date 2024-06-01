@@ -1,7 +1,14 @@
+/// @file PM.h
+/// @brief File containing abstraction of a PM (Processing Module)
+
 #ifndef PM_H
 #define PM_H
 
 #include "FITboardsCommon.h"
+
+/// @brief The parameter list of a PM
+///
+/// See [FIT Wiki](https://twiki.cern.ch/twiki/bin/viewauth/AliceFIT/WebHome) -> FIT documentation -> FEE Register Map (PM, PM Channel Parameters), Trigger Logic
 const QHash<QString, Parameter> PMparameters = {
     //name                  address width shift interval
     {"OR_GATE"              , {0x00,  8,  0}      },
@@ -21,7 +28,11 @@ const QHash<QString, Parameter> PMparameters = {
     {"THRESHOLD_CALIBR"     , {0xB0, 32,  0,    1}}
 };
 
+/// @brief Represents a PM (Processing Module)
 struct TypePM {
+    /// @brief The current values of a PM's registers - see [FIT Wiki](https://twiki.cern.ch/twiki/bin/viewauth/AliceFIT/WebHome) -> FIT documentation -> FEE Register Map (PM, PM Channel Parameters)
+    ///
+    /// Bitfields at the start of the struct's memory represent the register layout of a PM (direct correspondence with the register map document)
     struct ActualValues{
         quint32 OR_GATE            : 8, //┐
                 PairedChannelsMode : 1, //│00
@@ -92,13 +103,18 @@ struct TypePM {
                 voltage1,               //]FD
                 voltage1_8;             //]FE
         Timestamp FW_TIME_FPGA;         //]FF
+
+        /// @brief Provides raw access to the PM registers
         quint32 *registers = (quint32 *)this;
+
+        /// @brief Provides access to the PM registers as register blocks
         static const inline QVector<regblock> regblocks {{0x00, 0x7D}, //block0     , 126 registers
                                                          {0x7F, 0xBE}, //block1     ,  64 registers
                                                          {0xD8, 0xE4}, //GBTcontrol ,  13 registers
                                                          {0xE8, 0xF1}, //GBTstatus  ,  10 registers
                                                          {0xF7, 0xF7}, //FW_TIME_MCU
                                                          {0xFC, 0xFF}};//block2     ,   4 registers
+        /// @brief calculable values
         float //calculable values
             TEMP_BOARD = 20.0F,
             TEMP_FPGA  = 20.0F,
@@ -110,6 +126,8 @@ struct TypePM {
             TRG_CNT_MODE    ;
         quint32 CH_MASK_TRG;
         char BOARD_TYPE[4] = {0};
+        
+        /// @brief Calculates the calculable values from current raw values and sets their corresponding variable values accordingly
         void calculateValues() {
             TEMP_BOARD   = boardTemperature / 10.;
             TEMP_FPGA    = FPGAtemperature  * 503.975 / 65536 - 273.15;
@@ -127,6 +145,7 @@ struct TypePM {
         }
     } act;
 
+    /// @brief Settings (writable registers) of a PM
     struct Settings {
         quint32 OR_GATE            : 8, //┐
                 PairedChannelsMode : 1, //│00
@@ -159,7 +178,10 @@ struct TypePM {
                 _reservedSpace3[0xD8 - 0xBB - 1];
         GBTunit::ControlData GBT;       //]D8-E7
 
+        /// @brief Provides raw access to the PM registers
         quint32 *registers = (quint32 *)this;
+
+        /// @brief Provides access to the PM registers as register blocks
         static const inline QVector<regblock> regblocks {{0x00, 0x0C}, //block0     , 13 registers
                                                          {0x25, 0x3D}, //block1     , 25 registers
                                                          {0x7C, 0x7C}, //CH_MASK_DATA
@@ -167,6 +189,7 @@ struct TypePM {
                                                          {0xD8, 0xE4}};//GBT control, 13 registers
     } set;
 
+    /// @brief See [slide 19](https://indico.cern.ch/event/810744/contributions/3378550/attachments/1825994/2988434/fit_PRR_PM.pdf)
     struct Counters {
         static const quint16
             addressFIFO     = 0x100,
@@ -194,18 +217,34 @@ struct TypePM {
         GBTcounters GBT;
     } counters;
 
+    /// @brief List of provided DIM services
     QList<DimService *> services;
+
+    /// @brief List of provided DIM commands
     QList<DimCommand *> commands;
+
+    /// @brief ?
     quint16 FEEid;
+
+    /// @brief ?
     const quint16 baseAddress;
+    
+    /// @brief Name of the PM
     const char *name;
+
+    /// @brief Name of the PM, prefixed with 'PM'
     QString fullName() const { return "PM" + QString(name); }
+    
+    /// @brief ?
     TRGsyncStatus &TRGsync;
+    
+    /// @brief ?
     struct { quint32
         BCsyncLostInRun : 1 = 0,
         earlyHeader     : 1 = 0;
     } errorsLogged;
 
+    /// @brief checks whether the PM module (aside from GBT) works as expected
     bool isOK() { return
          act.mainPLLlocked &&
          act.TDC1PLLlocked &&
@@ -219,11 +258,17 @@ struct TypePM {
          act.restartReasonCode != 2 ; //not by PLL relock
     }
 
+    /// @brief Checks whether GBT is ready to use
     bool GBTisOK() const { return
         act.GBT.isOK() &&
         act.GBTRxReady;
     }
 
+    /// @brief Sets a parameter in `set` (`Settings`)
+    /// @param parameterName name of the parameter
+    /// @param value value to be set
+    /// @param iCh channel on which the parameter should be set
+    /// @return `false` if `parameterName` is invalid, `true` otherwise
     bool setParameter(QString parameterName, quint32 value, quint8 iCh = 0) {
         if (!PMparameters.contains(parameterName)) return false;
         Parameter par = PMparameters[parameterName];
@@ -232,6 +277,10 @@ struct TypePM {
         return true;
     }
 
+    /// @brief Constructor of a PM
+    /// @param addr base address
+    /// @param PMname name
+    /// @param TRGsyncRef ?
     TypePM(quint16 addr, const char *PMname, TRGsyncStatus &TRGsyncRef) : baseAddress(addr), name(PMname), TRGsync(TRGsyncRef) {}
 };
 

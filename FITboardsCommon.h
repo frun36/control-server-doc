@@ -375,7 +375,7 @@ const QHash<QString, Parameter> GBTparameters = {
     {"DATA_SEL_TRG_MASK"    ,  0xE4         }
 };
 
-/// @brief Represents a timestamp in a certain required format
+/// @brief Represents a timestamp in a certain required format (ATXmega128a3u microcode timestamp)
 ///
 /// Seconds precision, supports multiple formatting options 
 struct Timestamp {
