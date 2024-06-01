@@ -15,10 +15,9 @@ extern double phaseStepLaser_ns, phaseStep_ns;
 
 /// @brief TCM board abstraction
 struct TypeTCM {
-    /// @brief Actual =?= current values of TCM parameters
-    /// 
-    /// At the start of the struct there are many bit field declarations, 
-    /// most probably corresponding to the registers of the TCM
+    /// @brief Actual values of TCM registers
+    /// @details  All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki.
+    /// Actual values are readed within the FITelectronics::sync function.
     struct ActualValues {
         qint32  DELAY_A         :16,  //┐
                                 :16,  //┘00
