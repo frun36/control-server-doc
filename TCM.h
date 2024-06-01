@@ -17,6 +17,7 @@ extern double phaseStepLaser_ns, phaseStep_ns;
 struct TypeTCM {
     /// @brief Actual values of TCM registers
     /// @details  All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki.
+    /// @n Usage: Storing settings readed from a TCM @n
     /// Actual values are readed within the FITelectronics::sync function.
     struct ActualValues {
         qint32  DELAY_A         :16,  //┐
@@ -204,13 +205,10 @@ struct TypeTCM {
         quint32 PM_MASK_TRG() { return CH_MASK_C << 10 | CH_MASK_A; }
     } act;
 
-    /// @brief Represents the settings of the TCM
-    /// 
-    /// At the start of the struct there are bit fields similar to those in
-    /// `ActualValues`, with some missing, probably corresponding to the 
-    /// registers of the TCM which can be set.
-    ///
-    /// Usage: ?
+    /** @brief Settings to be applied to a TCM
+    *   @details Settings stored within this structure can be applied to a given TCM through 
+    *   FITelectronics::applySettingsPM. Bit-fields represent the register layout of a TCM. 
+    */ 
     struct Settings {
         qint32  DELAY_A         :16,  //┐
                                 :16,  //┘00
@@ -301,6 +299,7 @@ struct TypeTCM {
 
         /// @brief Raw access to the settings registers
         quint32 *registers = (quint32 *)this;
+        /** @brief Layout of TCM read-accessible registers */
         static const inline QVector<regblock> regblocksToRead {{0x00, 0x04}, //block0     ,  5 registers
                                                                {0x08, 0x0E}, //block1     ,  7 registers
                                                                {0x1A, 0x1D}, //block2     ,  4 registers
@@ -309,7 +308,7 @@ struct TypeTCM {
                                                                {0x50, 0x50}, //COUNTERS_UPD_RATE
                                                                {0x60, 0x6A}, //block3     , 11 registers
                                                                {0xD8, 0xE4}},//GBT control, 13 registers
-
+        /** @brief Layout of write-accessible registers */
                                              regblocksToApply {{0x00, 0x04}, //block0     ,  5 registers
                                                                {0x08, 0x0E}, //block1     ,  7 registers
                                                                {0x1B, 0x1D}, //block2     ,  3 registers
@@ -329,6 +328,7 @@ struct TypeTCM {
         void calculate_LASER_DELAY(float delay_ns) { LASER_DELAY = lround(delay_ns / phaseStepLaser_ns); }
     } set;
 
+    /** @brief Counters provided by TCM*/
     struct Counters {
         static const quint16
             addressFIFO     = 0x100,
@@ -338,6 +338,11 @@ struct TypeTCM {
             addressDirect   =  0x70;
         quint32 FIFOload;
         QDateTime newTime, oldTime = QDateTime::currentDateTime();
+
+        /** @brief Stores counters values from the last successful read.
+         * @see FITelectronics::resetCounts
+         * @see FIRelectrionics::readCountersFIFO
+         */
         union {
             quint32 New[number] = {0};
             struct {
@@ -359,8 +364,12 @@ struct TypeTCM {
             };
         };
         quint32 Old[number] = {0};
+        /** @brief Rate of counters change (?)
+         * @details Calculated as (New[i] - Old[i])/(time elapsed) 
+        */
         double rate[number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1};
         GBTcounters GBT;
+        /** @brief List of counters DIM services */
         QList<DimService *> services;
     } counters;
 
@@ -380,7 +389,11 @@ struct TypeTCM {
         act.GBTRxReady;
     }
 
-    QList<DimService *> services, staticServices;
+    /** @brief List of DIM services */
+    QList<DimService *> services, 
+    /** @brief List of static DIM services */
+    staticServices;
+    /** @brief List of DIM commands */
     QList<DimCommand *> commands;
     quint32 ORBIT_FILL_MASK[223];
     struct { quint32
