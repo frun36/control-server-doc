@@ -80,12 +80,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCM board abstraction.  <a href="structTypeTCM.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1ActualValues.html">TypeTCM::ActualValues</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual =?= current values of TCM parameters.  <a href="structTypeTCM_1_1ActualValues.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual values of TCM registers.  <a href="structTypeTCM_1_1ActualValues.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html">TypeTCM::Settings</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the settings of the TCM.  <a href="structTypeTCM_1_1Settings.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structTypeTCM_1_1Settings.html" title="Settings to be applied to a TCM.">Settings</a> to be applied to a TCM.  <a href="structTypeTCM_1_1Settings.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Counters.html">TypeTCM::Counters</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structTypeTCM_1_1Counters.html" title="Counters provided by TCM.">Counters</a> provided by TCM.  <a href="structTypeTCM_1_1Counters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -117,13 +118,31 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>phaseStepLaser_ns</
 <tr class="memitem:a6921c2d56310e631a0dae184b9db70fd"><td class="memItemLeft" align="right" valign="top"><a id="a6921c2d56310e631a0dae184b9db70fd"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>phaseStep_ns</b></td></tr>
 <tr class="separator:a6921c2d56310e631a0dae184b9db70fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d1c181d833f27eb8877defd296d41ed"><td class="memItemLeft" align="right" valign="top"><a id="a0d1c181d833f27eb8877defd296d41ed"></a>
-const QHash&lt; QString, <a class="el" href="structParameter.html">Parameter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>TCMparameters</b></td></tr>
+<tr class="memitem:a0d1c181d833f27eb8877defd296d41ed"><td class="memItemLeft" align="right" valign="top">const QHash&lt; QString, <a class="el" href="structParameter.html">Parameter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TCM_8h.html#a0d1c181d833f27eb8877defd296d41ed">TCMparameters</a></td></tr>
+<tr class="memdesc:a0d1c181d833f27eb8877defd296d41ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains availabel TCM parameters.  <a href="TCM_8h.html#a0d1c181d833f27eb8877defd296d41ed">More...</a><br /></td></tr>
 <tr class="separator:a0d1c181d833f27eb8877defd296d41ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains TCM board abstraction </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Variable Documentation</h2>
+<a id="a0d1c181d833f27eb8877defd296d41ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1c181d833f27eb8877defd296d41ed">&#9670;&nbsp;</a></span>TCMparameters</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QHash&lt;QString, <a class="el" href="structParameter.html">Parameter</a>&gt; TCMparameters</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contains availabel TCM parameters. </p>
+<p>Stores availabel TCM parameters in a hash table, where hash is produced based on the parameter name </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structParameter.html" title="Board parameter, at a certain address with certain bitwidth, bitshift">Parameter</a> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

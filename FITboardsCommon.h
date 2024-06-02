@@ -37,7 +37,8 @@ const struct {
     /** @brief System ID */
     quint8 systemID; 
     /** @brief Subdetector triggers */
-    struct {const char *name; qint16 signature;} triggers[5];} FIT[4] = { //global static constants
+    struct {const char *name; qint16 signature;} triggers[5];} 
+    FIT[4] = { //global static constants
              {       "???",        0xFFFF, 0x0000, 0x000A,               0,        { {    "Trigger1",              75},
                                                                                      {    "Trigger2",              76},
                                                                                      {    "Trigger3",              77},

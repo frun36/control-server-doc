@@ -74,6 +74,11 @@ $(function() {
 <div class="title">TypeTCM::Counters Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="structTypeTCM_1_1Counters.html" title="Counters provided by TCM.">Counters</a> provided by TCM.  
+ <a href="structTypeTCM_1_1Counters.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TCM_8h_source.html">TCM.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -141,18 +146,21 @@ union {</td></tr>
 <tr class="memitem:a83290ea9a42f3a8c1224164eafb1589b"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:a83290ea9a42f3a8c1224164eafb1589b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a775fe05375c611f186c8f92969bae8f4"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memdesc:a775fe05375c611f186c8f92969bae8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores counters values from the last successful read. Usage: FITelectronics::resetCounts, FIRelectrionics::readCountersFIFO. <br /></td></tr>
 <tr class="separator:a775fe05375c611f186c8f92969bae8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1e410cbac08399b5c183d1555d8b901"><td class="memItemLeft" align="right" valign="top"><a id="af1e410cbac08399b5c183d1555d8b901"></a>
-quint32&#160;</td><td class="memItemRight" valign="bottom"><b>Old</b> [number] = {0}</td></tr>
+quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Counters.html#af1e410cbac08399b5c183d1555d8b901">Old</a> [number] = {0}</td></tr>
+<tr class="memdesc:af1e410cbac08399b5c183d1555d8b901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores old counters value (?) <br /></td></tr>
 <tr class="separator:af1e410cbac08399b5c183d1555d8b901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7de8401180aea8a03f7d19a0b423f36b"><td class="memItemLeft" align="right" valign="top"><a id="a7de8401180aea8a03f7d19a0b423f36b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>rate</b> [number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1}</td></tr>
+<tr class="memitem:a7de8401180aea8a03f7d19a0b423f36b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Counters.html#a7de8401180aea8a03f7d19a0b423f36b">rate</a> [number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1}</td></tr>
+<tr class="memdesc:a7de8401180aea8a03f7d19a0b423f36b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rate of counters change (?)  <a href="structTypeTCM_1_1Counters.html#a7de8401180aea8a03f7d19a0b423f36b">More...</a><br /></td></tr>
 <tr class="separator:a7de8401180aea8a03f7d19a0b423f36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60581abc7e550372c0f736671f25b8eb"><td class="memItemLeft" align="right" valign="top"><a id="a60581abc7e550372c0f736671f25b8eb"></a>
 <a class="el" href="structGBTcounters.html">GBTcounters</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GBT</b></td></tr>
 <tr class="separator:a60581abc7e550372c0f736671f25b8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2c35ea3df6876294a6ec44affcbb842"><td class="memItemLeft" align="right" valign="top"><a id="ac2c35ea3df6876294a6ec44affcbb842"></a>
-QList&lt; DimService * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>services</b></td></tr>
+QList&lt; DimService * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Counters.html#ac2c35ea3df6876294a6ec44affcbb842">services</a></td></tr>
+<tr class="memdesc:ac2c35ea3df6876294a6ec44affcbb842"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of counters DIM services. <br /></td></tr>
 <tr class="separator:ac2c35ea3df6876294a6ec44affcbb842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -170,6 +178,26 @@ static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>number
 static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>addressDirect</b> = 0x70</td></tr>
 <tr class="separator:ae1e13a07343f640796ed0a972ead8c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="structTypeTCM_1_1Counters.html" title="Counters provided by TCM.">Counters</a> provided by TCM. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7de8401180aea8a03f7d19a0b423f36b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de8401180aea8a03f7d19a0b423f36b">&#9670;&nbsp;</a></span>rate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TypeTCM::Counters::rate[number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rate of counters change (?) </p>
+<p>Calculated as (New[i] - Old[i])/(time elapsed) </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="TCM_8h_source.html">TCM.h</a></li>
 </ul>

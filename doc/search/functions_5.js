@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['masks_130',['masks',['../classIPbusControlPacket.html#a1035557b97fee4c849cf0388b2342dfd',1,'IPbusControlPacket']]]
+  ['gbtisok_193',['GBTisOK',['../structTypePM.html#a23037872da16d49ccf28d4d8db421d31',1,'TypePM']]],
+  ['getsubdetectortypebyname_194',['getSubdetectorTypeByName',['../FITboardsCommon_8h.html#a8f727871cd98b5d553087e6a7d90a62f',1,'FITboardsCommon.h']]]
 ];

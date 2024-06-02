@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxpacket_146',['maxPacket',['../IPbusControlPacket_8h.html#a3a01f5d74f4eaf88239f6f77280a61a3',1,'IPbusControlPacket.h']]]
+  ['errorslogged_228',['errorsLogged',['../structTypePM.html#aabea9b630e981c77740f9e65136198a0',1,'TypePM']]]
 ];

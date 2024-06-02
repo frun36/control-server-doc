@@ -86,15 +86,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html">GBTunit</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where is GBT used currently?  <a href="structGBTunit.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores data from GBT registers.  <a href="structGBTunit.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionGBTunit_1_1StatusData.html">GBTunit::StatusData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTcounters.html">GBTcounters</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides throughput measurment Usage: FITelectronics::read1PM, FITelectronic::sync.  <a href="structGBTcounters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTword.html">GBTword</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents single GBT word (80 bits)  <a href="structGBTword.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTerrorReport.html">GBTerrorReport</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,7 +110,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Board parameter, at a certain <code>address</code> with certain <code>bitwidth</code>, <code>bitshift</code>  <a href="structParameter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimestamp.html">Timestamp</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a timestamp in a certain required format.  <a href="structTimestamp.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a timestamp in a certain required format (ATXmega128a3u microcode timestamp)  <a href="structTimestamp.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTRGsyncStatus.html">TRGsyncStatus</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,27 +136,32 @@ Functions</h2></td></tr>
 <tr class="memitem:a8f727871cd98b5d553087e6a7d90a62f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="FITboardsCommon_8h.html#a8f727871cd98b5d553087e6a7d90a62f">getSubdetectorTypeByName</a> (QString s)</td></tr>
 <tr class="memdesc:a8f727871cd98b5d553087e6a7d90a62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function converting a <code>QString</code> into <code>TypeFITsubdetector</code> enum.  <a href="FITboardsCommon_8h.html#a8f727871cd98b5d553087e6a7d90a62f">More...</a><br /></td></tr>
 <tr class="separator:a8f727871cd98b5d553087e6a7d90a62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4efef964d90280b511262a3af0fa292"><td class="memItemLeft" align="right" valign="top"><a id="ab4efef964d90280b511262a3af0fa292"></a>
-quint32&#160;</td><td class="memItemRight" valign="bottom"><b>changeNbits</b> (quint32 base, quint8 length, quint8 shift, quint32 value)</td></tr>
+<tr class="memitem:ab4efef964d90280b511262a3af0fa292"><td class="memItemLeft" align="right" valign="top">quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="FITboardsCommon_8h.html#ab4efef964d90280b511262a3af0fa292">changeNbits</a> (quint32 base, quint8 length, quint8 shift, quint32 value)</td></tr>
+<tr class="memdesc:ab4efef964d90280b511262a3af0fa292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify a section of bits in a 32-bit unsigned integer.  <a href="FITboardsCommon_8h.html#ab4efef964d90280b511262a3af0fa292">More...</a><br /></td></tr>
 <tr class="separator:ab4efef964d90280b511262a3af0fa292"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a3d30f85e483d5cfb230f94918b1b0bf1"><td class="memItemLeft" >struct {</td></tr>
 <tr class="memitem:a33e88a0fa67b96f67521c4acc2565393"><td class="memItemLeft" >
-&#160;&#160;&#160;char&#160;&#160;&#160;<b>name</b> [4]</td></tr>
+&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#abda2b1e603d356cfd667062701f0c0a2">name</a> [4]</td></tr>
+<tr class="memdesc:a33e88a0fa67b96f67521c4acc2565393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name. <br /></td></tr>
 <tr class="separator:a33e88a0fa67b96f67521c4acc2565393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1ca40dea6f139c37e6fe73d13477f1d"><td class="memItemLeft" >
-&#160;&#160;&#160;quint16&#160;&#160;&#160;<b>TCMid</b></td></tr>
+&#160;&#160;&#160;quint16&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#a938d341213a1be8f3386c583b022c35c">TCMid</a></td></tr>
+<tr class="memdesc:ae1ca40dea6f139c37e6fe73d13477f1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of TCM assigned to the subdetector. <br /></td></tr>
 <tr class="separator:ae1ca40dea6f139c37e6fe73d13477f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fac5ae2ba7b3f99b0aaa36b44875700"><td class="memItemLeft" >
-&#160;&#160;&#160;quint16&#160;&#160;&#160;<b>PMA0id</b></td></tr>
+&#160;&#160;&#160;quint16&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#af2254a6f29fb3e5a8547985820ea893a">PMA0id</a></td></tr>
+<tr class="memdesc:a4fac5ae2ba7b3f99b0aaa36b44875700"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of the first A-side PM assigned to the subdetector. <br /></td></tr>
 <tr class="separator:a4fac5ae2ba7b3f99b0aaa36b44875700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa722845278ffdc5ea456a20290043d14"><td class="memItemLeft" >
-&#160;&#160;&#160;quint16&#160;&#160;&#160;<b>PMC0id</b></td></tr>
+&#160;&#160;&#160;quint16&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#ada16a9f4d52f555cd7a33f33aaadb8dd">PMC0id</a></td></tr>
+<tr class="memdesc:aa722845278ffdc5ea456a20290043d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of the first C-side PM assigned to the subdetector. <br /></td></tr>
 <tr class="separator:aa722845278ffdc5ea456a20290043d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac19c11f5b9d8b3706aae4d3d28087927"><td class="memItemLeft" >
-&#160;&#160;&#160;quint8&#160;&#160;&#160;<b>systemID</b></td></tr>
+&#160;&#160;&#160;quint8&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#afe523bc6902154f8717e4adc0e37a91f">systemID</a></td></tr>
+<tr class="memdesc:ac19c11f5b9d8b3706aae4d3d28087927"><td class="mdescLeft">&#160;</td><td class="mdescRight">System ID. <br /></td></tr>
 <tr class="separator:ac19c11f5b9d8b3706aae4d3d28087927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ed1c3007105845683e3bfd7517bc1ca"><td class="memItemLeft" >
 &#160;&#160;&#160;struct {</td></tr>
@@ -164,7 +171,8 @@ Variables</h2></td></tr>
 <tr class="memitem:a0a7fb5000bb1435ded5a76d89a67fc15"><td class="memItemLeft" >
 &#160;&#160;&#160;&#160;&#160;&#160;qint16&#160;&#160;&#160;<b>signature</b></td></tr>
 <tr class="separator:a0a7fb5000bb1435ded5a76d89a67fc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed1c3007105845683e3bfd7517bc1ca"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<b>triggers</b> [5]</td></tr>
+<tr class="memitem:a6ed1c3007105845683e3bfd7517bc1ca"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;&#160;&#160;<a class="el" href="FITboardsCommon_8h.html#ad65574dc514b253cedc9a9ae5d646a69">triggers</a> [5]</td></tr>
+<tr class="memdesc:a6ed1c3007105845683e3bfd7517bc1ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subdetector triggers. <br /></td></tr>
 <tr class="separator:a6ed1c3007105845683e3bfd7517bc1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d30f85e483d5cfb230f94918b1b0bf1"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a> [4]</td></tr>
 <tr class="memdesc:a3d30f85e483d5cfb230f94918b1b0bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents certain subdetector parameters.  <a href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">More...</a><br /></td></tr>
@@ -185,6 +193,65 @@ struct {</td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functionalities common to all PM and TCM boards. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab4efef964d90280b511262a3af0fa292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4efef964d90280b511262a3af0fa292">&#9670;&nbsp;</a></span>changeNbits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quint32 changeNbits </td>
+          <td>(</td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>shift</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modify a section of bits in a 32-bit unsigned integer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>Original 32 bit unsigned integer </td></tr>
+    <tr><td class="paramname">length</td><td>Number of bits to modify </td></tr>
+    <tr><td class="paramname">shift</td><td>The starting bit position for the modification. </td></tr>
+    <tr><td class="paramname">value</td><td>New value to be inserted </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a8f727871cd98b5d553087e6a7d90a62f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f727871cd98b5d553087e6a7d90a62f">&#9670;&nbsp;</a></span>getSubdetectorTypeByName()</h2>
 

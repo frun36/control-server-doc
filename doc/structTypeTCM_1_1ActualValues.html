@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Actual =?= current values of TCM parameters.  
+<p>Actual values of TCM registers.  
  <a href="structTypeTCM_1_1ActualValues.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="TCM_8h_source.html">TCM.h</a>&gt;</code></p>
@@ -421,8 +421,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a5855799fc784f710ff05fa2363aecffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Actual =?= current values of TCM parameters. </p>
-<p>At the start of the struct there are many bit field declarations, most probably corresponding to the registers of the TCM </p>
+<div class="textblock"><p>Actual values of TCM registers. </p>
+<p>All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki. <br  />
+ Usage: Storing settings readed from a TCM <br  />
+Actual values are readed within the FITelectronics::sync function. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a5855799fc784f710ff05fa2363aecffe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5855799fc784f710ff05fa2363aecffe">&#9670;&nbsp;</a></span>regblocks</h2>

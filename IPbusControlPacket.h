@@ -151,6 +151,11 @@ public:
 */
     void addWordToWrite(quint32 address, quint32 value) { addTransaction(ipwrite, address, &value, 1); }
 
+    /// @brief Adds a transaction changing a n-bit block in a register
+    /// @param address Address of the register
+    /// @param data Values for the bits to be set - gets shifted by `shift`
+    /// @param nbits Number of bits to be changed (`mask = (1 << nbits) - 1`)
+    /// @param shift Shift relative to the LSB (`mask << shift`)
     void addNBitsToChange(quint32 address, quint32 data, quint8 nbits, quint8 shift = 0) {
         if (nbits == 32) { addTransaction(ipwrite, address, &data, 1); return; }
         quint32 mask = (1 << nbits) - 1; //e.g. 0x00000FFF for nbits==12
@@ -160,7 +165,7 @@ public:
 /**
  * @brief Check transactions successfulness and copy read data to destination
  * 
- * @return ***True*** is returned if all transactions was successfull, otherwise ***False** is returned
+ * @return `true` is returned if all transactions were successful, otherwise `false` is returned
 */
     bool processResponse() { 
         for (quint16 i=0; i<transactionsList.size(); ++i) {
@@ -221,8 +226,13 @@ public:
     }
 
 signals:
+    /// @brief Emitted on IPbus error
     void error(QString, errorType);
+    
+    /// @brief Emitted upon successfully reading `nWords` 
     void successfulRead(quint8 nWords);
+    
+    /// @brief Emitted upon successfully writing `nWords`
     void successfulWrite(quint8 nWords);
 };
 

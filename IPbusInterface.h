@@ -145,18 +145,30 @@ public slots:
 
     virtual void sync() =0;
 
+    /// @brief Writes a register using IPbus
+    /// @param address address of the register
+    /// @param data new register value
+    /// @param syncOnSuccess whether `IPbus::sync` is to be called upon success
     void writeRegister(quint32 address, quint32 data, bool syncOnSuccess = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
         p.addTransaction(ipwrite, address, &data, 1);
         if (transceive(p) && syncOnSuccess) sync();
     }
 
+    /// @brief Sets a single bit of a register using IPbus
+    /// @param n bit position (0 - LSB)
+    /// @param address address of the register
+    /// @param syncOnSuccess whether `IPbus::sync` is to be called upon success
     void setBit(quint8 n, quint32 address, bool syncOnSuccess = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
         p.addTransaction(RMWbits, address, p.masks(0xFFFFFFFF, 1 << n));
         if (transceive(p) && syncOnSuccess) sync();
     }
 
+    /// @brief Clears a single bit of a register using IPbus
+    /// @param n bit position (0 - LSB)
+    /// @param address address of the register
+    /// @param syncOnSuccess whether `IPbus::sync` is to be called upon success
     void clearBit(quint8 n, quint32 address, bool syncOnSuccess = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
         p.addTransaction(RMWbits, address, p.masks(~(1 << n), 0x00000000));

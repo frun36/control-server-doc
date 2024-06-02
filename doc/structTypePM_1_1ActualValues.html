@@ -76,6 +76,11 @@ $(function() {
 <div class="title">TypePM::ActualValues Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The current values of a PM's registers - see <a href="https://twiki.cern.ch/twiki/bin/viewauth/AliceFIT/WebHome">FIT Wiki</a> -&gt; FIT documentation -&gt; FEE Register Map (PM, PM Channel Parameters)  
+ <a href="structTypePM_1_1ActualValues.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="PM_8h_source.html">PM.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -87,7 +92,8 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a39ea629ab693178484ddc87cb0892022"><td class="memItemLeft" align="right" valign="top"><a id="a39ea629ab693178484ddc87cb0892022"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calculateValues</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypePM_1_1ActualValues.html#a39ea629ab693178484ddc87cb0892022">calculateValues</a> ()</td></tr>
+<tr class="memdesc:a39ea629ab693178484ddc87cb0892022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the calculable values from current raw values and sets their corresponding variable values accordingly. <br /></td></tr>
 <tr class="separator:a39ea629ab693178484ddc87cb0892022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -231,10 +237,12 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><b>voltage1_8</b></td
 <a class="el" href="structTimestamp.html">Timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FW_TIME_FPGA</b></td></tr>
 <tr class="separator:a307c9912d4e7e2f81a922a9af76ddc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a223dae84c720d99a95e1f9392ea4c948"><td class="memItemLeft" align="right" valign="top"><a id="a223dae84c720d99a95e1f9392ea4c948"></a>
-quint32 *&#160;</td><td class="memItemRight" valign="bottom"><b>registers</b> = (quint32 *)this</td></tr>
+quint32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypePM_1_1ActualValues.html#a223dae84c720d99a95e1f9392ea4c948">registers</a> = (quint32 *)this</td></tr>
+<tr class="memdesc:a223dae84c720d99a95e1f9392ea4c948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides raw access to the PM registers. <br /></td></tr>
 <tr class="separator:a223dae84c720d99a95e1f9392ea4c948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a596e73157afead72aad61c409273dd5b"><td class="memItemLeft" align="right" valign="top"><a id="a596e73157afead72aad61c409273dd5b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>TEMP_BOARD</b> = 20.0F</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypePM_1_1ActualValues.html#a596e73157afead72aad61c409273dd5b">TEMP_BOARD</a> = 20.0F</td></tr>
+<tr class="memdesc:a596e73157afead72aad61c409273dd5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculable values <br /></td></tr>
 <tr class="separator:a596e73157afead72aad61c409273dd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc3f566cbad70812a1d6bf922a434954"><td class="memItemLeft" align="right" valign="top"><a id="abc3f566cbad70812a1d6bf922a434954"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>TEMP_FPGA</b> = 20.0F</td></tr>
@@ -263,10 +271,14 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>BOARD_TYPE</b> [4] = 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a450c8e4131af36a360a0268afb037f17"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regblocks</b></td></tr>
+<tr class="memitem:a450c8e4131af36a360a0268afb037f17"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypePM_1_1ActualValues.html#a450c8e4131af36a360a0268afb037f17">regblocks</a></td></tr>
+<tr class="memdesc:a450c8e4131af36a360a0268afb037f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides access to the PM registers as register blocks.  <a href="structTypePM_1_1ActualValues.html#a450c8e4131af36a360a0268afb037f17">More...</a><br /></td></tr>
 <tr class="separator:a450c8e4131af36a360a0268afb037f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The current values of a PM's registers - see <a href="https://twiki.cern.ch/twiki/bin/viewauth/AliceFIT/WebHome">FIT Wiki</a> -&gt; FIT documentation -&gt; FEE Register Map (PM, PM Channel Parameters) </p>
+<p>Bitfields at the start of the struct's memory represent the register layout of a PM (direct correspondence with the register map document) </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a450c8e4131af36a360a0268afb037f17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a450c8e4131af36a360a0268afb037f17">&#9670;&nbsp;</a></span>regblocks</h2>
 
@@ -293,6 +305,8 @@ Static Public Attributes</h2></td></tr>
 <div class="line">                                                         {0xF7, 0xF7}, </div>
 <div class="line">                                                         {0xFC, 0xFF}}</div>
 </div><!-- fragment -->
+<p>Provides access to the PM registers as register blocks. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>

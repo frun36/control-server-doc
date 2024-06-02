@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Represents the settings of the TCM.  
+<p><a class="el" href="structTypeTCM_1_1Settings.html" title="Settings to be applied to a TCM.">Settings</a> to be applied to a TCM.  
  <a href="structTypeTCM_1_1Settings.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="TCM_8h_source.html">TCM.h</a>&gt;</code></p>
@@ -273,15 +273,16 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>attenuation_dB</b></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a3980b82feb5c699f0a2630a6c68798ee"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regblocksToRead</b></td></tr>
+<tr class="memitem:a3980b82feb5c699f0a2630a6c68798ee"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#a3980b82feb5c699f0a2630a6c68798ee">regblocksToRead</a></td></tr>
+<tr class="memdesc:a3980b82feb5c699f0a2630a6c68798ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layout of TCM read-accessible registers.  <a href="structTypeTCM_1_1Settings.html#a3980b82feb5c699f0a2630a6c68798ee">More...</a><br /></td></tr>
 <tr class="separator:a3980b82feb5c699f0a2630a6c68798ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0298941cfb99f0cece9c113da3555d5"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>regblocksToApply</b></td></tr>
+<tr class="memitem:ab0298941cfb99f0cece9c113da3555d5"><td class="memItemLeft" align="right" valign="top">static const QVector&lt; <a class="el" href="structregblock.html">regblock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTypeTCM_1_1Settings.html#ab0298941cfb99f0cece9c113da3555d5">regblocksToApply</a></td></tr>
+<tr class="memdesc:ab0298941cfb99f0cece9c113da3555d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layout of write-accessible registers.  <a href="structTypeTCM_1_1Settings.html#ab0298941cfb99f0cece9c113da3555d5">More...</a><br /></td></tr>
 <tr class="separator:ab0298941cfb99f0cece9c113da3555d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents the settings of the TCM. </p>
-<p>At the start of the struct there are bit fields similar to those in <code><a class="el" href="structTypeTCM_1_1ActualValues.html" title="Actual =?= current values of TCM parameters.">ActualValues</a></code>, with some missing, probably corresponding to the registers of the TCM which can be set.</p>
-<p>Usage: ? </p>
+<div class="textblock"><p><a class="el" href="structTypeTCM_1_1Settings.html" title="Settings to be applied to a TCM.">Settings</a> to be applied to a TCM. </p>
+<p><a class="el" href="structTypeTCM_1_1Settings.html" title="Settings to be applied to a TCM.">Settings</a> stored within this structure can be applied to a given TCM through FITelectronics::applySettingsPM. Bit-fields represent the register layout of a TCM. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab0298941cfb99f0cece9c113da3555d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0298941cfb99f0cece9c113da3555d5">&#9670;&nbsp;</a></span>regblocksToApply</h2>
@@ -309,6 +310,8 @@ Static Public Attributes</h2></td></tr>
 <div class="line">                                                               {0x60, 0x6A}, </div>
 <div class="line">                                                               {0xD8, 0xE4}}</div>
 </div><!-- fragment -->
+<p>Layout of write-accessible registers. </p>
+
 </div>
 </div>
 <a id="a3980b82feb5c699f0a2630a6c68798ee"></a>
@@ -339,6 +342,8 @@ Static Public Attributes</h2></td></tr>
 <div class="line">                                                               {0x60, 0x6A}, </div>
 <div class="line">                                                               {0xD8, 0xE4}}</div>
 </div><!-- fragment -->
+<p>Layout of TCM read-accessible registers. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>

@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Where is GBT used currently?  
+<p>Stores data from GBT registers.  
  <a href="structGBTunit.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="FITboardsCommon_8h_source.html">FITboardsCommon.h</a>&gt;</code></p>
@@ -103,16 +103,20 @@ union <a class="el" href="unionGBTunit_1_1StatusData.html">GBTunit::StatusData</
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a7c770e6ac6ad815761a122a40276533b"><td class="memItemLeft" align="right" valign="top"><a id="a7c770e6ac6ad815761a122a40276533b"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>controlSize</b> = 13</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#a7c770e6ac6ad815761a122a40276533b">controlSize</a> = 13</td></tr>
+<tr class="memdesc:a7c770e6ac6ad815761a122a40276533b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the control block in bytes. <br /></td></tr>
 <tr class="separator:a7c770e6ac6ad815761a122a40276533b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76f52dcd9a20f1d4a73471ce2a6638e2"><td class="memItemLeft" align="right" valign="top"><a id="a76f52dcd9a20f1d4a73471ce2a6638e2"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>statusSize</b> = 10</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#a76f52dcd9a20f1d4a73471ce2a6638e2">statusSize</a> = 10</td></tr>
+<tr class="memdesc:a76f52dcd9a20f1d4a73471ce2a6638e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the status block in bytes. <br /></td></tr>
 <tr class="separator:a76f52dcd9a20f1d4a73471ce2a6638e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a03f57c8b3d5bc8eeb01070b760f322"><td class="memItemLeft" align="right" valign="top"><a id="a5a03f57c8b3d5bc8eeb01070b760f322"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>controlAddress</b> = 0xD8</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#a5a03f57c8b3d5bc8eeb01070b760f322">controlAddress</a> = 0xD8</td></tr>
+<tr class="memdesc:a5a03f57c8b3d5bc8eeb01070b760f322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base address of the control block. <br /></td></tr>
 <tr class="separator:a5a03f57c8b3d5bc8eeb01070b760f322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cae18bba61b9eba226cd088cbd2f779"><td class="memItemLeft" align="right" valign="top"><a id="a0cae18bba61b9eba226cd088cbd2f779"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>statusAddress</b> = 0xE8</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#a0cae18bba61b9eba226cd088cbd2f779">statusAddress</a> = 0xE8</td></tr>
+<tr class="memdesc:a0cae18bba61b9eba226cd088cbd2f779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base address of the status block. <br /></td></tr>
 <tr class="separator:a0cae18bba61b9eba226cd088cbd2f779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9cf75881822c3f8154c2148ca0e90b9"><td class="memItemLeft" align="right" valign="top"><a id="ab9cf75881822c3f8154c2148ca0e90b9"></a>
 static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>DG_noData</b> = 0</td></tr>
@@ -136,10 +140,12 @@ static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>TG_Tx<
 static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RO_idle</b> = 0</td></tr>
 <tr class="separator:a0311776a3bb3d653c9713f68b71fb30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5525735cdaa63f961537656401d67097"><td class="memItemLeft" align="right" valign="top"><a id="a5525735cdaa63f961537656401d67097"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RO_continuous</b> = 1</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#a5525735cdaa63f961537656401d67097">RO_continuous</a> = 1</td></tr>
+<tr class="memdesc:a5525735cdaa63f961537656401d67097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continuous readout mode. <br /></td></tr>
 <tr class="separator:a5525735cdaa63f961537656401d67097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6fcc069e9f2c4b6bbd5ff2805c15cb1"><td class="memItemLeft" align="right" valign="top"><a id="ad6fcc069e9f2c4b6bbd5ff2805c15cb1"></a>
-static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RO_triggered</b> = 2</td></tr>
+static const quint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGBTunit.html#ad6fcc069e9f2c4b6bbd5ff2805c15cb1">RO_triggered</a> = 2</td></tr>
+<tr class="memdesc:ad6fcc069e9f2c4b6bbd5ff2805c15cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triggered readout mode. <br /></td></tr>
 <tr class="separator:ad6fcc069e9f2c4b6bbd5ff2805c15cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df172d460c8c7bc6ffeda0f26f8cb04"><td class="memItemLeft" align="right" valign="top"><a id="a4df172d460c8c7bc6ffeda0f26f8cb04"></a>
 static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>BS_start</b> = 0</td></tr>
@@ -174,11 +180,12 @@ static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RB_rea
 <tr class="memitem:aa6a931602495e42ac615295ce20826f0"><td class="memItemLeft" align="right" valign="top"><a id="aa6a931602495e42ac615295ce20826f0"></a>
 static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RB_errorReport</b> = 15</td></tr>
 <tr class="separator:aa6a931602495e42ac615295ce20826f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88972a62c614bc7759f155c29ff312e2"><td class="memItemLeft" align="right" valign="top">static constexpr quint32&#160;</td><td class="memItemRight" valign="bottom"><b>defaults</b> [controlSize]</td></tr>
+<tr class="memitem:a88972a62c614bc7759f155c29ff312e2"><td class="memItemLeft" align="right" valign="top">static constexpr quint32&#160;</td><td class="memItemRight" valign="bottom"><b>defaults</b> [<a class="el" href="structGBTunit.html#a7c770e6ac6ad815761a122a40276533b">controlSize</a>]</td></tr>
 <tr class="separator:a88972a62c614bc7759f155c29ff312e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Where is GBT used currently? </p>
+<div class="textblock"><p>Stores data from GBT registers. </p>
+<p>All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a88972a62c614bc7759f155c29ff312e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88972a62c614bc7759f155c29ff312e2">&#9670;&nbsp;</a></span>defaults</h2>
@@ -190,7 +197,7 @@ static const quint8&#160;</td><td class="memItemRight" valign="bottom"><b>RB_err
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr quint32 GBTunit::defaults[controlSize]</td>
+          <td class="memname">constexpr quint32 GBTunit::defaults[<a class="el" href="structGBTunit.html#a7c770e6ac6ad815761a122a40276533b">controlSize</a>]</td>
         </tr>
       </table>
   </td>

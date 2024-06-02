@@ -14,13 +14,19 @@ extern double TDCunit_ps; // 13
 extern double halfBC_ns; // 12.5
 extern double phaseStepLaser_ns, phaseStep_ns;
 
-/// @brief Important class, manages (among others) DIM service creation
+/// @brief Manages the entirety of FIT's electronics (or just a single subdetector?)
+/// 
+/// Responsibilities:
+/// - creating and deleting DIM services
+/// - ...?
 class FITelectronics: public IPbusTarget, public DimCommandHandler {
     Q_OBJECT
 public:
     TypeFITsubdetector subdetector;
     const quint16 TCMid;
     DimServer DIMserver;
+
+    /// @brief Contains all DIM command handlers
     QHash<DimCommand *, std::function<void(void *)>> allCommands;
     QList<AdvancedDIMservice *> services;
     AdvancedDIMservice *countsChannels, *countRatesChannels, *countsTriggers, *countRatesTriggers;
@@ -35,6 +41,7 @@ public:
         }
     } serverStatus;
     TypeTCM TCM;
+    /// @brief Array containing all PMs, ordered by link number
     TypePM allPMs[20] = { //PMs by link №
         TypePM(0x0200, "A0", TCM.act.TRG_SYNC_A[0]),
         TypePM(0x0400, "A1", TCM.act.TRG_SYNC_A[1]),
@@ -59,7 +66,10 @@ public:
     };
     QMap<quint16, TypePM *> PM;
     QList<TypePM *> PMsA, PMsC;
+    /// @brief File containing the Control Server logs
     QFile logFile;
+
+    /// @brief Stream related to `logFile`
     QTextStream logStream;
     bool PMsReady = false;
     quint8 noResponseCounter = 0;
@@ -77,6 +87,16 @@ public:
 //system variables
     quint32 BOARDS_OK = 0xFFFFFFFF;
 
+    /// @brief Constructor - lots of logic to analyze
+    ///
+    /// - Initializes `logFile` and `logStream`
+    /// - Some PM (`FEEid`) and TCM (`T1_SIGN` etc) initialization, depends on the value of `sd` - ?
+    /// - connects signals to slots - @todo review what the slots do: 
+    ///     - `shuttleTimer` timeout to `FITelectronics::inverseLaserPhase`, 
+    ///     - `countersTimer` timeout - some IPbus transaction
+    ///     - ...
+    /// - 
+    /// @param sd ?
     FITelectronics(TypeFITsubdetector sd): IPbusTarget(50006), subdetector(sd), TCMid(FIT[sd].TCMid) {
         logFile.setFileName(QCoreApplication::applicationName() + ".log");
         logFile.open(QFile::WriteOnly | QIODevice::Append | QFile::Text);
@@ -161,6 +181,7 @@ public:
         logFile.close();
     }
 
+    /// @brief Logs message `st` allong with current timestamp 
     void log(QString st) { logStream << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz ") + st << Qt::endl; logStream.flush(); }
 
     void addCommand(QList<DimCommand *> &list, QString name, const char* format, std::function<void(void *)> function) {
@@ -211,7 +232,7 @@ public:
     /// apart from `status/SERIAL_NUM`, which is mapped to `(char *)&pm->act.registers[0xBD]+ 1`
     /// 
     ///
-    /// #### `status`
+    /// ### `status`
     /// - `status/TEMP_BOARD` - `float`, `size = 4`
     /// - `status/TEMP_FPGA` - `float`, `size = 4`
     /// - `status/VOLTAGE_1V` - `float`, `size = 4`
@@ -221,7 +242,7 @@ public:
     /// - `status/FW_TIME_FPGA` - `int`, `size = 4`
     /// - `status/CH_BASELINES_NOK` - `int`, `size = 4`
     /// - `status/SERIAL_NUM` - `short`, `size = 2`
-    /// #### `control`
+    /// ### `control`
     /// - `control/CH_MASK_DATA/actual` - `int`, `size = 4`
     /// - `control/CH_MASK_TRG/actual` - `int`, `size = 4`
     ///
@@ -449,6 +470,7 @@ public:
         addCommand(commands, pfx+"GBT/SUPPRESS_ERROR_REPORTS", "I", [=](void *d) { switchGBTerrorReports(!*(qint32 *)d); });
     }
 
+    /// @brief Deallocates memory and empties the containers of a given PM's services
     void deletePMservices(TypePM *pm) {
         foreach (DimService *s, pm->services) delete s;
         pm->services.clear();
@@ -457,6 +479,7 @@ public:
         pm->commands.clear();
     }
 
+    /// @brief Deallocates memory and empties the containers of the TCM's services
     void deleteTCMservices() {
         foreach (DimService *s, TCM.services + TCM.counters.services + TCM.staticServices) delete s;
         TCM.services.clear();
@@ -471,13 +494,23 @@ public:
     void commandHandler() { DimCommand *c = getCommand(); emit DIMcommandReceived(c, c->getData()); }
 
 signals:
+    /// @brief Connected in `MainWindow` constructor
     void linksStatusReady();
+
+    /// @brief Connected in `MainWindow` constructor
     void valuesReady();
+
+    /// @brief Connected to `MainWindow::updateCounters` and in `FITelectronics::adjustThresholds`
     void countersReady(quint16 FEEid);
+    
+    /// @brief Connected in `FITelectronics` constructor
     void resetFinished();
+
+    /// @brief Connected to `FITelectronics::executeDIMcommand`
     void DIMcommandReceived(DimCommand *, void *);
 
 public slots:
+    /// @brief Executes command `cmd`, calling its callback from `FITelectronics::allCommands` with `data`
     void executeDIMcommand(DimCommand *cmd, void *data) { allCommands[cmd](data); }
 
     void fileWrite(QString fileName) {

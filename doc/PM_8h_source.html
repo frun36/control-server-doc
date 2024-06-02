@@ -66,260 +66,293 @@ $(function() {
 <div class="title">PM.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PM_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PM_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FITboardsCommon_8h.html">FITboardsCommon.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">const</span> QHash&lt;QString, Parameter&gt; PMparameters = {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="comment">//name                  address width shift interval</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {<span class="stringliteral">&quot;OR_GATE&quot;</span>              , {0x00,  8,  0}      },</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    {<span class="stringliteral">&quot;PairedChannelsMode&quot;</span>   , {0x00,  1,  8}      },</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {<span class="stringliteral">&quot;TIME_ALIGN&quot;</span>           , {0x01, 12,  0,    1}},</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {<span class="stringliteral">&quot;noTriggerMode&quot;</span>        , {0x01,  1, 12,    1}},</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {<span class="stringliteral">&quot;ADC0_RANGE&quot;</span>           , {0x25, 32,  0,    2}},</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {<span class="stringliteral">&quot;ADC1_RANGE&quot;</span>           , {0x26, 32,  0,    2}},</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {<span class="stringliteral">&quot;TRGchargeLevelHi&quot;</span>     , {0x3D, 12,  0}    }, <span class="comment">//formerly known as CFD_SATR</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {<span class="stringliteral">&quot;TRGchargeLevelLo&quot;</span>     , {0x3D,  4, 12}    },</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_DATA&quot;</span>         ,  0x7C               },</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {<span class="stringliteral">&quot;TRG_CNT_MODE&quot;</span>         , {0x7F,  1, 10}      },</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {<span class="stringliteral">&quot;CFD_THRESHOLD&quot;</span>        , {0x80, 32,  0,    4}},</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {<span class="stringliteral">&quot;CFD_ZERO&quot;</span>             , {0x81, 32,  0,    4}},</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {<span class="stringliteral">&quot;ADC_ZERO&quot;</span>             , {0x82, 32,  0,    4}},</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {<span class="stringliteral">&quot;ADC_DELAY&quot;</span>            , {0x83, 32,  0,    4}},</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {<span class="stringliteral">&quot;THRESHOLD_CALIBR&quot;</span>     , {0xB0, 32,  0,    1}}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structTypePM.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTypePM.html">TypePM</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html">   25</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues.html">ActualValues</a>{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        quint32 OR_GATE            : 8, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                PairedChannelsMode : 1, <span class="comment">//│00</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                   :23; <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">   29</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">TimeAlignment</a> {          <span class="comment">//┐</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            qint32                      <span class="comment">//│</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                value              :12, <span class="comment">//│</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                blockTriggers      : 1, <span class="comment">//│01-0C</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                   :19; <span class="comment">//│</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }      timeAlignment[12]      ; <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        quint32 ADC_BASELINE[12][2]   , <span class="comment">//]0D-24 //[Ch][0] for ADC0, [Ch][1] for ADC1</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                ADC_RANGE   [12][2]   , <span class="comment">//]25-3C</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                TRGchargeLevelHi   :12, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                TRGchargeLevelLo   : 4, <span class="comment">//│3D</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                   :16; <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        qint32  TDC1tuning         : 8, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                TDC2tuning         : 8, <span class="comment">//│3E</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                TDC3tuning         : 8, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                   :24; <span class="comment">//┘3F</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        quint8  RAW_TDC_DATA[12][4]   ; <span class="comment">//]40-4B //[Ch][0] for val1, [Ch][1] for val2</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        quint32 DISPERSION  [12][2]   ; <span class="comment">//]4C-63</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        qint16  MEANAMPL    [12][2][2]; <span class="comment">//]64-7B //[Ch][0][0] for ADC0, [Ch][1][0] for ADC1</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        quint32 CH_MASK_DATA          , <span class="comment">//]7C</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                CH_BASELINES_NOK      , <span class="comment">//]7D</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                _reservedSpace0       , <span class="comment">//]7E</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                mainPLLlocked      : 1, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                TDC1PLLlocked      : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                TDC2PLLlocked      : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                TDC3PLLlocked      : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                GBTRxReady         : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                GBTRxError         : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                TDC1syncError      : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                TDC2syncError      : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                TDC3syncError      : 1, <span class="comment">//│7F</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                RESET_COUNTERS     : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                TRGcountMode       : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                restartDetected    : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                GBTRxPhaseError    : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                BCIDsyncLost       : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                droppingHits       : 1, <span class="comment">//│</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                   :17; <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">   67</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">ChannelSettings</a> {        <span class="comment">//┐</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            quint32 CFD_THRESHOLD  :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            qint32  CFD_ZERO       :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                   :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    ADC_ZERO       :16, <span class="comment">//│80-AF</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            quint32 ADC_DELAY      :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        } Ch[12];                       <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        quint32 THRESHOLD_CALIBR[12]  , <span class="comment">//]B0-BB</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                boardTemperature   :16, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                   :16; <span class="comment">//┘BC</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        quint32 boardType          : 2, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                   : 6, <span class="comment">//│</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                SERIAL_NUM         : 8, <span class="comment">//│BD</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                restartReasonCode  : 2, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                   :30, <span class="comment">//┘BE</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                _reservedSpace1[0xD8 - 0xBE - 1];</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="structGBTunit.html">GBTunit</a> GBT;                    <span class="comment">//]D8-F1</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        quint32 _reservedSpace2[0xF7 - 0xF1 - 1];</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="structTimestamp.html">Timestamp</a> FW_TIME_MCU;      <span class="comment">//]F7</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        quint32 _reservedSpace3[0xFC - 0xF7 - 1];</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        quint32 FPGAtemperature,        <span class="comment">//]FC</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                voltage1,               <span class="comment">//]FD</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                voltage1_8;             <span class="comment">//]FE</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="structTimestamp.html">Timestamp</a> FW_TIME_FPGA;         <span class="comment">//]FF</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        quint32 *registers = (quint32 *)<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; regblocks {{0x00, 0x7D}, <span class="comment">//block0     , 126 registers</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                         {0x7F, 0xBE}, <span class="comment">//block1     ,  64 registers</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                         {0xD8, 0xE4}, <span class="comment">//GBTcontrol ,  13 registers</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                         {0xE8, 0xF1}, <span class="comment">//GBTstatus  ,  10 registers</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                         {0xF7, 0xF7}, <span class="comment">//FW_TIME_MCU</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                         {0xFC, 0xFF}};<span class="comment">//block2     ,   4 registers</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">float</span> <span class="comment">//calculable values</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            TEMP_BOARD = 20.0F,</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            TEMP_FPGA  = 20.0F,</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            VOLTAGE_1V   = 1.0F,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            VOLTAGE_1_8V = 1.8F,</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            RMS_Ch[12][2]; <span class="comment">//[Ch][0] for ADC0, [Ch][1] for ADC1</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        qint16</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            TIME_ALIGN[12]  ,</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            TRG_CNT_MODE    ;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        quint32 CH_MASK_TRG;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">char</span> BOARD_TYPE[4] = {0};</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordtype">void</span> calculateValues() {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            TEMP_BOARD   = boardTemperature / 10.;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            TEMP_FPGA    = FPGAtemperature  * 503.975 / 65536 - 273.15;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            VOLTAGE_1V   = voltage1         *   3.    / 65536;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            VOLTAGE_1_8V = voltage1_8       *   3.    / 65536;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            CH_MASK_TRG = 0;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">for</span> (quint8 iCh=0; iCh&lt;12; ++iCh) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                RMS_Ch[iCh][0] = sqrt(DISPERSION[iCh][0]);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                RMS_Ch[iCh][1] = sqrt(DISPERSION[iCh][1]);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                TIME_ALIGN[iCh] = timeAlignment[iCh].value;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                CH_MASK_TRG |= !timeAlignment[iCh].blockTriggers &lt;&lt; iCh;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                TRG_CNT_MODE = TRGcountMode;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            memcpy(BOARD_TYPE, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[boardType].name, 4);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } act;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings.html">  130</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings.html">Settings</a> {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        quint32 OR_GATE            : 8, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                PairedChannelsMode : 1, <span class="comment">//│00</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                   :23; <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings_1_1TimeAlignment.html">  134</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings_1_1TimeAlignment.html">TimeAlignment</a> {          <span class="comment">//┐</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            qint32                      <span class="comment">//│</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                value              :12, <span class="comment">//│</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                blockTriggers      : 1, <span class="comment">//│01-0C</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                   :19; <span class="comment">//│</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        } TIME_ALIGN           [12]   ;  <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        quint32 _reservedSpace0[0x25 - 0x0C - 1],</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                ADC_RANGE      [12][2], <span class="comment">//]25-3C</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                TRGchargeLevelHi   :12, <span class="comment">//┐</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                TRGchargeLevelLo   : 4, <span class="comment">//│3D</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                _reservedSpace1[0x7C - 0x3D - 1],</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                CH_MASK_DATA          , <span class="comment">//]7C</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                _reservedSpace2[0x80 - 0x7C - 1];</div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings_1_1ChannelSettings.html">  148</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings_1_1ChannelSettings.html">ChannelSettings</a> {        <span class="comment">//┐</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            quint32 CFD_THRESHOLD  :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            qint32  CFD_ZERO       :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                   :16, <span class="comment">//│80-AF</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    ADC_ZERO       :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            quint32 ADC_DELAY      :16, <span class="comment">//│</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                   :16; <span class="comment">//│</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        } Ch[12];                       <span class="comment">//⌡</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        quint32  THRESHOLD_CALIBR[12] , <span class="comment">//]B0-BB</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                _reservedSpace3[0xD8 - 0xBB - 1];</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a> GBT;       <span class="comment">//]D8-E7</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        quint32 *registers = (quint32 *)<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; regblocks {{0x00, 0x0C}, <span class="comment">//block0     , 13 registers</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                         {0x25, 0x3D}, <span class="comment">//block1     , 25 registers</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                                         {0x7C, 0x7C}, <span class="comment">//CH_MASK_DATA</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                                         {0x80, 0xBB}, <span class="comment">//block2     , 60 registers</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                                         {0xD8, 0xE4}};<span class="comment">//GBT control, 13 registers</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    } set;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="structTypePM_1_1Counters.html">  170</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Counters.html">Counters</a> {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint16</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            addressFIFO     = 0x100,</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            addressFIFOload = 0x101;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint8</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            number = 24,</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            addressDirect   =  0xC0;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        quint32 FIFOload;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        QDateTime newTime, oldTime = QDateTime::currentDateTime();</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            quint32 New[number] = {0};</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                quint32 CFD,</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        TRG;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            } Ch[12];</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        };</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        quint32 Old[number] = {0};</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordtype">float</span> rate[number] = {-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1};</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordtype">float</span> CFD,</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                      TRG;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            } rateCh[12];</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        };</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="structGBTcounters.html">GBTcounters</a> GBT;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    } counters;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    QList&lt;DimService *&gt; services;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    QList&lt;DimCommand *&gt; commands;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    quint16 FEEid;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keyword">const</span> quint16 baseAddress;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *name;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    QString fullName()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;PM&quot;</span> + QString(name); }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="structTRGsyncStatus.html">TRGsyncStatus</a> &amp;TRGsync;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keyword">struct </span>{ quint32</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        BCsyncLostInRun : 1 = 0,</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        earlyHeader     : 1 = 0;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    } errorsLogged;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordtype">bool</span> isOK() { <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;         act.mainPLLlocked &amp;&amp;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;         act.TDC1PLLlocked &amp;&amp;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;         act.TDC2PLLlocked &amp;&amp;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;         act.TDC3PLLlocked &amp;&amp;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        !act.TDC1syncError &amp;&amp;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        !act.TDC2syncError &amp;&amp;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        !act.TDC3syncError &amp;&amp;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;         TRGsync.linkOK    &amp;&amp;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        !TRGsync.syncError &amp;&amp;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;         act.restartReasonCode != 2 ; <span class="comment">//not by PLL relock</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">bool</span> GBTisOK()<span class="keyword"> const </span>{ <span class="keywordflow">return</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        act.GBT.isOK() &amp;&amp;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        act.GBTRxReady;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordtype">bool</span> setParameter(QString parameterName, quint32 value, quint8 iCh = 0) {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">if</span> (!PMparameters.contains(parameterName)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="structParameter.html">Parameter</a> par = PMparameters[parameterName];</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        quint32 &amp;reg = set.registers[par.address + iCh * par.interval];</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        reg = changeNbits(reg, par.bitwidth, par.bitshift, value);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
+<a href="PM_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef PM_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define PM_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FITboardsCommon_8h.html">FITboardsCommon.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="PM_8h.html#a49ae402d922c8971cabfa68a00442eae">   12</a></span>&#160;<span class="keyword">const</span> QHash&lt;QString, Parameter&gt; <a class="code" href="PM_8h.html#a49ae402d922c8971cabfa68a00442eae">PMparameters</a> = {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">//name                  address width shift interval</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {<span class="stringliteral">&quot;OR_GATE&quot;</span>              , {0x00,  8,  0}      },</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {<span class="stringliteral">&quot;PairedChannelsMode&quot;</span>   , {0x00,  1,  8}      },</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {<span class="stringliteral">&quot;TIME_ALIGN&quot;</span>           , {0x01, 12,  0,    1}},</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {<span class="stringliteral">&quot;noTriggerMode&quot;</span>        , {0x01,  1, 12,    1}},</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {<span class="stringliteral">&quot;ADC0_RANGE&quot;</span>           , {0x25, 32,  0,    2}},</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {<span class="stringliteral">&quot;ADC1_RANGE&quot;</span>           , {0x26, 32,  0,    2}},</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {<span class="stringliteral">&quot;TRGchargeLevelHi&quot;</span>     , {0x3D, 12,  0}    }, <span class="comment">//formerly known as CFD_SATR</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {<span class="stringliteral">&quot;TRGchargeLevelLo&quot;</span>     , {0x3D,  4, 12}    },</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_DATA&quot;</span>         ,  0x7C               },</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {<span class="stringliteral">&quot;TRG_CNT_MODE&quot;</span>         , {0x7F,  1, 10}      },</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {<span class="stringliteral">&quot;CFD_THRESHOLD&quot;</span>        , {0x80, 32,  0,    4}},</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {<span class="stringliteral">&quot;CFD_ZERO&quot;</span>             , {0x81, 32,  0,    4}},</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {<span class="stringliteral">&quot;ADC_ZERO&quot;</span>             , {0x82, 32,  0,    4}},</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {<span class="stringliteral">&quot;ADC_DELAY&quot;</span>            , {0x83, 32,  0,    4}},</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {<span class="stringliteral">&quot;THRESHOLD_CALIBR&quot;</span>     , {0xB0, 32,  0,    1}}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structTypePM.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTypePM.html">TypePM</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html">   36</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues.html">ActualValues</a>{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        quint32 OR_GATE            : 8, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                PairedChannelsMode : 1, <span class="comment">//│00</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                   :23; <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">   40</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">TimeAlignment</a> {          <span class="comment">//┐</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            qint32                      <span class="comment">//│</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                value              :12, <span class="comment">//│</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                blockTriggers      : 1, <span class="comment">//│01-0C</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                   :19; <span class="comment">//│</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }      timeAlignment[12]      ; <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        quint32 ADC_BASELINE[12][2]   , <span class="comment">//]0D-24 //[Ch][0] for ADC0, [Ch][1] for ADC1</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                ADC_RANGE   [12][2]   , <span class="comment">//]25-3C</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                TRGchargeLevelHi   :12, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                TRGchargeLevelLo   : 4, <span class="comment">//│3D</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                   :16; <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        qint32  TDC1tuning         : 8, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                TDC2tuning         : 8, <span class="comment">//│3E</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                TDC3tuning         : 8, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                   :24; <span class="comment">//┘3F</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        quint8  RAW_TDC_DATA[12][4]   ; <span class="comment">//]40-4B //[Ch][0] for val1, [Ch][1] for val2</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        quint32 DISPERSION  [12][2]   ; <span class="comment">//]4C-63</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        qint16  MEANAMPL    [12][2][2]; <span class="comment">//]64-7B //[Ch][0][0] for ADC0, [Ch][1][0] for ADC1</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        quint32 CH_MASK_DATA          , <span class="comment">//]7C</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                CH_BASELINES_NOK      , <span class="comment">//]7D</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                _reservedSpace0       , <span class="comment">//]7E</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                mainPLLlocked      : 1, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                TDC1PLLlocked      : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                TDC2PLLlocked      : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                TDC3PLLlocked      : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                GBTRxReady         : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                GBTRxError         : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                TDC1syncError      : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                TDC2syncError      : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                TDC3syncError      : 1, <span class="comment">//│7F</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                RESET_COUNTERS     : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                TRGcountMode       : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                restartDetected    : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                GBTRxPhaseError    : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                BCIDsyncLost       : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                droppingHits       : 1, <span class="comment">//│</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                   :17; <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">   78</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">ChannelSettings</a> {        <span class="comment">//┐</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            quint32 CFD_THRESHOLD  :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            qint32  CFD_ZERO       :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                   :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    ADC_ZERO       :16, <span class="comment">//│80-AF</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            quint32 ADC_DELAY      :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        } Ch[12];                       <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        quint32 THRESHOLD_CALIBR[12]  , <span class="comment">//]B0-BB</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                boardTemperature   :16, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                   :16; <span class="comment">//┘BC</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        quint32 boardType          : 2, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                   : 6, <span class="comment">//│</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                SERIAL_NUM         : 8, <span class="comment">//│BD</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                restartReasonCode  : 2, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                   :30, <span class="comment">//┘BE</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                _reservedSpace1[0xD8 - 0xBE - 1];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="structGBTunit.html">GBTunit</a> GBT;                    <span class="comment">//]D8-F1</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        quint32 _reservedSpace2[0xF7 - 0xF1 - 1];</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="structTimestamp.html">Timestamp</a> FW_TIME_MCU;      <span class="comment">//]F7</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        quint32 _reservedSpace3[0xFC - 0xF7 - 1];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        quint32 FPGAtemperature,        <span class="comment">//]FC</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                voltage1,               <span class="comment">//]FD</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                voltage1_8;             <span class="comment">//]FE</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="structTimestamp.html">Timestamp</a> FW_TIME_FPGA;         <span class="comment">//]FF</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html#a223dae84c720d99a95e1f9392ea4c948">  108</a></span>&#160;        quint32 *<a class="code" href="structTypePM_1_1ActualValues.html#a223dae84c720d99a95e1f9392ea4c948">registers</a> = (quint32 *)<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html#a450c8e4131af36a360a0268afb037f17">  111</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; <a class="code" href="structTypePM_1_1ActualValues.html#a450c8e4131af36a360a0268afb037f17">regblocks</a> {{0x00, 0x7D}, <span class="comment">//block0     , 126 registers</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                         {0x7F, 0xBE}, <span class="comment">//block1     ,  64 registers</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                                         {0xD8, 0xE4}, <span class="comment">//GBTcontrol ,  13 registers</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                                         {0xE8, 0xF1}, <span class="comment">//GBTstatus  ,  10 registers</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                         {0xF7, 0xF7}, <span class="comment">//FW_TIME_MCU</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                         {0xFC, 0xFF}};<span class="comment">//block2     ,   4 registers</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"></span>        <span class="keywordtype">float</span> <span class="comment">//calculable values</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html#a596e73157afead72aad61c409273dd5b">  119</a></span>&#160;            <a class="code" href="structTypePM_1_1ActualValues.html#a596e73157afead72aad61c409273dd5b">TEMP_BOARD</a> = 20.0F,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            TEMP_FPGA  = 20.0F,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            VOLTAGE_1V   = 1.0F,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            VOLTAGE_1_8V = 1.8F,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            RMS_Ch[12][2]; <span class="comment">//[Ch][0] for ADC0, [Ch][1] for ADC1</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        qint16</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            TIME_ALIGN[12]  ,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            TRG_CNT_MODE    ;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        quint32 CH_MASK_TRG;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordtype">char</span> BOARD_TYPE[4] = {0};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structTypePM_1_1ActualValues.html#a39ea629ab693178484ddc87cb0892022">  131</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structTypePM_1_1ActualValues.html#a39ea629ab693178484ddc87cb0892022">calculateValues</a>() {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <a class="code" href="structTypePM_1_1ActualValues.html#a596e73157afead72aad61c409273dd5b">TEMP_BOARD</a>   = boardTemperature / 10.;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            TEMP_FPGA    = FPGAtemperature  * 503.975 / 65536 - 273.15;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            VOLTAGE_1V   = voltage1         *   3.    / 65536;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            VOLTAGE_1_8V = voltage1_8       *   3.    / 65536;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            CH_MASK_TRG = 0;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">for</span> (quint8 iCh=0; iCh&lt;12; ++iCh) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                RMS_Ch[iCh][0] = sqrt(DISPERSION[iCh][0]);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                RMS_Ch[iCh][1] = sqrt(DISPERSION[iCh][1]);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                TIME_ALIGN[iCh] = timeAlignment[iCh].value;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                CH_MASK_TRG |= !timeAlignment[iCh].blockTriggers &lt;&lt; iCh;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                TRG_CNT_MODE = TRGcountMode;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            memcpy(BOARD_TYPE, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[boardType].<a class="code" href="structTypePM.html#aba3535360c3c907c92201ea92626d303">name</a>, 4);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    } act;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings.html">  149</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings.html">Settings</a> {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        quint32 OR_GATE            : 8, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                PairedChannelsMode : 1, <span class="comment">//│00</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                   :23; <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings_1_1TimeAlignment.html">  153</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings_1_1TimeAlignment.html">TimeAlignment</a> {          <span class="comment">//┐</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            qint32                      <span class="comment">//│</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                value              :12, <span class="comment">//│</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                blockTriggers      : 1, <span class="comment">//│01-0C</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                   :19; <span class="comment">//│</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        } TIME_ALIGN           [12]   ;  <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        quint32 _reservedSpace0[0x25 - 0x0C - 1],</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                ADC_RANGE      [12][2], <span class="comment">//]25-3C</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                TRGchargeLevelHi   :12, <span class="comment">//┐</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                TRGchargeLevelLo   : 4, <span class="comment">//│3D</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                   :16, <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                _reservedSpace1[0x7C - 0x3D - 1],</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                CH_MASK_DATA          , <span class="comment">//]7C</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                _reservedSpace2[0x80 - 0x7C - 1];</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings_1_1ChannelSettings.html">  167</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Settings_1_1ChannelSettings.html">ChannelSettings</a> {        <span class="comment">//┐</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            quint32 CFD_THRESHOLD  :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            qint32  CFD_ZERO       :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                   :16, <span class="comment">//│80-AF</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    ADC_ZERO       :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            quint32 ADC_DELAY      :16, <span class="comment">//│</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                   :16; <span class="comment">//│</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        } Ch[12];                       <span class="comment">//⌡</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        quint32  THRESHOLD_CALIBR[12] , <span class="comment">//]B0-BB</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                _reservedSpace3[0xD8 - 0xBB - 1];</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a> GBT;       <span class="comment">//]D8-E7</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings.html#ad4a6f90798958c51b1d650981c5f4e47">  182</a></span>&#160;        quint32 *<a class="code" href="structTypePM_1_1Settings.html#ad4a6f90798958c51b1d650981c5f4e47">registers</a> = (quint32 *)<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="structTypePM_1_1Settings.html#a79b10e68cd4d05f6105b0bbdd289a848">  185</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; <a class="code" href="structTypePM_1_1Settings.html#a79b10e68cd4d05f6105b0bbdd289a848">regblocks</a> {{0x00, 0x0C}, <span class="comment">//block0     , 13 registers</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                                         {0x25, 0x3D}, <span class="comment">//block1     , 25 registers</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                         {0x7C, 0x7C}, <span class="comment">//CH_MASK_DATA</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                                         {0x80, 0xBB}, <span class="comment">//block2     , 60 registers</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                                         {0xD8, 0xE4}};<span class="comment">//GBT control, 13 registers</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    } set;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="structTypePM_1_1Counters.html">  193</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypePM_1_1Counters.html">Counters</a> {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint16</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            addressFIFO     = 0x100,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            addressFIFOload = 0x101;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint8</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            number = 24,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            addressDirect   =  0xC0;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        quint32 FIFOload;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        QDateTime newTime, oldTime = QDateTime::currentDateTime();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            quint32 New[number] = {0};</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                quint32 CFD,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        TRG;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            } Ch[12];</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        };</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        quint32 Old[number] = {0};</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordtype">float</span> rate[number] = {-1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1, -1,-1,-1,-1,-1,-1};</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordtype">float</span> CFD,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                      TRG;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            } rateCh[12];</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        };</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="structGBTcounters.html">GBTcounters</a> GBT;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    } counters;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="structTypePM.html#aa9f1baa93f1489e56a3c5e78e1cc4f1e">  221</a></span>&#160;    QList&lt;DimService *&gt; <a class="code" href="structTypePM.html#aa9f1baa93f1489e56a3c5e78e1cc4f1e">services</a>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="structTypePM.html#a061f2496dd4fe95984a384916f0dd598">  224</a></span>&#160;    QList&lt;DimCommand *&gt; <a class="code" href="structTypePM.html#a061f2496dd4fe95984a384916f0dd598">commands</a>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="structTypePM.html#a5e55fc1399c7ae517c5b81438a6ca0a2">  227</a></span>&#160;    quint16 <a class="code" href="structTypePM.html#a5e55fc1399c7ae517c5b81438a6ca0a2">FEEid</a>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="structTypePM.html#a033224149d6be6b2c6b6d1c05ba7203d">  230</a></span>&#160;    <span class="keyword">const</span> quint16 <a class="code" href="structTypePM.html#a033224149d6be6b2c6b6d1c05ba7203d">baseAddress</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="structTypePM.html#aba3535360c3c907c92201ea92626d303">  233</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structTypePM.html#aba3535360c3c907c92201ea92626d303">name</a>;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="structTypePM.html">TypePM</a>(quint16 addr, <span class="keyword">const</span> <span class="keywordtype">char</span> *PMname, <a class="code" href="structTRGsyncStatus.html">TRGsyncStatus</a> &amp;TRGsyncRef) : baseAddress(addr), name(PMname), TRGsync(TRGsyncRef) {}</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;};</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PM_H</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="structTypePM.html#aed32cbea3489e68aed27adbd270be52c">  236</a></span>&#160;    QString <a class="code" href="structTypePM.html#aed32cbea3489e68aed27adbd270be52c">fullName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;PM&quot;</span> + QString(<a class="code" href="structTypePM.html#aba3535360c3c907c92201ea92626d303">name</a>); }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">  239</a></span>&#160;    <a class="code" href="structTRGsyncStatus.html">TRGsyncStatus</a> &amp;<a class="code" href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">TRGsync</a>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keyword">struct </span>{ quint32</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        BCsyncLostInRun : 1 = 0,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        earlyHeader     : 1 = 0;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="structTypePM.html#aabea9b630e981c77740f9e65136198a0">  245</a></span>&#160;    } <a class="code" href="structTypePM.html#aabea9b630e981c77740f9e65136198a0">errorsLogged</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="structTypePM.html#acb22a1b30e036da4001f92abb5b4566d">  248</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structTypePM.html#acb22a1b30e036da4001f92abb5b4566d">isOK</a>() { <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;         act.mainPLLlocked &amp;&amp;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;         act.TDC1PLLlocked &amp;&amp;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;         act.TDC2PLLlocked &amp;&amp;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;         act.TDC3PLLlocked &amp;&amp;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        !act.TDC1syncError &amp;&amp;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        !act.TDC2syncError &amp;&amp;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        !act.TDC3syncError &amp;&amp;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;         <a class="code" href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">TRGsync</a>.linkOK    &amp;&amp;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        !<a class="code" href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">TRGsync</a>.syncError &amp;&amp;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;         act.restartReasonCode != 2 ; <span class="comment">//not by PLL relock</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="structTypePM.html#a23037872da16d49ccf28d4d8db421d31">  262</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structTypePM.html#a23037872da16d49ccf28d4d8db421d31">GBTisOK</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        act.GBT.isOK() &amp;&amp;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        act.GBTRxReady;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="structTypePM.html#a184af4ac8486da9236dc62af55b0c993">  272</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structTypePM.html#a184af4ac8486da9236dc62af55b0c993">setParameter</a>(QString parameterName, quint32 value, quint8 iCh = 0) {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="PM_8h.html#a49ae402d922c8971cabfa68a00442eae">PMparameters</a>.contains(parameterName)) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <a class="code" href="structParameter.html">Parameter</a> par = <a class="code" href="PM_8h.html#a49ae402d922c8971cabfa68a00442eae">PMparameters</a>[parameterName];</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        quint32 &amp;reg = set.<a class="code" href="structTypePM_1_1Settings.html#ad4a6f90798958c51b1d650981c5f4e47">registers</a>[par.address + iCh * par.interval];</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        reg = <a class="code" href="FITboardsCommon_8h.html#ab4efef964d90280b511262a3af0fa292">changeNbits</a>(reg, par.bitwidth, par.bitshift, value);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="structTypePM.html#a1f3ee5f9df58ebf0fdc605dcaa490f9c">  284</a></span>&#160;    <a class="code" href="structTypePM.html#a1f3ee5f9df58ebf0fdc605dcaa490f9c">TypePM</a>(quint16 addr, <span class="keyword">const</span> <span class="keywordtype">char</span> *PMname, <a class="code" href="structTRGsyncStatus.html">TRGsyncStatus</a> &amp;TRGsyncRef) : <a class="code" href="structTypePM.html#a033224149d6be6b2c6b6d1c05ba7203d">baseAddress</a>(addr), <a class="code" href="structTypePM.html#aba3535360c3c907c92201ea92626d303">name</a>(PMname), <a class="code" href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">TRGsync</a>(TRGsyncRef) {}</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;};</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PM_H</span></div>
 <div class="ttc" id="aFITboardsCommon_8h_html"><div class="ttname"><a href="FITboardsCommon_8h.html">FITboardsCommon.h</a></div><div class="ttdoc">Functionalities common to all PM and TCM boards.</div></div>
 <div class="ttc" id="aFITboardsCommon_8h_html_a3d30f85e483d5cfb230f94918b1b0bf1"><div class="ttname"><a href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a></div><div class="ttdeci">const struct @0 FIT[4]</div><div class="ttdoc">Represents certain subdetector parameters.</div></div>
-<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:233</div></div>
-<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdoc">Where is GBT used currently?</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:86</div></div>
-<div class="ttc" id="astructParameter_html"><div class="ttname"><a href="structParameter.html">Parameter</a></div><div class="ttdoc">Board parameter, at a certain address with certain bitwidth, bitshift</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:314</div></div>
-<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:374</div></div>
-<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdoc">Represents a timestamp in a certain required format.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:350</div></div>
-<div class="ttc" id="astructTypePM_1_1ActualValues_1_1ChannelSettings_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">TypePM::ActualValues::ChannelSettings</a></div><div class="ttdef"><b>Definition:</b> PM.h:67</div></div>
-<div class="ttc" id="astructTypePM_1_1ActualValues_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">TypePM::ActualValues::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:29</div></div>
-<div class="ttc" id="astructTypePM_1_1ActualValues_html"><div class="ttname"><a href="structTypePM_1_1ActualValues.html">TypePM::ActualValues</a></div><div class="ttdef"><b>Definition:</b> PM.h:25</div></div>
-<div class="ttc" id="astructTypePM_1_1Counters_html"><div class="ttname"><a href="structTypePM_1_1Counters.html">TypePM::Counters</a></div><div class="ttdef"><b>Definition:</b> PM.h:170</div></div>
-<div class="ttc" id="astructTypePM_1_1Settings_1_1ChannelSettings_html"><div class="ttname"><a href="structTypePM_1_1Settings_1_1ChannelSettings.html">TypePM::Settings::ChannelSettings</a></div><div class="ttdef"><b>Definition:</b> PM.h:148</div></div>
-<div class="ttc" id="astructTypePM_1_1Settings_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1Settings_1_1TimeAlignment.html">TypePM::Settings::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:134</div></div>
-<div class="ttc" id="astructTypePM_1_1Settings_html"><div class="ttname"><a href="structTypePM_1_1Settings.html">TypePM::Settings</a></div><div class="ttdef"><b>Definition:</b> PM.h:130</div></div>
-<div class="ttc" id="astructTypePM_html"><div class="ttname"><a href="structTypePM.html">TypePM</a></div><div class="ttdef"><b>Definition:</b> PM.h:24</div></div>
-<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:87</div></div>
+<div class="ttc" id="aFITboardsCommon_8h_html_ab4efef964d90280b511262a3af0fa292"><div class="ttname"><a href="FITboardsCommon_8h.html#ab4efef964d90280b511262a3af0fa292">changeNbits</a></div><div class="ttdeci">quint32 changeNbits(quint32 base, quint8 length, quint8 shift, quint32 value)</div><div class="ttdoc">Modify a section of bits in a 32-bit unsigned integer.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:519</div></div>
+<div class="ttc" id="aPM_8h_html_a49ae402d922c8971cabfa68a00442eae"><div class="ttname"><a href="PM_8h.html#a49ae402d922c8971cabfa68a00442eae">PMparameters</a></div><div class="ttdeci">const QHash&lt; QString, Parameter &gt; PMparameters</div><div class="ttdoc">The parameter list of a PM.</div><div class="ttdef"><b>Definition:</b> PM.h:12</div></div>
+<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdoc">Provides throughput measurment Usage: FITelectronics::read1PM, FITelectronic::sync.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:261</div></div>
+<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdoc">Stores data from GBT registers.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:104</div></div>
+<div class="ttc" id="astructParameter_html"><div class="ttname"><a href="structParameter.html">Parameter</a></div><div class="ttdoc">Board parameter, at a certain address with certain bitwidth, bitshift</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:347</div></div>
+<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:407</div></div>
+<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdoc">Represents a timestamp in a certain required format (ATXmega128a3u microcode timestamp)</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:383</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_1_1ChannelSettings_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1ChannelSettings.html">TypePM::ActualValues::ChannelSettings</a></div><div class="ttdef"><b>Definition:</b> PM.h:78</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1ActualValues_1_1TimeAlignment.html">TypePM::ActualValues::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:40</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_html"><div class="ttname"><a href="structTypePM_1_1ActualValues.html">TypePM::ActualValues</a></div><div class="ttdoc">The current values of a PM's registers - see FIT Wiki -&gt; FIT documentation -&gt; FEE Register Map (PM,...</div><div class="ttdef"><b>Definition:</b> PM.h:36</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_html_a223dae84c720d99a95e1f9392ea4c948"><div class="ttname"><a href="structTypePM_1_1ActualValues.html#a223dae84c720d99a95e1f9392ea4c948">TypePM::ActualValues::registers</a></div><div class="ttdeci">quint32 * registers</div><div class="ttdoc">Provides raw access to the PM registers.</div><div class="ttdef"><b>Definition:</b> PM.h:108</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_html_a39ea629ab693178484ddc87cb0892022"><div class="ttname"><a href="structTypePM_1_1ActualValues.html#a39ea629ab693178484ddc87cb0892022">TypePM::ActualValues::calculateValues</a></div><div class="ttdeci">void calculateValues()</div><div class="ttdoc">Calculates the calculable values from current raw values and sets their corresponding variable values...</div><div class="ttdef"><b>Definition:</b> PM.h:131</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_html_a450c8e4131af36a360a0268afb037f17"><div class="ttname"><a href="structTypePM_1_1ActualValues.html#a450c8e4131af36a360a0268afb037f17">TypePM::ActualValues::regblocks</a></div><div class="ttdeci">static const QVector&lt; regblock &gt; regblocks</div><div class="ttdoc">Provides access to the PM registers as register blocks.</div><div class="ttdef"><b>Definition:</b> PM.h:111</div></div>
+<div class="ttc" id="astructTypePM_1_1ActualValues_html_a596e73157afead72aad61c409273dd5b"><div class="ttname"><a href="structTypePM_1_1ActualValues.html#a596e73157afead72aad61c409273dd5b">TypePM::ActualValues::TEMP_BOARD</a></div><div class="ttdeci">float TEMP_BOARD</div><div class="ttdoc">calculable values</div><div class="ttdef"><b>Definition:</b> PM.h:119</div></div>
+<div class="ttc" id="astructTypePM_1_1Counters_html"><div class="ttname"><a href="structTypePM_1_1Counters.html">TypePM::Counters</a></div><div class="ttdoc">See slide 19</div><div class="ttdef"><b>Definition:</b> PM.h:193</div></div>
+<div class="ttc" id="astructTypePM_1_1Settings_1_1ChannelSettings_html"><div class="ttname"><a href="structTypePM_1_1Settings_1_1ChannelSettings.html">TypePM::Settings::ChannelSettings</a></div><div class="ttdef"><b>Definition:</b> PM.h:167</div></div>
+<div class="ttc" id="astructTypePM_1_1Settings_1_1TimeAlignment_html"><div class="ttname"><a href="structTypePM_1_1Settings_1_1TimeAlignment.html">TypePM::Settings::TimeAlignment</a></div><div class="ttdef"><b>Definition:</b> PM.h:153</div></div>
+<div class="ttc" id="astructTypePM_1_1Settings_html"><div class="ttname"><a href="structTypePM_1_1Settings.html">TypePM::Settings</a></div><div class="ttdoc">Settings (writable registers) of a PM.</div><div class="ttdef"><b>Definition:</b> PM.h:149</div></div>
+<div class="ttc" id="astructTypePM_1_1Settings_html_a79b10e68cd4d05f6105b0bbdd289a848"><div class="ttname"><a href="structTypePM_1_1Settings.html#a79b10e68cd4d05f6105b0bbdd289a848">TypePM::Settings::regblocks</a></div><div class="ttdeci">static const QVector&lt; regblock &gt; regblocks</div><div class="ttdoc">Provides access to the PM registers as register blocks.</div><div class="ttdef"><b>Definition:</b> PM.h:185</div></div>
+<div class="ttc" id="astructTypePM_1_1Settings_html_ad4a6f90798958c51b1d650981c5f4e47"><div class="ttname"><a href="structTypePM_1_1Settings.html#ad4a6f90798958c51b1d650981c5f4e47">TypePM::Settings::registers</a></div><div class="ttdeci">quint32 * registers</div><div class="ttdoc">Provides raw access to the PM registers.</div><div class="ttdef"><b>Definition:</b> PM.h:182</div></div>
+<div class="ttc" id="astructTypePM_html"><div class="ttname"><a href="structTypePM.html">TypePM</a></div><div class="ttdoc">Represents a PM (Processing Module)</div><div class="ttdef"><b>Definition:</b> PM.h:32</div></div>
+<div class="ttc" id="astructTypePM_html_a033224149d6be6b2c6b6d1c05ba7203d"><div class="ttname"><a href="structTypePM.html#a033224149d6be6b2c6b6d1c05ba7203d">TypePM::baseAddress</a></div><div class="ttdeci">const quint16 baseAddress</div><div class="ttdoc">?</div><div class="ttdef"><b>Definition:</b> PM.h:230</div></div>
+<div class="ttc" id="astructTypePM_html_a061f2496dd4fe95984a384916f0dd598"><div class="ttname"><a href="structTypePM.html#a061f2496dd4fe95984a384916f0dd598">TypePM::commands</a></div><div class="ttdeci">QList&lt; DimCommand * &gt; commands</div><div class="ttdoc">List of provided DIM commands.</div><div class="ttdef"><b>Definition:</b> PM.h:224</div></div>
+<div class="ttc" id="astructTypePM_html_a184af4ac8486da9236dc62af55b0c993"><div class="ttname"><a href="structTypePM.html#a184af4ac8486da9236dc62af55b0c993">TypePM::setParameter</a></div><div class="ttdeci">bool setParameter(QString parameterName, quint32 value, quint8 iCh=0)</div><div class="ttdoc">Sets a parameter in set (Settings)</div><div class="ttdef"><b>Definition:</b> PM.h:272</div></div>
+<div class="ttc" id="astructTypePM_html_a1f3ee5f9df58ebf0fdc605dcaa490f9c"><div class="ttname"><a href="structTypePM.html#a1f3ee5f9df58ebf0fdc605dcaa490f9c">TypePM::TypePM</a></div><div class="ttdeci">TypePM(quint16 addr, const char *PMname, TRGsyncStatus &amp;TRGsyncRef)</div><div class="ttdoc">Constructor of a PM.</div><div class="ttdef"><b>Definition:</b> PM.h:284</div></div>
+<div class="ttc" id="astructTypePM_html_a23037872da16d49ccf28d4d8db421d31"><div class="ttname"><a href="structTypePM.html#a23037872da16d49ccf28d4d8db421d31">TypePM::GBTisOK</a></div><div class="ttdeci">bool GBTisOK() const</div><div class="ttdoc">Checks whether GBT is ready to use.</div><div class="ttdef"><b>Definition:</b> PM.h:262</div></div>
+<div class="ttc" id="astructTypePM_html_a5e55fc1399c7ae517c5b81438a6ca0a2"><div class="ttname"><a href="structTypePM.html#a5e55fc1399c7ae517c5b81438a6ca0a2">TypePM::FEEid</a></div><div class="ttdeci">quint16 FEEid</div><div class="ttdoc">?</div><div class="ttdef"><b>Definition:</b> PM.h:227</div></div>
+<div class="ttc" id="astructTypePM_html_a64b9ee4bfe0b7e22d251995f4cc04509"><div class="ttname"><a href="structTypePM.html#a64b9ee4bfe0b7e22d251995f4cc04509">TypePM::TRGsync</a></div><div class="ttdeci">TRGsyncStatus &amp; TRGsync</div><div class="ttdoc">?</div><div class="ttdef"><b>Definition:</b> PM.h:239</div></div>
+<div class="ttc" id="astructTypePM_html_aa9f1baa93f1489e56a3c5e78e1cc4f1e"><div class="ttname"><a href="structTypePM.html#aa9f1baa93f1489e56a3c5e78e1cc4f1e">TypePM::services</a></div><div class="ttdeci">QList&lt; DimService * &gt; services</div><div class="ttdoc">List of provided DIM services.</div><div class="ttdef"><b>Definition:</b> PM.h:221</div></div>
+<div class="ttc" id="astructTypePM_html_aabea9b630e981c77740f9e65136198a0"><div class="ttname"><a href="structTypePM.html#aabea9b630e981c77740f9e65136198a0">TypePM::errorsLogged</a></div><div class="ttdeci">struct TypePM::@10 errorsLogged</div><div class="ttdoc">?</div></div>
+<div class="ttc" id="astructTypePM_html_aba3535360c3c907c92201ea92626d303"><div class="ttname"><a href="structTypePM.html#aba3535360c3c907c92201ea92626d303">TypePM::name</a></div><div class="ttdeci">const char * name</div><div class="ttdoc">Name of the PM.</div><div class="ttdef"><b>Definition:</b> PM.h:233</div></div>
+<div class="ttc" id="astructTypePM_html_acb22a1b30e036da4001f92abb5b4566d"><div class="ttname"><a href="structTypePM.html#acb22a1b30e036da4001f92abb5b4566d">TypePM::isOK</a></div><div class="ttdeci">bool isOK()</div><div class="ttdoc">checks whether the PM module (aside from GBT) works as expected</div><div class="ttdef"><b>Definition:</b> PM.h:248</div></div>
+<div class="ttc" id="astructTypePM_html_aed32cbea3489e68aed27adbd270be52c"><div class="ttname"><a href="structTypePM.html#aed32cbea3489e68aed27adbd270be52c">TypePM::fullName</a></div><div class="ttdeci">QString fullName() const</div><div class="ttdoc">Name of the PM, prefixed with 'PM'.</div><div class="ttdef"><b>Definition:</b> PM.h:236</div></div>
+<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:105</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

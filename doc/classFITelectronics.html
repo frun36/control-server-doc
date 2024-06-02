@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Important class, manages (among others) DIM service creation.  
+<p>Manages the entirety of FIT's electronics (or just a single subdetector?)  
  <a href="classFITelectronics.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="FITelectronics_8h_source.html">FITelectronics.h</a>&gt;</code></p>
@@ -96,7 +96,8 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:a2b317fbfb7f995e482859470f2c8face"><td class="memItemLeft" align="right" valign="top"><a id="a2b317fbfb7f995e482859470f2c8face"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>executeDIMcommand</b> (DimCommand *cmd, void *data)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a2b317fbfb7f995e482859470f2c8face">executeDIMcommand</a> (DimCommand *cmd, void *data)</td></tr>
+<tr class="memdesc:a2b317fbfb7f995e482859470f2c8face"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes command <code>cmd</code>, calling its callback from <code><a class="el" href="classFITelectronics.html#acff4b20ad7db9e9ac5baccca8685817e" title="Contains all DIM command handlers.">FITelectronics::allCommands</a></code> with <code>data</code> <br /></td></tr>
 <tr class="separator:a2b317fbfb7f995e482859470f2c8face"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac64227dff23884ca04f883ded537188a"><td class="memItemLeft" align="right" valign="top"><a id="ac64227dff23884ca04f883ded537188a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>fileWrite</b> (QString fileName)</td></tr>
@@ -117,7 +118,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>initGBT</b> ()</td></
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkPMlinks</b> ()</td></tr>
 <tr class="separator:a180aff2b04fee40e4d7beb9bc4c7bd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a033df8d30fb8675f06a2295f64e53456"><td class="memItemLeft" align="right" valign="top"><a id="a033df8d30fb8675f06a2295f64e53456"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeParameter</b> (QString name, quint64 val, quint16 FEEid, quint8 iCh=0)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeParameter</b> (QString <a class="el" href="FITboardsCommon_8h.html#abda2b1e603d356cfd667062701f0c0a2">name</a>, quint64 val, quint16 FEEid, quint8 iCh=0)</td></tr>
 <tr class="separator:a033df8d30fb8675f06a2295f64e53456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb7a1b38aea140dfe7a5321301dc8a1e"><td class="memItemLeft" align="right" valign="top"><a id="afb7a1b38aea140dfe7a5321301dc8a1e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>readCountersFIFO</b> ()</td></tr>
@@ -444,14 +445,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checkStatus</b> ()</t
 <tr class="memitem:a99f4b270f96744226c2da206342f6456 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="a99f4b270f96744226c2da206342f6456"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sync</b> ()=0</td></tr>
 <tr class="separator:a99f4b270f96744226c2da206342f6456 inherit pub_slots_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7c3aa409f7aa1c21b0157ed20d0f189 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="ac7c3aa409f7aa1c21b0157ed20d0f189"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeRegister</b> (quint32 address, quint32 data, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:ac7c3aa409f7aa1c21b0157ed20d0f189 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#ac7c3aa409f7aa1c21b0157ed20d0f189">writeRegister</a> (quint32 address, quint32 data, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:ac7c3aa409f7aa1c21b0157ed20d0f189 inherit pub_slots_classIPbusTarget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a register using IPbus.  <a href="classIPbusTarget.html#ac7c3aa409f7aa1c21b0157ed20d0f189">More...</a><br /></td></tr>
 <tr class="separator:ac7c3aa409f7aa1c21b0157ed20d0f189 inherit pub_slots_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cb6066982c7efdcb712062f6be6465f inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="a7cb6066982c7efdcb712062f6be6465f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBit</b> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:a7cb6066982c7efdcb712062f6be6465f inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#a7cb6066982c7efdcb712062f6be6465f">setBit</a> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:a7cb6066982c7efdcb712062f6be6465f inherit pub_slots_classIPbusTarget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a single bit of a register using IPbus.  <a href="classIPbusTarget.html#a7cb6066982c7efdcb712062f6be6465f">More...</a><br /></td></tr>
 <tr class="separator:a7cb6066982c7efdcb712062f6be6465f inherit pub_slots_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefdb99b09c18fc91c1afd4151aa21239 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="aefdb99b09c18fc91c1afd4151aa21239"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearBit</b> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:aefdb99b09c18fc91c1afd4151aa21239 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#aefdb99b09c18fc91c1afd4151aa21239">clearBit</a> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:aefdb99b09c18fc91c1afd4151aa21239 inherit pub_slots_classIPbusTarget"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a single bit of a register using IPbus.  <a href="classIPbusTarget.html#aefdb99b09c18fc91c1afd4151aa21239">More...</a><br /></td></tr>
 <tr class="separator:aefdb99b09c18fc91c1afd4151aa21239 inherit pub_slots_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e3e1fbb1ff8ad5d56e33160d82f0510 inherit pub_slots_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="a2e3e1fbb1ff8ad5d56e33160d82f0510"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>writeNbits</b> (quint32 address, quint32 data, quint8 nbits=16, quint8 shift=0, bool syncOnSuccess=true)</td></tr>
@@ -460,19 +461,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>writeNbits</b> (quint
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:af5bda1d754464666e6830a7764e3f3fc"><td class="memItemLeft" align="right" valign="top"><a id="af5bda1d754464666e6830a7764e3f3fc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>linksStatusReady</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#af5bda1d754464666e6830a7764e3f3fc">linksStatusReady</a> ()</td></tr>
+<tr class="memdesc:af5bda1d754464666e6830a7764e3f3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected in <code><a class="el" href="classMainWindow.html">MainWindow</a></code> constructor. <br /></td></tr>
 <tr class="separator:af5bda1d754464666e6830a7764e3f3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20744c4343154d78d898dfc92546f37e"><td class="memItemLeft" align="right" valign="top"><a id="a20744c4343154d78d898dfc92546f37e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>valuesReady</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a20744c4343154d78d898dfc92546f37e">valuesReady</a> ()</td></tr>
+<tr class="memdesc:a20744c4343154d78d898dfc92546f37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected in <code><a class="el" href="classMainWindow.html">MainWindow</a></code> constructor. <br /></td></tr>
 <tr class="separator:a20744c4343154d78d898dfc92546f37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3381ba0e8a328cbf08db877835b8ee2"><td class="memItemLeft" align="right" valign="top"><a id="ae3381ba0e8a328cbf08db877835b8ee2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>countersReady</b> (quint16 FEEid)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#ae3381ba0e8a328cbf08db877835b8ee2">countersReady</a> (quint16 FEEid)</td></tr>
+<tr class="memdesc:ae3381ba0e8a328cbf08db877835b8ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected to <code>MainWindow::updateCounters</code> and in <code>FITelectronics::adjustThresholds</code> <br /></td></tr>
 <tr class="separator:ae3381ba0e8a328cbf08db877835b8ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="memItemLeft" align="right" valign="top"><a id="aa8d4ffce67fd718ecd6d829884b4d6b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resetFinished</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#aa8d4ffce67fd718ecd6d829884b4d6b9">resetFinished</a> ()</td></tr>
+<tr class="memdesc:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected in <code><a class="el" href="classFITelectronics.html" title="Manages the entirety of FIT&#39;s electronics (or just a single subdetector?)">FITelectronics</a></code> constructor. <br /></td></tr>
 <tr class="separator:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0c671043b047e7b3602eb6ff9aa04e"><td class="memItemLeft" align="right" valign="top"><a id="a7a0c671043b047e7b3602eb6ff9aa04e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DIMcommandReceived</b> (DimCommand *, void *)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a7a0c671043b047e7b3602eb6ff9aa04e">DIMcommandReceived</a> (DimCommand *, void *)</td></tr>
+<tr class="memdesc:a7a0c671043b047e7b3602eb6ff9aa04e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected to <code><a class="el" href="classFITelectronics.html#a2b317fbfb7f995e482859470f2c8face" title="Executes command cmd, calling its callback from FITelectronics::allCommands with data">FITelectronics::executeDIMcommand</a></code> <br /></td></tr>
 <tr class="separator:a7a0c671043b047e7b3602eb6ff9aa04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_classIPbusTarget"><td colspan="2" onclick="javascript:toggleInherit('signals_classIPbusTarget')"><img src="closed.png" alt="-"/>&#160;Signals inherited from <a class="el" href="classIPbusTarget.html">IPbusTarget</a></td></tr>
 <tr class="memitem:a5bd2881de2f1117256278d6920050af5 inherit signals_classIPbusTarget"><td class="memItemLeft" align="right" valign="top"><a id="a5bd2881de2f1117256278d6920050af5"></a>
@@ -487,14 +493,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>IPbusStatusOK</b> ()<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:add365f7aafb56a36106ce6410e7df91b"><td class="memItemLeft" align="right" valign="top"><a id="add365f7aafb56a36106ce6410e7df91b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FITelectronics</b> (<a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a> sd)</td></tr>
+<tr class="memitem:add365f7aafb56a36106ce6410e7df91b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#add365f7aafb56a36106ce6410e7df91b">FITelectronics</a> (<a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a> sd)</td></tr>
+<tr class="memdesc:add365f7aafb56a36106ce6410e7df91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor - lots of logic to analyze.  <a href="classFITelectronics.html#add365f7aafb56a36106ce6410e7df91b">More...</a><br /></td></tr>
 <tr class="separator:add365f7aafb56a36106ce6410e7df91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab50d84856d80101763cda98a324000a4"><td class="memItemLeft" align="right" valign="top"><a id="ab50d84856d80101763cda98a324000a4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (QString st)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#ab50d84856d80101763cda98a324000a4">log</a> (QString st)</td></tr>
+<tr class="memdesc:ab50d84856d80101763cda98a324000a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs message <code>st</code> allong with current timestamp. <br /></td></tr>
 <tr class="separator:ab50d84856d80101763cda98a324000a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a928f62e071e08896e6f1b3503cdf64b8"><td class="memItemLeft" align="right" valign="top"><a id="a928f62e071e08896e6f1b3503cdf64b8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addCommand</b> (QList&lt; DimCommand * &gt; &amp;list, QString name, const char *format, std::function&lt; void(void *)&gt; function)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addCommand</b> (QList&lt; DimCommand * &gt; &amp;list, QString <a class="el" href="FITboardsCommon_8h.html#abda2b1e603d356cfd667062701f0c0a2">name</a>, const char *format, std::function&lt; void(void *)&gt; function)</td></tr>
 <tr class="separator:a928f62e071e08896e6f1b3503cdf64b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af758affff7d5234e77a6a870bf2d9600"><td class="memItemLeft" align="right" valign="top"><a id="af758affff7d5234e77a6a870bf2d9600"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addArrayCommand</b> (QString parameter)</td></tr>
@@ -506,10 +513,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addArrayCommand</b> (
 <tr class="memdesc:afdddafaa7aed4651a748c01da13d9691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates all DIM services for the TCM board, along with all system services.  <a href="classFITelectronics.html#afdddafaa7aed4651a748c01da13d9691">More...</a><br /></td></tr>
 <tr class="separator:afdddafaa7aed4651a748c01da13d9691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dbc6dbf204845222c9a4d62198433fd"><td class="memItemLeft" align="right" valign="top"><a id="a3dbc6dbf204845222c9a4d62198433fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deletePMservices</b> (<a class="el" href="structTypePM.html">TypePM</a> *pm)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a3dbc6dbf204845222c9a4d62198433fd">deletePMservices</a> (<a class="el" href="structTypePM.html">TypePM</a> *pm)</td></tr>
+<tr class="memdesc:a3dbc6dbf204845222c9a4d62198433fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocates memory and empties the containers of a given PM's services. <br /></td></tr>
 <tr class="separator:a3dbc6dbf204845222c9a4d62198433fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a028b4ebd48a0dcfb39b18c1e90f7dc39"><td class="memItemLeft" align="right" valign="top"><a id="a028b4ebd48a0dcfb39b18c1e90f7dc39"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteTCMservices</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a028b4ebd48a0dcfb39b18c1e90f7dc39">deleteTCMservices</a> ()</td></tr>
+<tr class="memdesc:a028b4ebd48a0dcfb39b18c1e90f7dc39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocates memory and empties the containers of the TCM's services. <br /></td></tr>
 <tr class="separator:a028b4ebd48a0dcfb39b18c1e90f7dc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade95e81d8f3d505f5267988ff3db570b"><td class="memItemLeft" align="right" valign="top"><a id="ade95e81d8f3d505f5267988ff3db570b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>commandHandler</b> ()</td></tr>
@@ -534,7 +543,8 @@ const quint16&#160;</td><td class="memItemRight" valign="bottom"><b>TCMid</b></t
 DimServer&#160;</td><td class="memItemRight" valign="bottom"><b>DIMserver</b></td></tr>
 <tr class="separator:ae9bdac5e7d51ed895e8237c3e4e904d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff4b20ad7db9e9ac5baccca8685817e"><td class="memItemLeft" align="right" valign="top"><a id="acff4b20ad7db9e9ac5baccca8685817e"></a>
-QHash&lt; DimCommand *, std::function&lt; void(void *)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>allCommands</b></td></tr>
+QHash&lt; DimCommand *, std::function&lt; void(void *)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#acff4b20ad7db9e9ac5baccca8685817e">allCommands</a></td></tr>
+<tr class="memdesc:acff4b20ad7db9e9ac5baccca8685817e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all DIM command handlers. <br /></td></tr>
 <tr class="separator:acff4b20ad7db9e9ac5baccca8685817e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c07556cc64a80e9376ff7ee3f907bdc"><td class="memItemLeft" align="right" valign="top"><a id="a0c07556cc64a80e9376ff7ee3f907bdc"></a>
 QList&lt; <a class="el" href="classAdvancedDIMservice.html">AdvancedDIMservice</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>services</b></td></tr>
@@ -563,7 +573,8 @@ struct <a class="el" href="structFITelectronics_1_1TypeServerStatus.html">FITele
 <tr class="memitem:a311a565e1b6e8408fe009557f0c79fb8"><td class="memItemLeft" align="right" valign="top"><a id="a311a565e1b6e8408fe009557f0c79fb8"></a>
 <a class="el" href="structTypeTCM.html">TypeTCM</a>&#160;</td><td class="memItemRight" valign="bottom"><b>TCM</b></td></tr>
 <tr class="separator:a311a565e1b6e8408fe009557f0c79fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fb3cddea6bc855f08fb92f1c60602ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTypePM.html">TypePM</a>&#160;</td><td class="memItemRight" valign="bottom"><b>allPMs</b> [20]</td></tr>
+<tr class="memitem:a5fb3cddea6bc855f08fb92f1c60602ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTypePM.html">TypePM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a5fb3cddea6bc855f08fb92f1c60602ba">allPMs</a> [20]</td></tr>
+<tr class="memdesc:a5fb3cddea6bc855f08fb92f1c60602ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array containing all PMs, ordered by link number.  <a href="classFITelectronics.html#a5fb3cddea6bc855f08fb92f1c60602ba">More...</a><br /></td></tr>
 <tr class="separator:a5fb3cddea6bc855f08fb92f1c60602ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad28e5644cf74aa240b7f00db53ce3edc"><td class="memItemLeft" align="right" valign="top"><a id="ad28e5644cf74aa240b7f00db53ce3edc"></a>
 QMap&lt; quint16, <a class="el" href="structTypePM.html">TypePM</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PM</b></td></tr>
@@ -575,10 +586,12 @@ QList&lt; <a class="el" href="structTypePM.html">TypePM</a> * &gt;&#160;</td><td
 QList&lt; <a class="el" href="structTypePM.html">TypePM</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PMsC</b></td></tr>
 <tr class="separator:a36410570372adf6317ee85941d35da33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39c602f1086c030092ff680d8f816dc9"><td class="memItemLeft" align="right" valign="top"><a id="a39c602f1086c030092ff680d8f816dc9"></a>
-QFile&#160;</td><td class="memItemRight" valign="bottom"><b>logFile</b></td></tr>
+QFile&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a39c602f1086c030092ff680d8f816dc9">logFile</a></td></tr>
+<tr class="memdesc:a39c602f1086c030092ff680d8f816dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">File containing the Control Server logs. <br /></td></tr>
 <tr class="separator:a39c602f1086c030092ff680d8f816dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0904400b4b028437e1b9812622a8ef0"><td class="memItemLeft" align="right" valign="top"><a id="ae0904400b4b028437e1b9812622a8ef0"></a>
-QTextStream&#160;</td><td class="memItemRight" valign="bottom"><b>logStream</b></td></tr>
+QTextStream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#ae0904400b4b028437e1b9812622a8ef0">logStream</a></td></tr>
+<tr class="memdesc:ae0904400b4b028437e1b9812622a8ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream related to <code>logFile</code> <br /></td></tr>
 <tr class="separator:ae0904400b4b028437e1b9812622a8ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94aeddf049569d44c64b85aba71a0f4a"><td class="memItemLeft" align="right" valign="top"><a id="a94aeddf049569d44c64b85aba71a0f4a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>PMsReady</b> = false</td></tr>
@@ -639,8 +652,58 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aa6b06ea1c4ac466c1037b94294c046f7 inherit pro_methods_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Important class, manages (among others) DIM service creation. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Manages the entirety of FIT's electronics (or just a single subdetector?) </p>
+<p>Responsibilities:</p><ul>
+<li>creating and deleting DIM services</li>
+<li>...? </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="add365f7aafb56a36106ce6410e7df91b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add365f7aafb56a36106ce6410e7df91b">&#9670;&nbsp;</a></span>FITelectronics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FITelectronics::FITelectronics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a>&#160;</td>
+          <td class="paramname"><em>sd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor - lots of logic to analyze. </p>
+<ul>
+<li>Initializes <code>logFile</code> and <code>logStream</code></li>
+<li>Some PM (<code>FEEid</code>) and TCM (<code>T1_SIGN</code> etc) initialization, depends on the value of <code>sd</code> - ?</li>
+<li>connects signals to slots - <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>review what the slots do:<ul>
+<li><code>shuttleTimer</code> timeout to <code>FITelectronics::inverseLaserPhase</code>,</li>
+<li><code>countersTimer</code> timeout - some IPbus transaction</li>
+<li>...</li>
+</ul>
+</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sd</td><td>? </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="afdddafaa7aed4651a748c01da13d9691"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdddafaa7aed4651a748c01da13d9691">&#9670;&nbsp;</a></span>createDIMservices()</h2>
 
@@ -711,8 +774,8 @@ Services (all of them are regular DIM services)</h2>
 <p>All service names prefixed with <code>pfx</code>, where</p>
 <p><code>pfx = QString::asprintf("%s/PM%s/", FIT[subdetector].name, pm-&gt;name);</code></p>
 <p>All services are connected with <code>pm</code> data stored in <code>pm-&gt;act.[service name]</code>, apart from <code>status/SERIAL_NUM</code>, which is mapped to <code>(char *)&amp;pm-&gt;act.registers[0xBD]+ 1</code></p>
-<h4><a class="anchor" id="autotoc_md1"></a>
-&lt;tt&gt;status&lt;/tt&gt;</h4>
+<h3><a class="anchor" id="autotoc_md1"></a>
+&lt;tt&gt;status&lt;/tt&gt;</h3>
 <ul>
 <li><code>status/TEMP_BOARD</code> - <code>float</code>, <code>size = 4</code></li>
 <li><code>status/TEMP_FPGA</code> - <code>float</code>, <code>size = 4</code></li>
@@ -724,8 +787,8 @@ Services (all of them are regular DIM services)</h2>
 <li><code>status/CH_BASELINES_NOK</code> - <code>int</code>, <code>size = 4</code></li>
 <li><code>status/SERIAL_NUM</code> - <code>short</code>, <code>size = 2</code> </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md2"></a>
-&lt;tt&gt;control&lt;/tt&gt;</h4>
+<h3><a class="anchor" id="autotoc_md2"></a>
+&lt;tt&gt;control&lt;/tt&gt;</h3>
 <ul>
 <li><code>control/CH_MASK_DATA/actual</code> - <code>int</code>, <code>size = 4</code></li>
 <li><code>control/CH_MASK_TRG/actual</code> - <code>int</code>, <code>size = 4</code></li>
@@ -773,8 +836,10 @@ Services (all of them are regular DIM services)</h2>
 <div class="line">        <a class="code" href="structTypePM.html">TypePM</a>(0x2600, <span class="stringliteral">&quot;C8&quot;</span>, TCM.act.TRG_SYNC_C[8]),</div>
 <div class="line">        <a class="code" href="structTypePM.html">TypePM</a>(0x2800, <span class="stringliteral">&quot;C9&quot;</span>, TCM.act.TRG_SYNC_C[9]),</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructTypePM_html"><div class="ttname"><a href="structTypePM.html">TypePM</a></div><div class="ttdef"><b>Definition:</b> PM.h:24</div></div>
+<div class="ttc" id="astructTypePM_html"><div class="ttname"><a href="structTypePM.html">TypePM</a></div><div class="ttdoc">Represents a PM (Processing Module)</div><div class="ttdef"><b>Definition:</b> PM.h:32</div></div>
 </div><!-- fragment -->
+<p>Array containing all PMs, ordered by link number. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

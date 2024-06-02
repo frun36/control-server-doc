@@ -84,7 +84,7 @@ Inheritance diagram for IPbusTarget:</div>
  <div class="center">
   <img src="classIPbusTarget.png" usemap="#IPbusTarget_map" alt=""/>
   <map id="IPbusTarget_map" name="IPbusTarget_map">
-<area href="classFITelectronics.html" title="Important class, manages (among others) DIM service creation." alt="FITelectronics" shape="rect" coords="0,112,92,136"/>
+<area href="classFITelectronics.html" title="Manages the entirety of FIT&#39;s electronics (or just a single subdetector?)" alt="FITelectronics" shape="rect" coords="0,112,92,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -99,14 +99,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>checkStatus</b> ()</t
 <tr class="memitem:a99f4b270f96744226c2da206342f6456"><td class="memItemLeft" align="right" valign="top"><a id="a99f4b270f96744226c2da206342f6456"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sync</b> ()=0</td></tr>
 <tr class="separator:a99f4b270f96744226c2da206342f6456"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7c3aa409f7aa1c21b0157ed20d0f189"><td class="memItemLeft" align="right" valign="top"><a id="ac7c3aa409f7aa1c21b0157ed20d0f189"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeRegister</b> (quint32 address, quint32 data, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:ac7c3aa409f7aa1c21b0157ed20d0f189"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#ac7c3aa409f7aa1c21b0157ed20d0f189">writeRegister</a> (quint32 address, quint32 data, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:ac7c3aa409f7aa1c21b0157ed20d0f189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a register using IPbus.  <a href="classIPbusTarget.html#ac7c3aa409f7aa1c21b0157ed20d0f189">More...</a><br /></td></tr>
 <tr class="separator:ac7c3aa409f7aa1c21b0157ed20d0f189"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cb6066982c7efdcb712062f6be6465f"><td class="memItemLeft" align="right" valign="top"><a id="a7cb6066982c7efdcb712062f6be6465f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBit</b> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:a7cb6066982c7efdcb712062f6be6465f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#a7cb6066982c7efdcb712062f6be6465f">setBit</a> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:a7cb6066982c7efdcb712062f6be6465f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a single bit of a register using IPbus.  <a href="classIPbusTarget.html#a7cb6066982c7efdcb712062f6be6465f">More...</a><br /></td></tr>
 <tr class="separator:a7cb6066982c7efdcb712062f6be6465f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefdb99b09c18fc91c1afd4151aa21239"><td class="memItemLeft" align="right" valign="top"><a id="aefdb99b09c18fc91c1afd4151aa21239"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearBit</b> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memitem:aefdb99b09c18fc91c1afd4151aa21239"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusTarget.html#aefdb99b09c18fc91c1afd4151aa21239">clearBit</a> (quint8 n, quint32 address, bool syncOnSuccess=true)</td></tr>
+<tr class="memdesc:aefdb99b09c18fc91c1afd4151aa21239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears a single bit of a register using IPbus.  <a href="classIPbusTarget.html#aefdb99b09c18fc91c1afd4151aa21239">More...</a><br /></td></tr>
 <tr class="separator:aefdb99b09c18fc91c1afd4151aa21239"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e3e1fbb1ff8ad5d56e33160d82f0510"><td class="memItemLeft" align="right" valign="top"><a id="a2e3e1fbb1ff8ad5d56e33160d82f0510"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>writeNbits</b> (quint32 address, quint32 data, quint8 nbits=16, quint8 shift=0, bool syncOnSuccess=true)</td></tr>
@@ -158,6 +158,58 @@ Protected Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An abstract class that provides communication mechanisms through the IPbus protocol. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aefdb99b09c18fc91c1afd4151aa21239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefdb99b09c18fc91c1afd4151aa21239">&#9670;&nbsp;</a></span>clearBit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusTarget::clearBit </td>
+          <td>(</td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>syncOnSuccess</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears a single bit of a register using IPbus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>bit position (0 - LSB) </td></tr>
+    <tr><td class="paramname">address</td><td>address of the register </td></tr>
+    <tr><td class="paramname">syncOnSuccess</td><td>whether <code>IPbus::sync</code> is to be called upon success </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aab67dea3f37571d40629ef8a6ec36c56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab67dea3f37571d40629ef8a6ec36c56">&#9670;&nbsp;</a></span>readRegister()</h2>
 
@@ -184,6 +236,58 @@ Protected Member Functions</h2></td></tr>
 
 <p>Initializes read transaction. </p>
 <p>Intializes read transaction from </p>
+
+</div>
+</div>
+<a id="a7cb6066982c7efdcb712062f6be6465f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cb6066982c7efdcb712062f6be6465f">&#9670;&nbsp;</a></span>setBit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusTarget::setBit </td>
+          <td>(</td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>syncOnSuccess</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets a single bit of a register using IPbus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>bit position (0 - LSB) </td></tr>
+    <tr><td class="paramname">address</td><td>address of the register </td></tr>
+    <tr><td class="paramname">syncOnSuccess</td><td>whether <code>IPbus::sync</code> is to be called upon success </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -236,6 +340,58 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the operation was successful, <code>false</code> otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ac7c3aa409f7aa1c21b0157ed20d0f189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7c3aa409f7aa1c21b0157ed20d0f189">&#9670;&nbsp;</a></span>writeRegister</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusTarget::writeRegister </td>
+          <td>(</td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>syncOnSuccess</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a register using IPbus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>address of the register </td></tr>
+    <tr><td class="paramname">data</td><td>new register value </td></tr>
+    <tr><td class="paramname">syncOnSuccess</td><td>whether <code>IPbus::sync</code> is to be called upon success </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

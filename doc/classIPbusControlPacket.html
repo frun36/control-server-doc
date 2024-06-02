@@ -86,13 +86,16 @@ Inheritance diagram for IPbusControlPacket:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
 <tr class="memitem:a0c0d4fe61195cb516cf701971fa21fbd"><td class="memItemLeft" align="right" valign="top"><a id="a0c0d4fe61195cb516cf701971fa21fbd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>error</b> (QString, errorType)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a0c0d4fe61195cb516cf701971fa21fbd">error</a> (QString, errorType)</td></tr>
+<tr class="memdesc:a0c0d4fe61195cb516cf701971fa21fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted on IPbus error. <br /></td></tr>
 <tr class="separator:a0c0d4fe61195cb516cf701971fa21fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affa6ad5dae6ebeadbed4482004594bfe"><td class="memItemLeft" align="right" valign="top"><a id="affa6ad5dae6ebeadbed4482004594bfe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>successfulRead</b> (quint8 nWords)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#affa6ad5dae6ebeadbed4482004594bfe">successfulRead</a> (quint8 nWords)</td></tr>
+<tr class="memdesc:affa6ad5dae6ebeadbed4482004594bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted upon successfully reading <code>nWords</code> <br /></td></tr>
 <tr class="separator:affa6ad5dae6ebeadbed4482004594bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae84bb6032922396253b9e887ade12e3f"><td class="memItemLeft" align="right" valign="top"><a id="ae84bb6032922396253b9e887ade12e3f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>successfulWrite</b> (quint8 nWords)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#ae84bb6032922396253b9e887ade12e3f">successfulWrite</a> (quint8 nWords)</td></tr>
+<tr class="memdesc:ae84bb6032922396253b9e887ade12e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emitted upon successfully writing <code>nWords</code> <br /></td></tr>
 <tr class="separator:ae84bb6032922396253b9e887ade12e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -112,8 +115,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6d230feac8b4d1d1e2ac967ec79fd903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a6d230feac8b4d1d1e2ac967ec79fd903">addWordToWrite</a> (quint32 address, quint32 value)</td></tr>
 <tr class="memdesc:a6d230feac8b4d1d1e2ac967ec79fd903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a writing transaction to the packet.  <a href="classIPbusControlPacket.html#a6d230feac8b4d1d1e2ac967ec79fd903">More...</a><br /></td></tr>
 <tr class="separator:a6d230feac8b4d1d1e2ac967ec79fd903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a987e71726ab49e9647dc1abc269a3106"><td class="memItemLeft" align="right" valign="top"><a id="a987e71726ab49e9647dc1abc269a3106"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addNBitsToChange</b> (quint32 address, quint32 data, quint8 nbits, quint8 shift=0)</td></tr>
+<tr class="memitem:a987e71726ab49e9647dc1abc269a3106"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a987e71726ab49e9647dc1abc269a3106">addNBitsToChange</a> (quint32 address, quint32 data, quint8 nbits, quint8 shift=0)</td></tr>
+<tr class="memdesc:a987e71726ab49e9647dc1abc269a3106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a transaction changing a n-bit block in a register.  <a href="classIPbusControlPacket.html#a987e71726ab49e9647dc1abc269a3106">More...</a><br /></td></tr>
 <tr class="separator:a987e71726ab49e9647dc1abc269a3106"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f8df412631fa9272f7ac8bf06416fc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIPbusControlPacket.html#a2f8df412631fa9272f7ac8bf06416fc2">processResponse</a> ()</td></tr>
 <tr class="memdesc:a2f8df412631fa9272f7ac8bf06416fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check transactions successfulness and copy read data to destination.  <a href="classIPbusControlPacket.html#a2f8df412631fa9272f7ac8bf06416fc2">More...</a><br /></td></tr>
@@ -186,6 +189,65 @@ quint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a987e71726ab49e9647dc1abc269a3106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a987e71726ab49e9647dc1abc269a3106">&#9670;&nbsp;</a></span>addNBitsToChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IPbusControlPacket::addNBitsToChange </td>
+          <td>(</td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint32&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>nbits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quint8&#160;</td>
+          <td class="paramname"><em>shift</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a transaction changing a n-bit block in a register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address of the register </td></tr>
+    <tr><td class="paramname">data</td><td>Values for the bits to be set - gets shifted by <code>shift</code> </td></tr>
+    <tr><td class="paramname">nbits</td><td>Number of bits to be changed (<code>mask = (1 &lt;&lt; nbits) - 1</code>) </td></tr>
+    <tr><td class="paramname">shift</td><td>Shift relative to the LSB (<code>mask &lt;&lt; shift</code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="afa5e28072b8ae72224253d4f15188bac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa5e28072b8ae72224253d4f15188bac">&#9670;&nbsp;</a></span>addTransaction()</h2>
 
@@ -409,7 +471,7 @@ response: <br  />
 </div><div class="memdoc">
 
 <p>Check transactions successfulness and copy read data to destination. </p>
-<dl class="section return"><dt>Returns</dt><dd><em><b>True</b></em> is returned if all transactions was successfull, otherwise ***False** is returned </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> is returned if all transactions were successful, otherwise <code>false</code> is returned </dd></dl>
 
 </div>
 </div>

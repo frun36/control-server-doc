@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['gbtcounters_23',['GBTcounters',['../structGBTcounters.html',1,'']]],
-  ['gbterrorreport_24',['GBTerrorReport',['../structGBTerrorReport.html',1,'']]],
-  ['gbtunit_25',['GBTunit',['../structGBTunit.html',1,'']]],
-  ['gbtword_26',['GBTword',['../structGBTword.html',1,'']]],
-  ['getsubdetectortypebyname_27',['getSubdetectorTypeByName',['../FITboardsCommon_8h.html#a8f727871cd98b5d553087e6a7d90a62f',1,'FITboardsCommon.h']]]
+  ['error_33',['error',['../classIPbusControlPacket.html#a0c0d4fe61195cb516cf701971fa21fbd',1,'IPbusControlPacket']]],
+  ['errorslogged_34',['errorsLogged',['../structTypePM.html#aabea9b630e981c77740f9e65136198a0',1,'TypePM']]],
+  ['executedimcommand_35',['executeDIMcommand',['../classFITelectronics.html#a2b317fbfb7f995e482859470f2c8face',1,'FITelectronics']]]
 ];

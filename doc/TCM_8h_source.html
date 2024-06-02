@@ -242,7 +242,7 @@ $(function() {
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            TEMP_FPGA    = FPGAtemperature  * 503.975 / 65536 - 273.15;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            VOLTAGE_1V   = voltage1         * 3.      / 65536;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            VOLTAGE_1_8V = voltage1_8       * 3.      / 65536;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            memcpy(BOARD_TYPE, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[boardType].name, 4);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            memcpy(BOARD_TYPE, <a class="code" href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a>[boardType].<a class="code" href="FITboardsCommon_8h.html#abda2b1e603d356cfd667062701f0c0a2">name</a>, 4);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            systemClock_MHz = externalClock ? LHCclock_MHz : 40.;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            TDCunit_ps = 1e6 / 30 / 64 / systemClock_MHz;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            halfBC_ns = 500. / systemClock_MHz;</div>
@@ -262,251 +262,262 @@ $(function() {
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        quint32 PM_MASK_TRG() { <span class="keywordflow">return</span> CH_MASK_C &lt;&lt; 10 | CH_MASK_A; }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    } act;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html">  215</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypeTCM_1_1Settings.html">Settings</a> {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        qint32  DELAY_A         :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                :16,  <span class="comment">//┘00</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                DELAY_C         :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                :16,  <span class="comment">//┘01</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                LASER_DELAY     :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                :16;  <span class="comment">//┘02</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        quint32 attenSteps      :14,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                :18,  <span class="comment">//┘03</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                EXT_SW          : 4,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                :28,  <span class="comment">//┘04</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                _reservedSpace0[0x08 - 0x04 - 1];</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        qint32  VTIME_LOW       :10,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                :22,  <span class="comment">//┘08</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                VTIME_HIGH      :10,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                :22;  <span class="comment">//┘09</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        quint32 T2_LEVEL_A      :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                :16,  <span class="comment">//┘0A</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                T2_LEVEL_C      :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                :16,  <span class="comment">//┘0B</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                T1_LEVEL_A      :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                :16,  <span class="comment">//┘0C</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                T1_LEVEL_C      :16,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                :16,  <span class="comment">//┘0D</span></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                ADD_C_DELAY     : 1,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                sidesCombMode   : 2,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                EXTENDED_READOUT: 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                corrCNTselect   : 4,  <span class="comment">//│0E</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                SC_EVAL_MODE    : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                FV0_MODE        : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                :22,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                _reservedSpace1[0x1A - 0x0E - 1],</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                CH_MASK_A       :10,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                :22,  <span class="comment">//┘1A</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                LASER_DIVIDER   :24,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                : 6,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                LASER_ENABLED   : 1,  <span class="comment">//│1B</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                LASER_SOURCE    : 1;  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        quint64 LASER_PATTERN      ;  <span class="comment">//]1C-1D</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        quint32 PM_MASK_SPI        ,  <span class="comment">//]1E</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                lsrTrgSupprDelay: 6,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                lsrTrgSupprDur  : 2,  <span class="comment">//│1F</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                :24,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                _reservedSpace2[0x3A - 0x1F - 1],</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                CH_MASK_C       :10,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                :22,  <span class="comment">//┘3A</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                _reservedSpace3[0x50 - 0x3A - 1],</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                COUNTERS_UPD_RATE,    <span class="comment">//]50</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                _reservedSpace4[0x60 - 0x50 - 1],</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                T5_SIGN         : 7,  <span class="comment">//│60</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                :18,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                T5_RATE         :31,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                : 1,  <span class="comment">//┘61</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                T4_SIGN         : 7,  <span class="comment">//│62</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                :18,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                T4_RATE         :31,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                : 1,  <span class="comment">//┘63</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                T2_SIGN         : 7,  <span class="comment">//│64</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                :18,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                T2_RATE         :31,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                : 1,  <span class="comment">//┘65</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                T1_SIGN         : 7,  <span class="comment">//│66</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                :18,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                T1_RATE         :31,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                : 1,  <span class="comment">//┘67</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                T3_SIGN         : 7,  <span class="comment">//│68</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                :18,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                T3_RATE         :31,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                : 1,  <span class="comment">//┘69</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                T5_MODE         : 2,  <span class="comment">//┐</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                T5_ENABLED      : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                T4_MODE         : 2,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                T4_ENABLED      : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                T2_MODE         : 2,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                T2_ENABLED      : 1,  <span class="comment">//│6A</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                T1_MODE         : 2,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                T1_ENABLED      : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                T3_MODE         : 2,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                T3_ENABLED      : 1,  <span class="comment">//│</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                :17,  <span class="comment">//┘</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                _reservedSpace5[0xD8 - 0x6A - 1];</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <a class="code" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a> GBT;     <span class="comment">//]D8-E7</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">  304</a></span>&#160;        quint32 *<a class="code" href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">registers</a> = (quint32 *)<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; regblocksToRead {{0x00, 0x04}, <span class="comment">//block0     ,  5 registers</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                                                               {0x08, 0x0E}, <span class="comment">//block1     ,  7 registers</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                                               {0x1A, 0x1D}, <span class="comment">//block2     ,  4 registers</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                                               {0x1F, 0x1F}, <span class="comment">//trigger suppression</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                               {0x3A, 0x3A}, <span class="comment">//CH_MASK_C</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                                               {0x50, 0x50}, <span class="comment">//COUNTERS_UPD_RATE</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                                               {0x60, 0x6A}, <span class="comment">//block3     , 11 registers</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                                               {0xD8, 0xE4}},<span class="comment">//GBT control, 13 registers</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                             regblocksToApply {{0x00, 0x04}, <span class="comment">//block0     ,  5 registers</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                                               {0x08, 0x0E}, <span class="comment">//block1     ,  7 registers</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                                               {0x1B, 0x1D}, <span class="comment">//block2     ,  3 registers</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                                               {0x1F, 0x1F}, <span class="comment">//trigger suppression</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                                               {0x60, 0x6A}, <span class="comment">//block3     , 11 registers</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                                               {0xD8, 0xE4}};<span class="comment">//GBT control, 13 registers</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment"></span>        <span class="keywordtype">float</span> <span class="comment">//calculable values</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">  322</a></span>&#160;            <a class="code" href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">delayLaser_ns</a>,</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            laserFrequency_Hz,</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            attenuation_dB;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">  327</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">calculate_LASER_DIVIDER</a>(<span class="keywordtype">float</span> frequency_Hz) { quint32 div = lround(systemClock_MHz * 1e6 / frequency_Hz); LASER_DIVIDER = div ? (div &gt;= 1&lt;&lt;24 ? 0 : div) : 1; }</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        </div>
-<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">  330</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">calculate_LASER_DELAY</a>(<span class="keywordtype">float</span> delay_ns) { LASER_DELAY = lround(delay_ns / phaseStepLaser_ns); }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    } set;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Counters.html">  333</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypeTCM_1_1Counters.html">Counters</a> {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint16</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            addressFIFO     = 0x100,</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            addressFIFOload = 0x101;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint8</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            number = 15,</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            addressDirect   =  0x70;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        quint32 FIFOload;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        QDateTime newTime, oldTime = QDateTime::currentDateTime();</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keyword">union </span>{</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            quint32 New[number] = {0};</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                quint32 CNT_T5             , <span class="comment">//]70</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        CNT_T4             , <span class="comment">//]71</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        CNT_T2             , <span class="comment">//]72</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                        CNT_T1             , <span class="comment">//]73</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        CNT_T3             , <span class="comment">//]74</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                        CNT_noiseA         , <span class="comment">//]75</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                        CNT_noiseC         , <span class="comment">//]76</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                        CNT_noiseAll       , <span class="comment">//]77</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                        CNT_TrueOrA        , <span class="comment">//]78</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                        CNT_TrueOrC        , <span class="comment">//]79</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        CNT_Interaction    , <span class="comment">//]7A</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        CNT_TrueInteraction, <span class="comment">//]7B</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                        CNT_TrueVertex     , <span class="comment">//]7C</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        CNT_BeamGasA       , <span class="comment">//]7D</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        CNT_BeamGasC       ; <span class="comment">//]7E</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            };</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        };</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        quint32 Old[number] = {0};</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordtype">double</span> rate[number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1};</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <a class="code" href="structGBTcounters.html">GBTcounters</a> GBT;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        QList&lt;DimService *&gt; services;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    } counters;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">bool</span> isOK() {<span class="keywordflow">return</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;         act.PLLlockA &amp;&amp;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;         act.PLLlockC &amp;&amp;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        !act.delayRangeErrorA &amp;&amp;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        !act.delayRangeErrorC &amp;&amp;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        !act.masterLinkErrorA &amp;&amp;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        !act.masterLinkErrorC &amp;&amp;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        !act.readinessChangeA &amp;&amp;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        !act.readinessChangeC ;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordtype">bool</span> GBTisOK() {<span class="keywordflow">return</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        act.GBT.isOK() &amp;&amp;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        act.GBTRxReady;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    QList&lt;DimService *&gt; services, staticServices;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    QList&lt;DimCommand *&gt; commands;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    quint32 ORBIT_FILL_MASK[223];</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keyword">struct </span>{ quint32</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        BCsyncLostInRun : 1 = 0;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    } errorsLogged;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;};</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html">  212</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypeTCM_1_1Settings.html">Settings</a> {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        qint32  DELAY_A         :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                :16,  <span class="comment">//┘00</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                DELAY_C         :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                :16,  <span class="comment">//┘01</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                LASER_DELAY     :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                :16;  <span class="comment">//┘02</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        quint32 attenSteps      :14,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                :18,  <span class="comment">//┘03</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                EXT_SW          : 4,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                :28,  <span class="comment">//┘04</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                _reservedSpace0[0x08 - 0x04 - 1];</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        qint32  VTIME_LOW       :10,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                :22,  <span class="comment">//┘08</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                VTIME_HIGH      :10,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                :22;  <span class="comment">//┘09</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        quint32 T2_LEVEL_A      :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                :16,  <span class="comment">//┘0A</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                T2_LEVEL_C      :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                :16,  <span class="comment">//┘0B</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                T1_LEVEL_A      :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                :16,  <span class="comment">//┘0C</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                T1_LEVEL_C      :16,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                :16,  <span class="comment">//┘0D</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                ADD_C_DELAY     : 1,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                sidesCombMode   : 2,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                EXTENDED_READOUT: 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                corrCNTselect   : 4,  <span class="comment">//│0E</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                SC_EVAL_MODE    : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                FV0_MODE        : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                :22,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                _reservedSpace1[0x1A - 0x0E - 1],</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                CH_MASK_A       :10,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                :22,  <span class="comment">//┘1A</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                LASER_DIVIDER   :24,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                : 6,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                LASER_ENABLED   : 1,  <span class="comment">//│1B</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                LASER_SOURCE    : 1;  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        quint64 LASER_PATTERN      ;  <span class="comment">//]1C-1D</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        quint32 PM_MASK_SPI        ,  <span class="comment">//]1E</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                lsrTrgSupprDelay: 6,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                lsrTrgSupprDur  : 2,  <span class="comment">//│1F</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                :24,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                _reservedSpace2[0x3A - 0x1F - 1],</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                CH_MASK_C       :10,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                :22,  <span class="comment">//┘3A</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                _reservedSpace3[0x50 - 0x3A - 1],</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                COUNTERS_UPD_RATE,    <span class="comment">//]50</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                _reservedSpace4[0x60 - 0x50 - 1],</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                T5_SIGN         : 7,  <span class="comment">//│60</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                :18,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                T5_RATE         :31,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                : 1,  <span class="comment">//┘61</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                T4_SIGN         : 7,  <span class="comment">//│62</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                :18,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                T4_RATE         :31,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                : 1,  <span class="comment">//┘63</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                T2_SIGN         : 7,  <span class="comment">//│64</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                :18,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                T2_RATE         :31,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                : 1,  <span class="comment">//┘65</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                T1_SIGN         : 7,  <span class="comment">//│66</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                :18,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                T1_RATE         :31,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                : 1,  <span class="comment">//┘67</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                : 7,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                T3_SIGN         : 7,  <span class="comment">//│68</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                :18,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                T3_RATE         :31,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                : 1,  <span class="comment">//┘69</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                T5_MODE         : 2,  <span class="comment">//┐</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                T5_ENABLED      : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                T4_MODE         : 2,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                T4_ENABLED      : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                T2_MODE         : 2,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                T2_ENABLED      : 1,  <span class="comment">//│6A</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                T1_MODE         : 2,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                T1_ENABLED      : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                T3_MODE         : 2,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                T3_ENABLED      : 1,  <span class="comment">//│</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                :17,  <span class="comment">//┘</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                _reservedSpace5[0xD8 - 0x6A - 1];</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a> GBT;     <span class="comment">//]D8-E7</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">  301</a></span>&#160;        quint32 *<a class="code" href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">registers</a> = (quint32 *)<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#a3980b82feb5c699f0a2630a6c68798ee">  303</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">inline</span> QVector&lt;regblock&gt; <a class="code" href="structTypeTCM_1_1Settings.html#a3980b82feb5c699f0a2630a6c68798ee">regblocksToRead</a> {{0x00, 0x04}, <span class="comment">//block0     ,  5 registers</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                                               {0x08, 0x0E}, <span class="comment">//block1     ,  7 registers</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                                               {0x1A, 0x1D}, <span class="comment">//block2     ,  4 registers</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                                                               {0x1F, 0x1F}, <span class="comment">//trigger suppression</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                                               {0x3A, 0x3A}, <span class="comment">//CH_MASK_C</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                                               {0x50, 0x50}, <span class="comment">//COUNTERS_UPD_RATE</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                               {0x60, 0x6A}, <span class="comment">//block3     , 11 registers</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                                               {0xD8, 0xE4}},<span class="comment">//GBT control, 13 registers</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#ab0298941cfb99f0cece9c113da3555d5">  312</a></span>&#160;<span class="comment"></span>                                             <a class="code" href="structTypeTCM_1_1Settings.html#ab0298941cfb99f0cece9c113da3555d5">regblocksToApply</a> {{0x00, 0x04}, <span class="comment">//block0     ,  5 registers</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                                               {0x08, 0x0E}, <span class="comment">//block1     ,  7 registers</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                                               {0x1B, 0x1D}, <span class="comment">//block2     ,  3 registers</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                                                               {0x1F, 0x1F}, <span class="comment">//trigger suppression</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                                               {0x60, 0x6A}, <span class="comment">//block3     , 11 registers</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                                               {0xD8, 0xE4}};<span class="comment">//GBT control, 13 registers</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment"></span>        <span class="keywordtype">float</span> <span class="comment">//calculable values</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">  320</a></span>&#160;            <a class="code" href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">delayLaser_ns</a>,</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            laserFrequency_Hz,</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            attenuation_dB;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">  325</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">calculate_LASER_DIVIDER</a>(<span class="keywordtype">float</span> frequency_Hz) { quint32 div = lround(systemClock_MHz * 1e6 / frequency_Hz); LASER_DIVIDER = div ? (div &gt;= 1&lt;&lt;24 ? 0 : div) : 1; }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        </div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">  328</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">calculate_LASER_DELAY</a>(<span class="keywordtype">float</span> delay_ns) { LASER_DELAY = lround(delay_ns / phaseStepLaser_ns); }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    } set;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Counters.html">  332</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structTypeTCM_1_1Counters.html">Counters</a> {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint16</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            addressFIFO     = 0x100,</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            addressFIFOload = 0x101;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> quint8</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            number = 15,</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            addressDirect   =  0x70;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        quint32 FIFOload;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        QDateTime newTime, oldTime = QDateTime::currentDateTime();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            quint32 New[number] = {0};</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                quint32 CNT_T5             , <span class="comment">//]70</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        CNT_T4             , <span class="comment">//]71</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                        CNT_T2             , <span class="comment">//]72</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                        CNT_T1             , <span class="comment">//]73</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                        CNT_T3             , <span class="comment">//]74</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                        CNT_noiseA         , <span class="comment">//]75</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                        CNT_noiseC         , <span class="comment">//]76</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                        CNT_noiseAll       , <span class="comment">//]77</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                        CNT_TrueOrA        , <span class="comment">//]78</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                        CNT_TrueOrC        , <span class="comment">//]79</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        CNT_Interaction    , <span class="comment">//]7A</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        CNT_TrueInteraction, <span class="comment">//]7B</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                        CNT_TrueVertex     , <span class="comment">//]7C</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        CNT_BeamGasA       , <span class="comment">//]7D</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                        CNT_BeamGasC       ; <span class="comment">//]7E</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            };</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        };</div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Counters.html#af1e410cbac08399b5c183d1555d8b901">  366</a></span>&#160;        quint32 <a class="code" href="structTypeTCM_1_1Counters.html#af1e410cbac08399b5c183d1555d8b901">Old</a>[number] = {0};</div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Counters.html#a7de8401180aea8a03f7d19a0b423f36b">  370</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structTypeTCM_1_1Counters.html#a7de8401180aea8a03f7d19a0b423f36b">rate</a>[number] = {-1,-1,-1,-1,-1, -1,-1,-1,-1,-1, -1,-1,-1,-1,-1};</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <a class="code" href="structGBTcounters.html">GBTcounters</a> GBT;</div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="structTypeTCM_1_1Counters.html#ac2c35ea3df6876294a6ec44affcbb842">  373</a></span>&#160;        QList&lt;DimService *&gt; <a class="code" href="structTypeTCM_1_1Counters.html#ac2c35ea3df6876294a6ec44affcbb842">services</a>;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    } counters;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordtype">bool</span> isOK() {<span class="keywordflow">return</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;         act.PLLlockA &amp;&amp;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;         act.PLLlockC &amp;&amp;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        !act.delayRangeErrorA &amp;&amp;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        !act.delayRangeErrorC &amp;&amp;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        !act.masterLinkErrorA &amp;&amp;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        !act.masterLinkErrorC &amp;&amp;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        !act.readinessChangeA &amp;&amp;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        !act.readinessChangeC ;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    }</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">bool</span> GBTisOK() {<span class="keywordflow">return</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        act.GBT.isOK() &amp;&amp;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        act.GBTRxReady;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">const</span> QHash&lt;QString, Parameter&gt; TCMparameters = {</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="comment">//name                  address width shift</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    {<span class="stringliteral">&quot;DELAY_A&quot;</span>              ,  0x00         },</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    {<span class="stringliteral">&quot;DELAY_C&quot;</span>              ,  0x01         },</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    {<span class="stringliteral">&quot;LASER_DELAY&quot;</span>          ,  0x02         },</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    {<span class="stringliteral">&quot;attenSteps&quot;</span>           ,  0x03         },</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    {<span class="stringliteral">&quot;EXT_SW&quot;</span>               ,  0x04         },</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    {<span class="stringliteral">&quot;VTIME_LOW&quot;</span>            ,  0x08         },</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    {<span class="stringliteral">&quot;VTIME_HIGH&quot;</span>           ,  0x09         },</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    {<span class="stringliteral">&quot;T2_LEVEL_A&quot;</span>           ,  0x0A         },</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    {<span class="stringliteral">&quot;T2_LEVEL_C&quot;</span>           ,  0x0B         },</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    {<span class="stringliteral">&quot;T1_LEVEL_A&quot;</span>           ,  0x0C         },</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    {<span class="stringliteral">&quot;T1_LEVEL_C&quot;</span>           ,  0x0D         },</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    {<span class="stringliteral">&quot;ADD_C_DELAY&quot;</span>          , {0x0E,  1,  0}},</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    {<span class="stringliteral">&quot;sidesCombMode&quot;</span>        , {0x0E,  2,  1}},</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    {<span class="stringliteral">&quot;EXTENDED_READOUT&quot;</span>     , {0x0E,  1,  3}},</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    {<span class="stringliteral">&quot;SC_EVAL_MODE&quot;</span>         , {0x0E,  1,  8}},</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    {<span class="stringliteral">&quot;FV0_MODE&quot;</span>             , {0x0E,  1,  9}},</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_A&quot;</span>            ,  0x1A         },</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    {<span class="stringliteral">&quot;LASER_DIVIDER&quot;</span>        , {0x1B, 24,  0}},</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    {<span class="stringliteral">&quot;LASER_ENABLED&quot;</span>        , {0x1B,  1, 30}},</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {<span class="stringliteral">&quot;LASER_SOURCE&quot;</span>         , {0x1B,  1, 31}},</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    {<span class="stringliteral">&quot;LASER_PATTERN&quot;</span>        , {0x1C, 64,  0}},</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    {<span class="stringliteral">&quot;PM_MASK_SPI&quot;</span>          ,  0x1E         },</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    {<span class="stringliteral">&quot;LASER_TRG_SUPPR_DELAY&quot;</span>, {0x1F,  6,  0}},</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    {<span class="stringliteral">&quot;LASER_TRG_SUPPR_DUR&quot;</span>  , {0x1F,  2,  6}},</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_C&quot;</span>            ,  0x3A         },</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    {<span class="stringliteral">&quot;COUNTERS_UPD_RATE&quot;</span>    ,  0x50         },</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    {<span class="stringliteral">&quot;T5_SIGN&quot;</span>              ,  0x60         },</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    {<span class="stringliteral">&quot;T5_RATE&quot;</span>              ,  0x61         },</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    {<span class="stringliteral">&quot;T4_SIGN&quot;</span>              ,  0x62         },</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    {<span class="stringliteral">&quot;T4_RATE&quot;</span>              ,  0x63         },</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    {<span class="stringliteral">&quot;T2_SIGN&quot;</span>              ,  0x64         },</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    {<span class="stringliteral">&quot;T2_RATE&quot;</span>              ,  0x65         },</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    {<span class="stringliteral">&quot;T1_SIGN&quot;</span>              ,  0x66         },</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    {<span class="stringliteral">&quot;T1_RATE&quot;</span>              ,  0x67         },</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    {<span class="stringliteral">&quot;T3_SIGN&quot;</span>              ,  0x68         },</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    {<span class="stringliteral">&quot;T3_RATE&quot;</span>              ,  0x69         },</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    {<span class="stringliteral">&quot;T5_MODE&quot;</span>              , {0x6A,  2,  0}},</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    {<span class="stringliteral">&quot;T5_ENABLED&quot;</span>           , {0x6A,  1,  2}},</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    {<span class="stringliteral">&quot;T4_MODE&quot;</span>              , {0x6A,  2,  3}},</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    {<span class="stringliteral">&quot;T4_ENABLED&quot;</span>           , {0x6A,  1,  5}},</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    {<span class="stringliteral">&quot;T2_MODE&quot;</span>              , {0x6A,  2,  6}},</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    {<span class="stringliteral">&quot;T2_ENABLED&quot;</span>           , {0x6A,  1,  8}},</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    {<span class="stringliteral">&quot;T1_MODE&quot;</span>              , {0x6A,  2,  9}},</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    {<span class="stringliteral">&quot;T1_ENABLED&quot;</span>           , {0x6A,  1, 11}},</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    {<span class="stringliteral">&quot;T3_MODE&quot;</span>              , {0x6A,  2, 12}},</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    {<span class="stringliteral">&quot;T3_ENABLED&quot;</span>           , {0x6A,  1, 14}}</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;};</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="keyword">inline</span> quint32 prepareSignature(quint32 sign) { <span class="keywordflow">return</span> sign &lt;&lt; 7 | (~sign &amp; 0x7F); }</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// TCM_H</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="structTypeTCM.html#ab9bab4c21a676305aa0fd7cb4db0c452">  393</a></span>&#160;    QList&lt;DimService *&gt; <a class="code" href="structTypeTCM.html#ab9bab4c21a676305aa0fd7cb4db0c452">services</a>, </div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="structTypeTCM.html#a84993e638b3eb2fa20916998348d2620">  395</a></span>&#160;    <a class="code" href="structTypeTCM.html#a84993e638b3eb2fa20916998348d2620">staticServices</a>;</div>
+<div class="line"><a name="l00397"></a><span class="lineno"><a class="line" href="structTypeTCM.html#ac30453abd5f23e8f470d044433bc4ebe">  397</a></span>&#160;    QList&lt;DimCommand *&gt; <a class="code" href="structTypeTCM.html#ac30453abd5f23e8f470d044433bc4ebe">commands</a>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    quint32 ORBIT_FILL_MASK[223];</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keyword">struct </span>{ quint32</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        BCsyncLostInRun : 1 = 0;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    } errorsLogged;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;};</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno"><a class="line" href="TCM_8h.html#a0d1c181d833f27eb8877defd296d41ed">  410</a></span>&#160;<span class="keyword">const</span> QHash&lt;QString, Parameter&gt; <a class="code" href="TCM_8h.html#a0d1c181d833f27eb8877defd296d41ed">TCMparameters</a> = {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <span class="comment">//name                  address width shift</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    {<span class="stringliteral">&quot;DELAY_A&quot;</span>              ,  0x00         },</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {<span class="stringliteral">&quot;DELAY_C&quot;</span>              ,  0x01         },</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    {<span class="stringliteral">&quot;LASER_DELAY&quot;</span>          ,  0x02         },</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    {<span class="stringliteral">&quot;attenSteps&quot;</span>           ,  0x03         },</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    {<span class="stringliteral">&quot;EXT_SW&quot;</span>               ,  0x04         },</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    {<span class="stringliteral">&quot;VTIME_LOW&quot;</span>            ,  0x08         },</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    {<span class="stringliteral">&quot;VTIME_HIGH&quot;</span>           ,  0x09         },</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    {<span class="stringliteral">&quot;T2_LEVEL_A&quot;</span>           ,  0x0A         },</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    {<span class="stringliteral">&quot;T2_LEVEL_C&quot;</span>           ,  0x0B         },</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    {<span class="stringliteral">&quot;T1_LEVEL_A&quot;</span>           ,  0x0C         },</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    {<span class="stringliteral">&quot;T1_LEVEL_C&quot;</span>           ,  0x0D         },</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    {<span class="stringliteral">&quot;ADD_C_DELAY&quot;</span>          , {0x0E,  1,  0}},</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    {<span class="stringliteral">&quot;sidesCombMode&quot;</span>        , {0x0E,  2,  1}},</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    {<span class="stringliteral">&quot;EXTENDED_READOUT&quot;</span>     , {0x0E,  1,  3}},</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    {<span class="stringliteral">&quot;SC_EVAL_MODE&quot;</span>         , {0x0E,  1,  8}},</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    {<span class="stringliteral">&quot;FV0_MODE&quot;</span>             , {0x0E,  1,  9}},</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_A&quot;</span>            ,  0x1A         },</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    {<span class="stringliteral">&quot;LASER_DIVIDER&quot;</span>        , {0x1B, 24,  0}},</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    {<span class="stringliteral">&quot;LASER_ENABLED&quot;</span>        , {0x1B,  1, 30}},</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    {<span class="stringliteral">&quot;LASER_SOURCE&quot;</span>         , {0x1B,  1, 31}},</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    {<span class="stringliteral">&quot;LASER_PATTERN&quot;</span>        , {0x1C, 64,  0}},</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    {<span class="stringliteral">&quot;PM_MASK_SPI&quot;</span>          ,  0x1E         },</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    {<span class="stringliteral">&quot;LASER_TRG_SUPPR_DELAY&quot;</span>, {0x1F,  6,  0}},</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    {<span class="stringliteral">&quot;LASER_TRG_SUPPR_DUR&quot;</span>  , {0x1F,  2,  6}},</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    {<span class="stringliteral">&quot;CH_MASK_C&quot;</span>            ,  0x3A         },</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    {<span class="stringliteral">&quot;COUNTERS_UPD_RATE&quot;</span>    ,  0x50         },</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    {<span class="stringliteral">&quot;T5_SIGN&quot;</span>              ,  0x60         },</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    {<span class="stringliteral">&quot;T5_RATE&quot;</span>              ,  0x61         },</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    {<span class="stringliteral">&quot;T4_SIGN&quot;</span>              ,  0x62         },</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    {<span class="stringliteral">&quot;T4_RATE&quot;</span>              ,  0x63         },</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    {<span class="stringliteral">&quot;T2_SIGN&quot;</span>              ,  0x64         },</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    {<span class="stringliteral">&quot;T2_RATE&quot;</span>              ,  0x65         },</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    {<span class="stringliteral">&quot;T1_SIGN&quot;</span>              ,  0x66         },</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    {<span class="stringliteral">&quot;T1_RATE&quot;</span>              ,  0x67         },</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    {<span class="stringliteral">&quot;T3_SIGN&quot;</span>              ,  0x68         },</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    {<span class="stringliteral">&quot;T3_RATE&quot;</span>              ,  0x69         },</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    {<span class="stringliteral">&quot;T5_MODE&quot;</span>              , {0x6A,  2,  0}},</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    {<span class="stringliteral">&quot;T5_ENABLED&quot;</span>           , {0x6A,  1,  2}},</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    {<span class="stringliteral">&quot;T4_MODE&quot;</span>              , {0x6A,  2,  3}},</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    {<span class="stringliteral">&quot;T4_ENABLED&quot;</span>           , {0x6A,  1,  5}},</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    {<span class="stringliteral">&quot;T2_MODE&quot;</span>              , {0x6A,  2,  6}},</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    {<span class="stringliteral">&quot;T2_ENABLED&quot;</span>           , {0x6A,  1,  8}},</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    {<span class="stringliteral">&quot;T1_MODE&quot;</span>              , {0x6A,  2,  9}},</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    {<span class="stringliteral">&quot;T1_ENABLED&quot;</span>           , {0x6A,  1, 11}},</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    {<span class="stringliteral">&quot;T3_MODE&quot;</span>              , {0x6A,  2, 12}},</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    {<span class="stringliteral">&quot;T3_ENABLED&quot;</span>           , {0x6A,  1, 14}}</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;};</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="keyword">inline</span> quint32 prepareSignature(quint32 sign) { <span class="keywordflow">return</span> sign &lt;&lt; 7 | (~sign &amp; 0x7F); }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// TCM_H</span></div>
 <div class="ttc" id="aFITboardsCommon_8h_html"><div class="ttname"><a href="FITboardsCommon_8h.html">FITboardsCommon.h</a></div><div class="ttdoc">Functionalities common to all PM and TCM boards.</div></div>
 <div class="ttc" id="aFITboardsCommon_8h_html_a3d30f85e483d5cfb230f94918b1b0bf1"><div class="ttname"><a href="FITboardsCommon_8h.html#a3d30f85e483d5cfb230f94918b1b0bf1">FIT</a></div><div class="ttdeci">const struct @0 FIT[4]</div><div class="ttdoc">Represents certain subdetector parameters.</div></div>
-<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:233</div></div>
-<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdoc">Where is GBT used currently?</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:86</div></div>
-<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:374</div></div>
-<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdoc">Represents a timestamp in a certain required format.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:350</div></div>
-<div class="ttc" id="astructTypeTCM_1_1ActualValues_html"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html">TypeTCM::ActualValues</a></div><div class="ttdoc">Actual =?= current values of TCM parameters.</div><div class="ttdef"><b>Definition:</b> TCM.h:22</div></div>
+<div class="ttc" id="aFITboardsCommon_8h_html_abda2b1e603d356cfd667062701f0c0a2"><div class="ttname"><a href="FITboardsCommon_8h.html#abda2b1e603d356cfd667062701f0c0a2">name</a></div><div class="ttdeci">char name[4]</div><div class="ttdoc">Name.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:30</div></div>
+<div class="ttc" id="aTCM_8h_html_a0d1c181d833f27eb8877defd296d41ed"><div class="ttname"><a href="TCM_8h.html#a0d1c181d833f27eb8877defd296d41ed">TCMparameters</a></div><div class="ttdeci">const QHash&lt; QString, Parameter &gt; TCMparameters</div><div class="ttdoc">Contains availabel TCM parameters.</div><div class="ttdef"><b>Definition:</b> TCM.h:410</div></div>
+<div class="ttc" id="astructGBTcounters_html"><div class="ttname"><a href="structGBTcounters.html">GBTcounters</a></div><div class="ttdoc">Provides throughput measurment Usage: FITelectronics::read1PM, FITelectronic::sync.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:261</div></div>
+<div class="ttc" id="astructGBTunit_html"><div class="ttname"><a href="structGBTunit.html">GBTunit</a></div><div class="ttdoc">Stores data from GBT registers.</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:104</div></div>
+<div class="ttc" id="astructTRGsyncStatus_html"><div class="ttname"><a href="structTRGsyncStatus.html">TRGsyncStatus</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:407</div></div>
+<div class="ttc" id="astructTimestamp_html"><div class="ttname"><a href="structTimestamp.html">Timestamp</a></div><div class="ttdoc">Represents a timestamp in a certain required format (ATXmega128a3u microcode timestamp)</div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:383</div></div>
+<div class="ttc" id="astructTypeTCM_1_1ActualValues_html"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html">TypeTCM::ActualValues</a></div><div class="ttdoc">Actual values of TCM registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:22</div></div>
 <div class="ttc" id="astructTypeTCM_1_1ActualValues_html_a5855799fc784f710ff05fa2363aecffe"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html#a5855799fc784f710ff05fa2363aecffe">TypeTCM::ActualValues::regblocks</a></div><div class="ttdeci">static const QVector&lt; regblock &gt; regblocks</div><div class="ttdoc">Defines useful blocks of registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:157</div></div>
 <div class="ttc" id="astructTypeTCM_1_1ActualValues_html_a9fa41c0d0f977dba5aaea44aa96fca06"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html#a9fa41c0d0f977dba5aaea44aa96fca06">TypeTCM::ActualValues::registers</a></div><div class="ttdeci">quint32 * registers</div><div class="ttdoc">Raw access to the TCM registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:154</div></div>
 <div class="ttc" id="astructTypeTCM_1_1ActualValues_html_ac8badece9af7c5b334048e6b01f8f56e"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html#ac8badece9af7c5b334048e6b01f8f56e">TypeTCM::ActualValues::calculateValues</a></div><div class="ttdeci">void calculateValues()</div><div class="ttdoc">Calculate and store human readable values from the stored raw values.</div><div class="ttdef"><b>Definition:</b> TCM.h:183</div></div>
 <div class="ttc" id="astructTypeTCM_1_1ActualValues_html_af8b6bc669925721c343174a9553740c7"><div class="ttname"><a href="structTypeTCM_1_1ActualValues.html#af8b6bc669925721c343174a9553740c7">TypeTCM::ActualValues::TEMP_BOARD</a></div><div class="ttdeci">float TEMP_BOARD</div><div class="ttdoc">calculable values</div><div class="ttdef"><b>Definition:</b> TCM.h:167</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Counters_html"><div class="ttname"><a href="structTypeTCM_1_1Counters.html">TypeTCM::Counters</a></div><div class="ttdef"><b>Definition:</b> TCM.h:333</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Settings_html"><div class="ttname"><a href="structTypeTCM_1_1Settings.html">TypeTCM::Settings</a></div><div class="ttdoc">Represents the settings of the TCM.</div><div class="ttdef"><b>Definition:</b> TCM.h:215</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Settings_html_aaaa3be1c636a258aa16009102a027eb9"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">TypeTCM::Settings::delayLaser_ns</a></div><div class="ttdeci">float delayLaser_ns</div><div class="ttdoc">Calculable values.</div><div class="ttdef"><b>Definition:</b> TCM.h:322</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Settings_html_aad8b158172d899b3111dbec833e3979f"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">TypeTCM::Settings::registers</a></div><div class="ttdeci">quint32 * registers</div><div class="ttdoc">Raw access to the settings registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:304</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Settings_html_abb6c418bad9796edd426c37d0471e371"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">TypeTCM::Settings::calculate_LASER_DELAY</a></div><div class="ttdeci">void calculate_LASER_DELAY(float delay_ns)</div><div class="ttdoc">Calculate calculable from raw value.</div><div class="ttdef"><b>Definition:</b> TCM.h:330</div></div>
-<div class="ttc" id="astructTypeTCM_1_1Settings_html_ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">TypeTCM::Settings::calculate_LASER_DIVIDER</a></div><div class="ttdeci">void calculate_LASER_DIVIDER(float frequency_Hz)</div><div class="ttdoc">Calculate calculable from raw value.</div><div class="ttdef"><b>Definition:</b> TCM.h:327</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Counters_html"><div class="ttname"><a href="structTypeTCM_1_1Counters.html">TypeTCM::Counters</a></div><div class="ttdoc">Counters provided by TCM.</div><div class="ttdef"><b>Definition:</b> TCM.h:332</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Counters_html_a7de8401180aea8a03f7d19a0b423f36b"><div class="ttname"><a href="structTypeTCM_1_1Counters.html#a7de8401180aea8a03f7d19a0b423f36b">TypeTCM::Counters::rate</a></div><div class="ttdeci">double rate[number]</div><div class="ttdoc">Rate of counters change (?)</div><div class="ttdef"><b>Definition:</b> TCM.h:370</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Counters_html_ac2c35ea3df6876294a6ec44affcbb842"><div class="ttname"><a href="structTypeTCM_1_1Counters.html#ac2c35ea3df6876294a6ec44affcbb842">TypeTCM::Counters::services</a></div><div class="ttdeci">QList&lt; DimService * &gt; services</div><div class="ttdoc">List of counters DIM services.</div><div class="ttdef"><b>Definition:</b> TCM.h:373</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Counters_html_af1e410cbac08399b5c183d1555d8b901"><div class="ttname"><a href="structTypeTCM_1_1Counters.html#af1e410cbac08399b5c183d1555d8b901">TypeTCM::Counters::Old</a></div><div class="ttdeci">quint32 Old[number]</div><div class="ttdoc">Stores old counters value (?)</div><div class="ttdef"><b>Definition:</b> TCM.h:366</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html"><div class="ttname"><a href="structTypeTCM_1_1Settings.html">TypeTCM::Settings</a></div><div class="ttdoc">Settings to be applied to a TCM.</div><div class="ttdef"><b>Definition:</b> TCM.h:212</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_a3980b82feb5c699f0a2630a6c68798ee"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#a3980b82feb5c699f0a2630a6c68798ee">TypeTCM::Settings::regblocksToRead</a></div><div class="ttdeci">static const QVector&lt; regblock &gt; regblocksToRead</div><div class="ttdoc">Layout of TCM read-accessible registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:303</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_aaaa3be1c636a258aa16009102a027eb9"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#aaaa3be1c636a258aa16009102a027eb9">TypeTCM::Settings::delayLaser_ns</a></div><div class="ttdeci">float delayLaser_ns</div><div class="ttdoc">Calculable values.</div><div class="ttdef"><b>Definition:</b> TCM.h:320</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_aad8b158172d899b3111dbec833e3979f"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#aad8b158172d899b3111dbec833e3979f">TypeTCM::Settings::registers</a></div><div class="ttdeci">quint32 * registers</div><div class="ttdoc">Raw access to the settings registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:301</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_ab0298941cfb99f0cece9c113da3555d5"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#ab0298941cfb99f0cece9c113da3555d5">TypeTCM::Settings::regblocksToApply</a></div><div class="ttdeci">static const QVector&lt; regblock &gt; regblocksToApply</div><div class="ttdoc">Layout of write-accessible registers.</div><div class="ttdef"><b>Definition:</b> TCM.h:312</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_abb6c418bad9796edd426c37d0471e371"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#abb6c418bad9796edd426c37d0471e371">TypeTCM::Settings::calculate_LASER_DELAY</a></div><div class="ttdeci">void calculate_LASER_DELAY(float delay_ns)</div><div class="ttdoc">Calculate calculable from raw value.</div><div class="ttdef"><b>Definition:</b> TCM.h:328</div></div>
+<div class="ttc" id="astructTypeTCM_1_1Settings_html_ac2c9a0e8879c2cfe4b8622d1b4fd0dd1"><div class="ttname"><a href="structTypeTCM_1_1Settings.html#ac2c9a0e8879c2cfe4b8622d1b4fd0dd1">TypeTCM::Settings::calculate_LASER_DIVIDER</a></div><div class="ttdeci">void calculate_LASER_DIVIDER(float frequency_Hz)</div><div class="ttdoc">Calculate calculable from raw value.</div><div class="ttdef"><b>Definition:</b> TCM.h:325</div></div>
 <div class="ttc" id="astructTypeTCM_html"><div class="ttname"><a href="structTypeTCM.html">TypeTCM</a></div><div class="ttdoc">TCM board abstraction.</div><div class="ttdef"><b>Definition:</b> TCM.h:17</div></div>
-<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:87</div></div>
+<div class="ttc" id="astructTypeTCM_html_a84993e638b3eb2fa20916998348d2620"><div class="ttname"><a href="structTypeTCM.html#a84993e638b3eb2fa20916998348d2620">TypeTCM::staticServices</a></div><div class="ttdeci">QList&lt; DimService * &gt; staticServices</div><div class="ttdoc">List of static DIM services.</div><div class="ttdef"><b>Definition:</b> TCM.h:395</div></div>
+<div class="ttc" id="astructTypeTCM_html_ab9bab4c21a676305aa0fd7cb4db0c452"><div class="ttname"><a href="structTypeTCM.html#ab9bab4c21a676305aa0fd7cb4db0c452">TypeTCM::services</a></div><div class="ttdeci">QList&lt; DimService * &gt; services</div><div class="ttdoc">List of DIM services.</div><div class="ttdef"><b>Definition:</b> TCM.h:393</div></div>
+<div class="ttc" id="astructTypeTCM_html_ac30453abd5f23e8f470d044433bc4ebe"><div class="ttname"><a href="structTypeTCM.html#ac30453abd5f23e8f470d044433bc4ebe">TypeTCM::commands</a></div><div class="ttdeci">QList&lt; DimCommand * &gt; commands</div><div class="ttdoc">List of DIM commands.</div><div class="ttdef"><b>Definition:</b> TCM.h:397</div></div>
+<div class="ttc" id="aunionGBTunit_1_1ControlData_html"><div class="ttname"><a href="unionGBTunit_1_1ControlData.html">GBTunit::ControlData</a></div><div class="ttdef"><b>Definition:</b> FITboardsCommon.h:105</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
