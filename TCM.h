@@ -340,8 +340,7 @@ struct TypeTCM {
         QDateTime newTime, oldTime = QDateTime::currentDateTime();
 
         /** @brief Stores counters values from the last successful read.
-         * @see FITelectronics::resetCounts
-         * @see FIRelectrionics::readCountersFIFO
+         * Usage: FITelectronics::resetCounts, FIRelectrionics::readCountersFIFO
          */
         union {
             quint32 New[number] = {0};
@@ -363,6 +362,7 @@ struct TypeTCM {
                         CNT_BeamGasC       ; //]7E
             };
         };
+        /** @brief Stores old counters value (?)*/
         quint32 Old[number] = {0};
         /** @brief Rate of counters change (?)
          * @details Calculated as (New[i] - Old[i])/(time elapsed) 
@@ -401,6 +401,12 @@ struct TypeTCM {
     } errorsLogged;
 };
 
+/**
+ * @brief Contains availabel TCM parameters
+ * @details Stores availabel TCM parameters in a hash table, where hash is produced
+ * based on the parameter name
+ * @see Parameter
+*/
 const QHash<QString, Parameter> TCMparameters = {
     //name                  address width shift
     {"DELAY_A"              ,  0x00         },

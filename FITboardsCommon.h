@@ -96,10 +96,8 @@ const struct {const char *name,                                        *descript
              {   "BackgroundC",                                    "beam2-BC AND Or"}
 }};
 
-/** @brief Stores data from TCM GBT registers
+/** @brief Stores data from GBT registers
  * @details All registers are listed in the spreadsheet file "FEE RegMap and Data Format" attached to the FIT wiki.
- * @see MainWindow
- * @see TypeTCM
  * 
 */ 
 struct GBTunit { // (13 + 3 + 10) registers * 4 bytes = 104 bytes
@@ -257,8 +255,7 @@ static const quint8
 
 /**
  * @brief Provides throughput measurment
- * @see FITelectronics::read1PM
- * @see FITelectronic::sync
+ * Usage: FITelectronics::read1PM, FITelectronic::sync
 */
 struct GBTcounters {
     QDateTime oldTime = QDateTime::currentDateTime(), newTime;
@@ -275,8 +272,12 @@ struct GBTcounters {
         oldTime = newTime;
     }
 };
+/**
+ * @brief Represents single GBT word (80 bits)
+*/
 struct GBTword {
     quint16 p[5];
+    /** @brief Prints word in a hexadecimal format */
     QString printHex() const { return QString::asprintf("%04X%04X %04X %04X%04X", p[4], p[3], p[2], p[1], p[0]); }
 };
 
