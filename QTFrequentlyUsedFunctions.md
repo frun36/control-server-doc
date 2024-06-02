@@ -6,3 +6,6 @@
 creates a signal-slot pair.
 
 "In Qt, we have an alternative to the callback technique: We use signals and slots. A signal is emitted when a particular event occurs. [...]. A slot is a function that is called in response to a particular signal."
+
+### qRegisterMetaType
+Needed for using custom types with signals and slots.

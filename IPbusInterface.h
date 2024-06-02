@@ -51,8 +51,13 @@ public:
     }
 
 signals:
+    /// @brief Emitted when a socket error occurs
     void error(QString, errorType);
+
+    /// @brief Emitted when there is no response at the socket, or the response is invalid
     void noResponse(QString message = "no response");
+
+    /// @brief Emitted when IPbus status is confirmed to be OK
     void IPbusStatusOK();
 
 protected:
@@ -112,6 +117,7 @@ protected:
     }
 
 public slots:
+    /// @brief Attempts to reconnect to the socket
     void reconnect() {
         if (qsocket->state() == QAbstractSocket::ConnectedState) {
             qsocket->disconnectFromHost();
@@ -126,6 +132,7 @@ public slots:
         checkStatus();
     }
 
+    /// @brief Checks the socket status, sets `IPbusTarget::isOnline` accordingly and emits the proper signal
     void checkStatus() {
         qsocket->write((char *)&statusRequest, sizeof(statusRequest));
         if (!qsocket->waitForReadyRead(timeout_ms) && !qsocket->hasPendingDatagrams()) {
@@ -175,6 +182,12 @@ public slots:
         if (transceive(p) && syncOnSuccess) sync();
     }
 
+    /// @brief Writes a n-bit block in a register
+    /// @param address Address of the register
+    /// @param data Values for the bits to be set - gets shifted by `shift`
+    /// @param nbits Number of bits to be changed (`mask = (1 << nbits) - 1`)
+    /// @param shift Shift relative to the LSB (`mask << shift`)
+    /// @param syncOnSuccess whether `IPbus::sync` is to be called upon success
     void writeNbits(quint32 address, quint32 data, quint8 nbits = 16, quint8 shift = 0, bool syncOnSuccess = true) {
         IPbusControlPacket p; connect(&p, &IPbusControlPacket::error, this, &IPbusTarget::error);
         p.addNBitsToChange(address, data, nbits, shift);

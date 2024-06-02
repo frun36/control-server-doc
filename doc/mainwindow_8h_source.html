@@ -478,10 +478,10 @@ $(function() {
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        viewMenu-&gt;addAction(highlightUnapplied);</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">//signal-slot conections</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        connect(&amp;FEE, &amp;IPbusTarget::IPbusStatusOK, <span class="keyword">this</span>, [=]() {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        connect(&amp;FEE, &amp;<a class="code" href="classIPbusTarget.html#a1859410dba7ad5a977d4f63bc0d7de02">IPbusTarget::IPbusStatusOK</a>, <span class="keyword">this</span>, [=]() {</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            ui-&gt;centralWidget-&gt;setEnabled(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        });</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        connect(&amp;FEE, &amp;IPbusTarget::noResponse, <span class="keyword">this</span>, [=](QString message) {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        connect(&amp;FEE, &amp;<a class="code" href="classIPbusTarget.html#a2c529977bb97c31e8def85e3e854ebb4">IPbusTarget::noResponse</a>, <span class="keyword">this</span>, [=](QString message) {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            ui-&gt;centralWidget-&gt;setDisabled(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            QString msg = FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> + <span class="stringliteral">&quot;: &quot;</span> + message;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (FEE.updateTimer-&gt;isActive()) statusBar()-&gt;showMessage(statusBar()-&gt;currentMessage() == msg ? <span class="stringliteral">&quot;&quot;</span> : msg);</div>
@@ -492,7 +492,7 @@ $(function() {
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            updateActualValues();</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">if</span> (!enableControls-&gt;isChecked()) updateEdits();</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        });</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        connect(&amp;FEE, &amp;IPbusTarget::error, <span class="keyword">this</span>, [=](QString message, errorType et) {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        connect(&amp;FEE, &amp;<a class="code" href="classIPbusTarget.html#a5bd2881de2f1117256278d6920050af5">IPbusTarget::error</a>, <span class="keyword">this</span>, [=](QString message, errorType et) {</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">//            QMessageBox::warning(this, errorTypeName[et], message);</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            ui-&gt;centralWidget-&gt;setDisabled(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            statusBar()-&gt;showMessage(message + <span class="stringliteral">&quot; (&quot;</span> + errorTypeName[et] + <span class="stringliteral">&quot;)&quot;</span>);</div>
@@ -606,7 +606,7 @@ $(function() {
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <span class="keywordflow">if</span> (validIPaddressRE.exactMatch(IPaddress)) FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> = IPaddress;</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        FEE.fileRead(QCoreApplication::applicationName() + <span class="stringliteral">&quot;.ini&quot;</span>);</div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        updateEdits();</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        FEE.reconnect();</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        FEE.<a class="code" href="classIPbusTarget.html#abcb7513c8379a0b7615af3904d9f27d0">reconnect</a>();</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        resetHighlight();</div>
 <div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        enableControls-&gt;setChecked(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        <span class="keywordflow">if</span> (settings.value(<span class="stringliteral">&quot;highlightUnappliedSettings&quot;</span>, 1).toInt()) {</div>
@@ -653,7 +653,7 @@ $(function() {
 <div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordtype">void</span> recheckTarget() {</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        statusBar()-&gt;showMessage(FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> + <span class="stringliteral">&quot;: status requested...&quot;</span>);</div>
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <span class="keywordflow">if</span> (FEE.countersTimer-&gt;isActive()) FEE.countersTimer-&gt;stop();</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        FEE.reconnect();</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        FEE.<a class="code" href="classIPbusTarget.html#abcb7513c8379a0b7615af3904d9f27d0">reconnect</a>();</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    }</div>
 <div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <span class="keywordtype">void</span> changeIP() {</div>
@@ -661,7 +661,7 @@ $(function() {
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        <span class="keywordflow">if</span> (ok &amp;&amp; !text.isEmpty()) {</div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            <span class="keywordflow">if</span> (validIPaddressRE.exactMatch(text)) {</div>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                FEE.<a class="code" href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPaddress</a> = text;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                FEE.reconnect();</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                FEE.<a class="code" href="classIPbusTarget.html#abcb7513c8379a0b7615af3904d9f27d0">reconnect</a>();</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            } <span class="keywordflow">else</span> QMessageBox::warning(<span class="keyword">this</span>, <span class="stringliteral">&quot;Warning&quot;</span>, text + <span class="stringliteral">&quot;: invalid IP address. Continue with previous target&quot;</span>);</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        }</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    }</div>
@@ -1319,7 +1319,11 @@ $(function() {
 <div class="ttc" id="aclassFITelectronics_html_a5fb3cddea6bc855f08fb92f1c60602ba"><div class="ttname"><a href="classFITelectronics.html#a5fb3cddea6bc855f08fb92f1c60602ba">FITelectronics::allPMs</a></div><div class="ttdeci">TypePM allPMs[20]</div><div class="ttdoc">Array containing all PMs, ordered by link number.</div><div class="ttdef"><b>Definition:</b> FITelectronics.h:45</div></div>
 <div class="ttc" id="aclassFITelectronics_html_ae3381ba0e8a328cbf08db877835b8ee2"><div class="ttname"><a href="classFITelectronics.html#ae3381ba0e8a328cbf08db877835b8ee2">FITelectronics::countersReady</a></div><div class="ttdeci">void countersReady(quint16 FEEid)</div><div class="ttdoc">Connected to MainWindow::updateCounters and in FITelectronics::adjustThresholds</div></div>
 <div class="ttc" id="aclassFITelectronics_html_af5bda1d754464666e6830a7764e3f3fc"><div class="ttname"><a href="classFITelectronics.html#af5bda1d754464666e6830a7764e3f3fc">FITelectronics::linksStatusReady</a></div><div class="ttdeci">void linksStatusReady()</div><div class="ttdoc">Connected in MainWindow constructor.</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_a1859410dba7ad5a977d4f63bc0d7de02"><div class="ttname"><a href="classIPbusTarget.html#a1859410dba7ad5a977d4f63bc0d7de02">IPbusTarget::IPbusStatusOK</a></div><div class="ttdeci">void IPbusStatusOK()</div><div class="ttdoc">Emitted when IPbus status is confirmed to be OK.</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_a2c529977bb97c31e8def85e3e854ebb4"><div class="ttname"><a href="classIPbusTarget.html#a2c529977bb97c31e8def85e3e854ebb4">IPbusTarget::noResponse</a></div><div class="ttdeci">void noResponse(QString message=&quot;no response&quot;)</div><div class="ttdoc">Emitted when there is no response at the socket, or the response is invalid.</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_a5bd2881de2f1117256278d6920050af5"><div class="ttname"><a href="classIPbusTarget.html#a5bd2881de2f1117256278d6920050af5">IPbusTarget::error</a></div><div class="ttdeci">void error(QString, errorType)</div><div class="ttdoc">Emitted when a socket error occurs.</div></div>
 <div class="ttc" id="aclassIPbusTarget_html_aab67dea3f37571d40629ef8a6ec36c56"><div class="ttname"><a href="classIPbusTarget.html#aab67dea3f37571d40629ef8a6ec36c56">IPbusTarget::readRegister</a></div><div class="ttdeci">quint32 readRegister(quint32 address)</div><div class="ttdoc">Initializes read transaction.</div><div class="ttdef"><b>Definition:</b> IPbusInterface.h:46</div></div>
+<div class="ttc" id="aclassIPbusTarget_html_abcb7513c8379a0b7615af3904d9f27d0"><div class="ttname"><a href="classIPbusTarget.html#abcb7513c8379a0b7615af3904d9f27d0">IPbusTarget::reconnect</a></div><div class="ttdeci">void reconnect()</div><div class="ttdoc">Attempts to reconnect to the socket.</div><div class="ttdef"><b>Definition:</b> IPbusInterface.h:121</div></div>
 <div class="ttc" id="aclassIPbusTarget_html_af546368eae5a01e53a33c9c14bfffbf5"><div class="ttname"><a href="classIPbusTarget.html#af546368eae5a01e53a33c9c14bfffbf5">IPbusTarget::IPaddress</a></div><div class="ttdeci">QString IPaddress</div><div class="ttdoc">IP address of the remote site.</div><div class="ttdef"><b>Definition:</b> IPbusInterface.h:26</div></div>
 <div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:54</div></div>
 <div class="ttc" id="aclassStrictIntValidator_html"><div class="ttname"><a href="classStrictIntValidator.html">StrictIntValidator</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:33</div></div>
