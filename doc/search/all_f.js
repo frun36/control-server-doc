@@ -11,9 +11,10 @@ var searchData=
   ['statuspacket_102',['StatusPacket',['../structStatusPacket.html',1,'']]],
   ['statussize_103',['statusSize',['../structGBTunit.html#a76f52dcd9a20f1d4a73471ce2a6638e2',1,'GBTunit']]],
   ['strictintvalidator_104',['StrictIntValidator',['../classStrictIntValidator.html',1,'']]],
-  ['successfulread_105',['successfulRead',['../classIPbusControlPacket.html#affa6ad5dae6ebeadbed4482004594bfe',1,'IPbusControlPacket']]],
-  ['successfulwrite_106',['successfulWrite',['../classIPbusControlPacket.html#ae84bb6032922396253b9e887ade12e3f',1,'IPbusControlPacket']]],
-  ['switch_107',['Switch',['../classSwitch.html',1,'']]],
-  ['switch_2eh_108',['switch.h',['../switch_8h.html',1,'']]],
-  ['systemid_109',['systemID',['../FITboardsCommon_8h.html#afe523bc6902154f8717e4adc0e37a91f',1,'FITboardsCommon.h']]]
+  ['subdetector_105',['subdetector',['../classFITelectronics.html#a94863221685e5b88c07cbd191391db74',1,'FITelectronics']]],
+  ['successfulread_106',['successfulRead',['../classIPbusControlPacket.html#affa6ad5dae6ebeadbed4482004594bfe',1,'IPbusControlPacket']]],
+  ['successfulwrite_107',['successfulWrite',['../classIPbusControlPacket.html#ae84bb6032922396253b9e887ade12e3f',1,'IPbusControlPacket']]],
+  ['switch_108',['Switch',['../classSwitch.html',1,'']]],
+  ['switch_2eh_109',['switch.h',['../switch_8h.html',1,'']]],
+  ['systemid_110',['systemID',['../FITboardsCommon_8h.html#afe523bc6902154f8717e4adc0e37a91f',1,'FITboardsCommon.h']]]
 ];

@@ -14,7 +14,7 @@ extern double TDCunit_ps; // 13
 extern double halfBC_ns; // 12.5
 extern double phaseStepLaser_ns, phaseStep_ns;
 
-/// @brief Manages the entirety of FIT's electronics (or just a single subdetector?)
+/// @brief Manages the entirety of a single FIT subdetector's electronics
 /// 
 /// Responsibilities:
 /// - creating and deleting DIM services
@@ -22,8 +22,13 @@ extern double phaseStepLaser_ns, phaseStep_ns;
 class FITelectronics: public IPbusTarget, public DimCommandHandler {
     Q_OBJECT
 public:
+    /// @brief Currently controlled subdetector
     TypeFITsubdetector subdetector;
+
+    /// @brief ID of the current subdetector's TCM
     const quint16 TCMid;
+
+
     DimServer DIMserver;
 
     /// @brief Contains all DIM command handlers
@@ -90,7 +95,7 @@ public:
     /// @brief Constructor - lots of logic to analyze
     ///
     /// - Initializes `logFile` and `logStream`
-    /// - Some PM (`FEEid`) and TCM (`T1_SIGN` etc) initialization, depends on the value of `sd` - ?
+    /// - Some PM (`FEEid`) and TCM (`T1_SIGN` etc) initialization, depends on the current subdetector
     /// - connects signals to slots - @todo review what the slots do: 
     ///     - `shuttleTimer` timeout to `FITelectronics::inverseLaserPhase`, 
     ///     - `countersTimer` timeout - some IPbus transaction

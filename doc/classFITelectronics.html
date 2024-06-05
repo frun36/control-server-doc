@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Manages the entirety of FIT's electronics (or just a single subdetector?)  
+<p>Manages the entirety of a single FIT subdetector's electronics.  
  <a href="classFITelectronics.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="FITelectronics_8h_source.html">FITelectronics.h</a>&gt;</code></p>
@@ -476,7 +476,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:ae3381ba0e8a328cbf08db877835b8ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="memItemLeft" align="right" valign="top"><a id="aa8d4ffce67fd718ecd6d829884b4d6b9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#aa8d4ffce67fd718ecd6d829884b4d6b9">resetFinished</a> ()</td></tr>
-<tr class="memdesc:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected in <code><a class="el" href="classFITelectronics.html" title="Manages the entirety of FIT&#39;s electronics (or just a single subdetector?)">FITelectronics</a></code> constructor. <br /></td></tr>
+<tr class="memdesc:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connected in <code><a class="el" href="classFITelectronics.html" title="Manages the entirety of a single FIT subdetector&#39;s electronics.">FITelectronics</a></code> constructor. <br /></td></tr>
 <tr class="separator:aa8d4ffce67fd718ecd6d829884b4d6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a0c671043b047e7b3602eb6ff9aa04e"><td class="memItemLeft" align="right" valign="top"><a id="a7a0c671043b047e7b3602eb6ff9aa04e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a7a0c671043b047e7b3602eb6ff9aa04e">DIMcommandReceived</a> (DimCommand *, void *)</td></tr>
@@ -539,10 +539,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>commandHandler</b> ()
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a94863221685e5b88c07cbd191391db74"><td class="memItemLeft" align="right" valign="top"><a id="a94863221685e5b88c07cbd191391db74"></a>
-<a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>subdetector</b></td></tr>
+<a class="el" href="FITboardsCommon_8h.html#a1a872281ba19200bde601f97db801fa3">TypeFITsubdetector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#a94863221685e5b88c07cbd191391db74">subdetector</a></td></tr>
+<tr class="memdesc:a94863221685e5b88c07cbd191391db74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently controlled subdetector. <br /></td></tr>
 <tr class="separator:a94863221685e5b88c07cbd191391db74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad369f4c033bc3749e210e286b35a5e88"><td class="memItemLeft" align="right" valign="top"><a id="ad369f4c033bc3749e210e286b35a5e88"></a>
-const quint16&#160;</td><td class="memItemRight" valign="bottom"><b>TCMid</b></td></tr>
+const quint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFITelectronics.html#ad369f4c033bc3749e210e286b35a5e88">TCMid</a></td></tr>
+<tr class="memdesc:ad369f4c033bc3749e210e286b35a5e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID of the current subdetector's TCM. <br /></td></tr>
 <tr class="separator:ad369f4c033bc3749e210e286b35a5e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9bdac5e7d51ed895e8237c3e4e904d5"><td class="memItemLeft" align="right" valign="top"><a id="ae9bdac5e7d51ed895e8237c3e4e904d5"></a>
 DimServer&#160;</td><td class="memItemRight" valign="bottom"><b>DIMserver</b></td></tr>
@@ -657,7 +659,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aa6b06ea1c4ac466c1037b94294c046f7 inherit pro_methods_classIPbusTarget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages the entirety of FIT's electronics (or just a single subdetector?) </p>
+<div class="textblock"><p>Manages the entirety of a single FIT subdetector's electronics. </p>
 <p>Responsibilities:</p><ul>
 <li>creating and deleting DIM services</li>
 <li>...? </li>
@@ -690,7 +692,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor - lots of logic to analyze. </p>
 <ul>
 <li>Initializes <code>logFile</code> and <code>logStream</code></li>
-<li>Some PM (<code>FEEid</code>) and TCM (<code>T1_SIGN</code> etc) initialization, depends on the value of <code>sd</code> - ?</li>
+<li>Some PM (<code>FEEid</code>) and TCM (<code>T1_SIGN</code> etc) initialization, depends on the current subdetector</li>
 <li>connects signals to slots - <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>review what the slots do:<ul>
 <li><code>shuttleTimer</code> timeout to <code>FITelectronics::inverseLaserPhase</code>,</li>
 <li><code>countersTimer</code> timeout - some IPbus transaction</li>
