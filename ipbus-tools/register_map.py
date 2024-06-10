@@ -685,8 +685,23 @@ class RegisterMap:
     def __init__(self):
         pass
     
-    def get_description(self, register_number, bit_start):
-        return "Register: " + self._register_map[register_number][-1] + " | Parameter: " + self._register_map[register_number][bit_start] 
+    @classmethod
+    def get_description(cls, register_number, bit_start):
+        output = ""
+
+        if register_number in cls._register_map:
+
+            reg_info = cls._register_map[register_number]
+            output += "Register: " + reg_info[-1]
+
+            if bit_start in reg_info:
+                output += " | Parameter " + reg_info[bit_start]
+            else:
+                output += " | Unknown parameter - invalid bit postion"
+        else:
+            output = "Unknown register address"
+        
+        return output
 
 
 
